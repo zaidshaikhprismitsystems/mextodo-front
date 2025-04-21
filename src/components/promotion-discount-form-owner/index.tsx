@@ -1,0 +1,1 @@
+export { default as PromotionAndDiscountFormOwner } from './PromotionAndDiscountFormOwner';

@@ -1,0 +1,12 @@
+{
+    "vendor": "Vendor",
+    "admin_account": "Cuenta del Administrador",
+    "manage_users": "Gestionar Usuarios",
+    "manage_vendors": "Administrar proveedores",
+    "manage_tickets": "Gestionar Tickets",
+    "add_ticket": "Añadir Ticket",
+    "promotion_discounts": "Promociones y Descuentos",
+    "stripe_vendor_message": "Tu cuenta de Stripe no está habilitada para pagos. Completa la verificación para recibirlos.",
+    "click_to_onboarding": "Haga clic para la incorporación",
+    "search_by_user_name_or_email": "Buscar por nombre o correo electrónico"
+}

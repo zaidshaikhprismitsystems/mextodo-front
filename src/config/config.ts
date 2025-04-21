@@ -1,0 +1,9 @@
+export const category_url = `${import.meta.env.VITE_PUBLIC_UPLOAD_IMAGE_URI}uploads/categories`;
+export const product_url = `${import.meta.env.VITE_PUBLIC_UPLOAD_IMAGE_URI}uploads/products`;
+export const setting_url = `${import.meta.env.VITE_PUBLIC_UPLOAD_IMAGE_URI}uploads/settings`;
+export const user_url = `${import.meta.env.VITE_PUBLIC_UPLOAD_IMAGE_URI}uploads/users`;
+export const ticket_url = `${import.meta.env.VITE_PUBLIC_UPLOAD_IMAGE_URI}uploads/tickets`;
+export const phyical_name = import.meta.env.VITE_PUBLIC_PHYSICAL_CATEGORY_NAME;
+export const digital_name = import.meta.env.VITE_PUBLIC_DIGITAL_CATEGORY_NAME;
+export const vehicle_name = import.meta.env.VITE_PUBLIC_VEHICLE_CATEGORY_NAME;
+export const property_name = import.meta.env.VITE_PUBLIC_PROPERTY_CATEGORY_NAME;

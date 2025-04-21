@@ -1,0 +1,14 @@
+{
+    "owner_account": "Cuenta del Propietario",
+    "admin_account": "Cuenta del Administrador",
+    "manage_users": "Gestionar Usuarios",
+    "manage_vendors": "Administrar proveedores",
+    "manage_tickets": "Gestionar Tickets",
+    "add_ticket": "Añadir Ticket",
+    "promotion_discounts": "Promociones y Descuentos",
+    "add_promotion_discounts": "Añadir descuentos de promoción",
+    "email_template": "Plantilla de Correo",
+    "pages": "Páginas",
+    "reports": "Informes",
+    "visitors": "Visitantes"
+}

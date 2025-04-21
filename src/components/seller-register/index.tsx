@@ -1,0 +1,1 @@
+export { default as SellerRegister } from './SellerRegister';

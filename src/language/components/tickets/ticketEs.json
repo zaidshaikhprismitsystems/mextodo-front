@@ -1,0 +1,19 @@
+{
+    "search_by_issue_name": "Buscar por nombre de problema",
+    "open": "Abierto",
+    "inProgress": "En Progreso",
+    "closed": "Cerrado",
+    "manage_tickets": "Gestionar Tickets",
+    "view": "Ver",
+    "reply_text": "Introducir texto de respuesta",
+    "orderIssues": "Problemas con el pedido",
+    "paymentIssues": "Problemas de pago",
+    "productIssues": "Problemas con el producto",
+    "shippingIssues": "Problemas de envío",
+    "returnsRefunds": "Devoluciones y reembolsos",
+    "accountIssues": "Problemas de cuenta",
+    "technicalSupport": "Soporte técnico",
+    "generalInquiry": "Consulta general",
+    "vendorSupport": "Soporte para vendedores",
+    "reply_to_ticket": "Responder al ticket"
+}

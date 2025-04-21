@@ -1,0 +1,1 @@
+export { default as TicketsOwner } from './TicketsOwner';

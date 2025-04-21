@@ -1,0 +1,123 @@
+#root {
+  max-width: 100%;
+  width: 100%;
+  min-height: 100dvh;
+  /* height: 100vh; */
+  margin: 0;
+  padding: 0;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-Sizing: border-box;
+  scroll-Behavior: smooth;
+}
+html {
+  width: 100%;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+  /* width: 100%; */
+  height: auto !important;
+}
+
+
+.select_state{
+  display: none;
+}
+
+button:focus{
+  outline: 0;
+}
+button:hover {
+  border-color: revert;
+}
+a {
+  cursor: pointer;
+  color: #0a4042;
+}
+a:hover {
+  color: #62B504;
+}
+.mobile-menu-items-wrap .mobile-menu-items li a{
+  color: #000000;
+}
+.mobile-menu-items-wrap .mobile-menu-items li a:active,
+.mobile-menu-items-wrap .mobile-menu-items li a:hover{
+  color: #0B5052;
+}
+.swiper-button-prev,
+.swiper-button-next{
+ transition:  all 0.3s linear;
+}
+.swiper-button-prev:not(:hover),
+.swiper-button-next:not(:hover){
+  opacity: 0.6;
+}
+
+.product-img-preview :where(.slick-slider, .slick-list, .slick-track, .slick-slide>div, img){
+  height: 100%;
+}
+
+
+.MuiInputAdornment-root {
+  padding: 2px 5px;
+  background: #e3e3e3;
+}
+
+.MuiInputAdornment-root p{
+  color: #000;
+}
+
+@media (max-width:899.99px){
+  .responsive-logo{
+    width: 120px;
+    height: auto;
+  }
+  .cart_icon {
+    width: 30px;
+    height: 30px;
+  }
+  .search-icon{
+    width: 26px;
+    height: 26px;
+  }
+
+}
+
+label:has([type="radio"], [type="checkbox"]){
+  cursor: pointer;
+}
+
+.apexcharts-canvas .apexcharts-tooltip-text{
+  color:#ffffff;
+}
+
+.product-img-preview .slick-slider .slick-track {
+  position: absolute;
+}
+label:not(.MuiInputLabel-shrink) + .MuiInput-root input[type="text"]::-webkit-datetime-edit ,
+label:not(.MuiInputLabel-shrink) + .MuiInput-root input[type="date"]::-webkit-datetime-edit {
+  opacity:0;
+}
+.dx-htmleditor-content img {
+  vertical-align: middle;
+}
+
+.dx-htmleditor-content table {
+  width: 50%;
+}
+
+.dx-htmleditor-content table td:last-child {
+  text-align: right;
+}

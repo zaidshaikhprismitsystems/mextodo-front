@@ -1,0 +1,12 @@
+{
+    "vendor": "Vendor",
+    "store_name": "Store Name",
+    "whatsapp_number": "Whatsapp Number",
+    "balance": "Balance",
+    "manage_tickets": "Manage Tickets",
+    "add_ticket": "Add Ticket",
+    "promotion_discounts": "Promotion And Discounts",
+    "stripe_vendor_message": "Your Stripe account is not enabled for payments. Please complete verification to receive payments.",
+    "click_to_onboarding": "Click to onboarding",
+    "search_by_user_name_or_email": "Search by name or email"
+}

@@ -1,0 +1,14 @@
+{
+    "owner_account": "Owner Account",
+    "admin_account": "Admin Account",
+    "manage_users": "Manage Users",
+    "manage_vendors": "Manage Vendors",
+    "manage_tickets": "Manage Tickets",
+    "add_ticket": "Add Ticket",
+    "promotion_discounts": "Promotion And Discounts",
+    "add_promotion_discounts": "Add Promotion Discounts",
+    "email_template": "Email Template",
+    "pages": "Pages",
+    "reports": "Reports",
+    "visitors": "Visitors"
+}

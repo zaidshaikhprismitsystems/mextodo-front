@@ -1,0 +1,17 @@
+{
+    "promotion_and_discount": "Promotion And Discount",
+    "active": "Active",
+    "inactive": "In Active",
+    "search_by_coupon_name": "Search by coupon name",
+    "coupon_code": "Coupon Code",
+    "discount_type": "Discount Type",
+    "discount_value": "Discount Value",
+    "start_time": "Start Time",
+    "end_time": "End Time",
+    "minimum_order_amount": "Minimum Order Amount",
+    "max_discount": "Max Discount",
+    "usage_limit": "Usage Limit",
+    "create_new_coupon": "Create New Coupon",
+    "add_coupon": "Add Coupon",
+    "update_coupon": "Update Coupon"
+}

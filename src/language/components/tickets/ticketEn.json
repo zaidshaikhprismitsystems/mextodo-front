@@ -1,0 +1,19 @@
+{
+    "search_by_issue_name": "Search by issue name",
+    "open": "Open",
+    "inProgress": "In Progress",
+    "closed": "Closed",
+    "manage_tickets": "Manage Tickets",
+    "view": "View",
+    "reply_text": "Enter reply text",
+    "orderIssues": "Order issues",
+    "paymentIssues": "Payment issues",
+    "productIssues": "Product issues",
+    "shippingIssues": "Shipping issues",
+    "returnsRefunds": "Returns refunds",
+    "accountIssues": "Account issues",
+    "technicalSupport": "Technical support",
+    "generalInquiry": "General inquiry",
+    "vendorSupport": "Vendor support",
+    "reply_to_ticket": "Reply to Ticket"
+}
