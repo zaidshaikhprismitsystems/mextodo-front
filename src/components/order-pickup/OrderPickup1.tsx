@@ -115,43 +115,63 @@ export default function Pickup() {
                                   aria-labelledby="demo-row-radio-buttons-group-label"
                                   name="row-radio-buttons-group"
                                   sx={{
-                                    gap:1,
-                                    "& .MuiFormControlLabel-root":{
-                                      border:1,
-                                      borderRadius:10,
-                                      color:"primary.main",
-                                      py:1,
-                                      px:1.3,
-                                      minWidth:100,
-                                      width:{xs:'48%', sm:'auto' },
-                                      textAlign:'center',
-                                      justifyContent:'center',
-                                      mx:0,
-                                      borderColor:'primary.500',
-
-                                      "& .MuiBox-root":{
-                                        fontSize:14,
+                                    gap: 1,
+                                    "& .MuiFormControlLabel-root": {
+                                      border: 1,
+                                      borderRadius: 10,
+                                      color: "primary.main",
+                                      py: 1,
+                                      px: 1.3,
+                                      minWidth: 100,
+                                      width: { xs: "48%", sm: "auto" },
+                                      textAlign: "center",
+                                      justifyContent: "center",
+                                      mx: 0,
+                                      borderColor: "primary.500",
+                                      "& .MuiBox-root": {
+                                        fontSize: 14,
                                       },
-                                      
-                                      "& .MuiRadio-root":{
-                                        display:"none",
-                                        
+                                      "& .MuiRadio-root": {
+                                        display: "none",
                                       },
-
-                                      '&:has(.Mui-checked)":{
-                                        color:"white.main",
-                                        backgroundColor:'primary.main',
-                                        borderColor:'primary.main',
-                                      }
+                                      "&:has(.Mui-checked)": {
+                                        color: "white.main",
+                                        backgroundColor: "primary.main",
+                                        borderColor: "primary.main",
+                                      },
                                     },
                                   }}
                                   value={values.sameDay}
-                                  onChange={(e: any) => { setFieldValue("sameDay", e.target.value) }}
+                                  onChange={(e: any) => {
+                                    setFieldValue("sameDay", e.target.value);
+                                  }}
                                 >
-                                  <FormControlLabel value={true} control={<Radio />} label={<FlexBox gap={1}><CheckIcon fontSize='small'/>{t("yes")}</FlexBox>} />
-                                  <FormControlLabel value={false} control={<Radio />} label={<FlexBox gap={1}><CloseIcon  fontSize='small'/> {t("no")}</FlexBox>} />
+                                  <FormControlLabel
+                                    value={true}
+                                    control={<Radio />}
+                                    label={
+                                      <FlexBox gap={1}>
+                                        <CheckIcon fontSize="small" />
+                                        {t("yes")}
+                                      </FlexBox>
+                                    }
+                                  />
+                                  <FormControlLabel
+                                    value={false}
+                                    control={<Radio />}
+                                    label={
+                                      <FlexBox gap={1}>
+                                        <CloseIcon fontSize="small" />
+                                        {t("no")}
+                                      </FlexBox>
+                                    }
+                                  />
                                 </RadioGroup>
-                                <Typography sx={{fontSize: "12px", color: "red"}}>{touched.sameDay && typeof errors.sameDay === "string" ? errors.sameDay : ""}</Typography>
+                                <Typography sx={{ fontSize: "12px", color: "red" }}>
+                                  {touched.sameDay && typeof errors.sameDay === "string"
+                                    ? errors.sameDay
+                                    : ""}
+                                </Typography>
                               </FormControl>
                             </Grid>
                             
@@ -234,19 +254,24 @@ export default function Pickup() {
                                 label={t("time_to")}
                                 className="select"
                                 value={values.timeTo}
-                                onChange={(e) => setFieldValue('timeTo', e.target.value)}
-                                helperText={touched.timeTo && typeof errors.timeTo === "string" ? errors.timeTo : ""} 
+                                onChange={(e) => setFieldValue("timeTo", e.target.value)}
+                                helperText={
+                                  touched.timeTo && typeof errors.timeTo === "string"
+                                    ? errors.timeTo
+                                    : ""
+                                }
                                 error={Boolean(touched.timeTo && errors.timeTo)}
                               >
                                 {Array.from({ length: 10 }, (_, i) => {
                                   const hourValue = 9 + i;
                                   const hour = (9 + i).toString().padStart(2, "0");
                                   return (
-                                    values?.timeFrom && hour > values?.timeFrom+2 &&
-                                    <MenuItem key={hour} value={parseInt(hourValue.toString())}>
-                                      {`${hour}:00`}
-                                    </MenuItem>
-                                    
+                                    values?.timeFrom &&
+                                    hour > values?.timeFrom + 2 && (
+                                      <MenuItem key={hour} value={parseInt(hourValue.toString())}>
+                                        {`${hour}:00`}
+                                      </MenuItem>
+                                    )
                                   );
                                 })}
                               </TextField>
@@ -271,28 +296,36 @@ export default function Pickup() {
 
                           <Grid size={12} container spacing={3}>
                             <Grid size={{ xs:12, sm: 6 }}>
-                            <TextBox
+                              <TextBox
                                 type={"number"}
                                 fullWidth={true}
                                 placeholder={t("total_packages")}
                                 name={"totalPackages"}
-                                handleBlur={handleBlur} 
+                                handleBlur={handleBlur}
                                 handleChange={handleChange}
                                 value={values.totalPackages}
-                                helperText={touched.totalPackages && typeof errors.totalPackages === "string" ? errors.totalPackages : ""}
+                                helperText={
+                                  touched.totalPackages && typeof errors.totalPackages === "string"
+                                    ? errors.totalPackages
+                                    : ""
+                                }
                                 error={Boolean(touched.totalPackages && errors.totalPackages)}
                               />
                             </Grid>
                             <Grid size={{ xs:12, sm: 6 }}>
-                            <TextBox
+                              <TextBox
                                 type={"number"}
                                 fullWidth={true}
                                 placeholder={t("total_weight")}
                                 name={"totalWeight"}
-                                handleBlur={handleBlur} 
+                                handleBlur={handleBlur}
                                 handleChange={handleChange}
                                 value={values.totalWeight}
-                                helperText={touched.totalWeight && typeof errors.totalWeight === "string" ? errors.totalWeight : ""}
+                                helperText={
+                                  touched.totalWeight && typeof errors.totalWeight === "string"
+                                    ? errors.totalWeight
+                                    : ""
+                                }
                                 error={Boolean(touched.totalWeight && errors.totalWeight)}
                               />
                             </Grid>
