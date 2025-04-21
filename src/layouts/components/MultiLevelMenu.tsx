@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import SidebarAccordion from "./SidebarAccordion";
+import { ExternalLink, ListLabel, NavItemButton } from "../mainLayout/styles";
 // import { navigations } from "../layout-parts/navigation";
 // import {
 //   ItemText,
@@ -43,66 +44,66 @@ export default function MultiLevelMenu({ sidebarCompact }: MultiLevelMenuProps) 
 
   const COMPACT = sidebarCompact ? 1 : 0;
 
-  const renderLevels = (data: NavigationItem[]) => {
-    return data.map((item, index) => {
-      if (item.type === "label" && item.label) {
-        return (
-          <ListLabel key={index} compact={COMPACT}>
-            {t(item.label)}
-          </ListLabel>
-        );
-      }
+  // const renderLevels = (data: NavigationItem[]) => {
+  //   return data.map((item, index) => {
+  //     if (item.type === "label" && item.label) {
+  //       return (
+  //         <ListLabel key={index} compact={COMPACT}>
+  //           {t(item.label)}
+  //         </ListLabel>
+  //       );
+  //     }
 
-      if (item.children) {
-        return (
-          <SidebarAccordion key={index} item={item} sidebarCompact={COMPACT}>
-            {renderLevels(item.children)}
-          </SidebarAccordion>
-        );
-      }
+  //     if (item.children) {
+  //       return (
+  //         <SidebarAccordion key={index} item={item} sidebarCompact={COMPACT}>
+  //           {renderLevels(item.children)}
+  //         </SidebarAccordion>
+  //       );
+  //     }
 
-      if (item.type === "extLink" && item.path) {
-        return (
-          <ExternalLink
-            key={index}
-            href={item.path}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <NavItemButton key={item.name} name="child" active={0}>
-              {item.icon ? (
-                <item.icon sx={ICON_STYLE(0)} />
-              ) : (
-                <span className="item-icon icon-text">{item.iconText}</span>
-              )}
-              <ItemText compact={COMPACT} active={activeRoute(item.path)}>
-                {item.name}
-              </ItemText>
-            </NavItemButton>
-          </ExternalLink>
-        );
-      }
+  //     if (item.type === "extLink" && item.path) {
+  //       return (
+  //         <ExternalLink
+  //           key={index}
+  //           href={item.path}
+  //           rel="noopener noreferrer"
+  //           target="_blank"
+  //         >
+  //           <NavItemButton key={item.name} name="child" active={0}>
+  //             {item.icon ? (
+  //               <item.icon sx={ICON_STYLE(0)} />
+  //             ) : (
+  //               <span className="item-icon icon-text">{item.iconText}</span>
+  //             )}
+  //             <ItemText compact={COMPACT} active={activeRoute(item.path)}>
+  //               {item.name}
+  //             </ItemText>
+  //           </NavItemButton>
+  //         </ExternalLink>
+  //       );
+  //     }
 
-      return (
-        <NavItemButton
-          key={index}
-          disabled={item.disabled}
-          active={activeRoute(item.path || "")}
-          onClick={() => item.path && handleNavigation(item.path)}
-        >
-          {item.icon ? (
-            <item.icon sx={ICON_STYLE(activeRoute(item.path || ""))} />
-          ) : (
-            <BulletIcon active={activeRoute(item.path || "")} />
-          )}
+  //     return (
+  //       <NavItemButton
+  //         key={index}
+  //         disabled={item.disabled}
+  //         active={activeRoute(item.path || "")}
+  //         onClick={() => item.path && handleNavigation(item.path)}
+  //       >
+  //         {item.icon ? (
+  //           <item.icon sx={ICON_STYLE(activeRoute(item.path || ""))} />
+  //         ) : (
+  //           <BulletIcon active={activeRoute(item.path || "")} />
+  //         )}
 
-          <ItemText compact={COMPACT} active={activeRoute(item.path || "")}>
-            {t(item.name)}
-          </ItemText>
-        </NavItemButton>
-      );
-    });
-  };
+  //         <ItemText compact={COMPACT} active={activeRoute(item.path || "")}>
+  //           {t(item.name)}
+  //         </ItemText>
+  //       </NavItemButton>
+  //     );
+  //   });
+  // };
 
   // const filterNavigation = useMemo(() => {
   //   return navigations.filter(navigation => {
