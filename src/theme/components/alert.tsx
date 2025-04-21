@@ -6,18 +6,18 @@ import CheckCircle from '@mui/icons-material/CheckCircle';
 
 import { Theme } from '@mui/material/styles';
 import { AlertProps } from '@mui/material/Alert';
+import { PaletteColor } from '@mui/material/styles/createPalette';
 import { isDark } from '../../utils/constants';
-import { info } from 'console';
 
-const standardStyle = (color: Record<number, string> & { main: string }) => ({
+const standardStyle = (color: PaletteColor) => ({
   color: color.main,
-  backgroundColor: color[50],
+  backgroundColor: color.light || color[50], // Use `light` or fallback to `50`
 });
 
-const outlinedStyle = (color: Record<number, string> & { main: string }) => ({
+const outlinedStyle = (color: PaletteColor) => ({
   color: color.main,
   borderColor: color.main,
-  backgroundColor: color[50],
+  backgroundColor: color.light || color[50],
 });
 
 const actionBtnStyle = (info: string, secondary: string) => ({
@@ -72,16 +72,21 @@ const Alert = (theme: Theme) => {
           backgroundColor: grey[700],
         }),
       },
-      filledWarning: {
+      filledError: {
         color: common.white,
+        backgroundColor: error.main,
       },
       filledSuccess: {
         color: common.white,
-        backgroundColor: success[600],
+        backgroundColor: success.main,
       },
       filledInfo: {
         color: common.white,
         backgroundColor: info.main,
+      },
+      filledWarning: {
+        color: common.white,
+        backgroundColor: warning.main,
       },
       action: ({
         ownerState,

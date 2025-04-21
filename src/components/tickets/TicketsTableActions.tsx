@@ -1,17 +1,10 @@
-import { useNavigate } from 'react-router-dom'
-// MUI
+import { useState } from 'react'; // Removed unused imports: useNavigate, IconButton, Apps, FormatBullets, Button, AddIcon
 import MenuItem from '@mui/material/MenuItem'
 import TextField from '@mui/material/TextField'
-import IconButton from '@mui/material/IconButton'
 import styled from '@mui/material/styles/styled'
-// CUSTOM ICON COMPONENTS
-import Apps from '../../icons/Apps'
-import FormatBullets from '../../icons/FormatBullets'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FlexBetween } from '../flexbox'
-import { Button } from '@mui/material'
-import AddIcon from '@mui/icons-material/Add';
 
 //  STYLED COMPONENTS
 const Wrapper = styled('div')(({ theme }) => ({

@@ -44,7 +44,6 @@ export default function ViewTicket() {
       let details = await ApiService.getTicketDetails(id);
       setDetails(details.data);
       setRelatedData(details.relatedData);
-      console.log('details.data.priority: ', details.data.priority);
       setPriority(details.data.priority);
     } catch (e) {
       console.log(e);
@@ -83,7 +82,6 @@ export default function ViewTicket() {
         setDetails(addReply.data);
         Toast.showSuccessMessage("Reply Added.");
         setFieldValue("replyText", "");
-        // resetForm();
       } catch (error: any) {
         console.log('error: ', error);
         Toast.showErrorMessage(error.response.data.message);
@@ -98,19 +96,14 @@ export default function ViewTicket() {
     switch (status) {
       case "pending":
         return "warning"
-        break;
       case "open":
         return "info"
-        break;
       case "inProgress":
         return "success"
-        break;
       case "closed":
         return "secondary"
-        break;
       default:
         return "secondary"
-        break;
     }
   }
 
@@ -126,7 +119,6 @@ export default function ViewTicket() {
       let changeStatus = await ApiService.updateTicket({ status: status, ticketId: details.id });
       setDetails(changeStatus.data);
       Toast.showSuccessMessage("Ticket status changed.");
-      // resetForm();
     } catch (error: any) {
       console.log('error: ', error);
       Toast.showErrorMessage(error.response.data.message);
@@ -160,10 +152,6 @@ export default function ViewTicket() {
         !loading ?
           <>
             <FlexBox gap={0.5} alignItems="center">
-              {/* <IconWrapper>
-                  <TokenIcon color="primary" />
-                </IconWrapper> */}
-
               <H3 sx={{ mt: 0, mb: 2, fontSize: { xs: 20, md: 26 }, fontWeight: 600 }}>View Tickets</H3>
             </FlexBox>
 
@@ -294,9 +282,6 @@ export default function ViewTicket() {
                     <Paragraph>
                       {details.description}
                     </Paragraph>
-                    {/* <Paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  </Paragraph> */}
                     <Box sx={{ display: "flex", gap: 2 }}>
                       {
                         details?.images && details?.images.length > 0 && details?.images.map((image: any) =>
@@ -329,11 +314,6 @@ export default function ViewTicket() {
                               fullWidth={true}
                               placeholder={"Customer Email"}
                               name={"Customer email"} handleBlur={undefined} handleChange={undefined} value={details?.users.email} disabled helperText={""} error={undefined}
-                            // handleBlur={handleBlur} 
-                            // handleChange={handleChange} 
-                            // value={values.nameEn}
-                            // helperText={touched.nameEn && typeof errors.nameEn === "string" ? errors.nameEn : ""} 
-                            // error={Boolean(touched.nameEn && errors.nameEn)}
                             />
                           </Box>
                         </Grid>
@@ -417,7 +397,6 @@ export default function ViewTicket() {
                         <Typography>{reply?.users?.firstName || reply?.users?.lastName ? `${reply?.users?.firstName} ${reply?.users?.lastName}` : reply?.users?.username}</Typography>
                         <Typography>{formatDistanceToNow(reply.createdAt, { addSuffix: true })}</Typography>
                       </Box>
-                      {/* <Button sx={{ml: "auto"}}>Reply</Button> */}
                     </Box>
                     <Typography sx={{ mt: 1 }}>{reply.replyText}</Typography>
                   </Box>

@@ -1,11 +1,5 @@
-import { lazy } from 'react'; // CUSTOM COMPONENTS
-
+import { lazy } from 'react';
 import Loadable from './loadable';
-
-// import { AuthGuard } from '@/components/auth';
-
-// import useSettings from '../hooks/useSettings';
-
 import OwnerLayout from '../layouts/ownerLayout';
 import { Products } from '../components/products';
 import { AddProducts } from '../components/add-products';
@@ -20,63 +14,22 @@ const PromotionDiscountAdd = Loadable(lazy(() => import('../pages/owner/promotio
 const OwnerTickets = Loadable(lazy(() => import('../pages/owner/tickets/manage-ticket')));
 const ViewTickets = Loadable(lazy(() => import('../pages/owner/tickets/view-ticket')));
 
-// const ActiveLayout = () => {
-//   const {
-//     settings
-//   }: any = useSettings();
-//   return settings.activeLayout === 'layout2' ? <LayoutV2 /> : <LayoutV1 />;
-// };
-
-export const OwnerDashboardRoutes = [{
-  path: '/dashboard',
-  element: 
-    // <AuthGuard>
-        <OwnerLayout />,
-    // </AuthGuard>,
-  children: [
-    {
-      path: '',
-      element: <OwnerDashboard />
-    }, 
-    {
-      path: 'login',
-      element: <Login />
-    },
-    {
-      path: 'products',
-      element: <Products />
-    },
-    {
-      path: 'add-products',
-      element: <AddProducts />
-    },
-    {
-      path: 'orders',
-      element: <OrderListPageView />
-    },
-    {
-      path: 'order-details',
-      element: <OrderDetailsPageView />
-    },
-    {
-      path: 'pickup',
-      element: <OrderPickup />
-    },
-    {
-      path: 'promotion-discount',
-      element: <PromotionDiscount />
-    },
-    {
-      path: 'add-promotion-discount',
-      element: <PromotionDiscountAdd />
-    },
-    {
-      path: 'tickets',
-      element: <OwnerTickets />
-    },
-    {
-      path: 'view-ticket',
-      element: <ViewTickets />
-    }
-]
-}];
+export const OwnerDashboardRoutes = [
+  {
+    path: '/dashboard',
+    element: <OwnerLayout />,
+    children: [
+      { path: '', element: <OwnerDashboard /> },
+      { path: 'login', element: <Login /> },
+      { path: 'products', element: <Products /> },
+      { path: 'add-products', element: <AddProducts /> },
+      { path: 'orders', element: <OrderListPageView /> },
+      { path: 'order-details', element: <OrderDetailsPageView /> },
+      { path: 'pickup', element: <OrderPickup /> },
+      { path: 'promotion-discount', element: <PromotionDiscount /> },
+      { path: 'add-promotion-discount', element: <PromotionDiscountAdd /> },
+      { path: 'tickets', element: <OwnerTickets /> },
+      { path: 'view-ticket', element: <ViewTickets /> },
+    ],
+  },
+];

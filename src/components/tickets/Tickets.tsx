@@ -20,17 +20,13 @@ import ProductTableHead from './TicketsTableHead'
 import TicketTableActions from './TicketsTableActions'
 import ApiService from '../../services/apiServices/apiService'
 import Toast from '../../utils/toast'
-import { ProductPreview } from '../product-preview'
-import Modal from '@mui/material/Modal';
 import React from 'react'
 import { Box, Chip, ListItemButton, Pagination, Stack, Typography } from '@mui/material'
-import { product_url } from '../../config/config'
-import { UpdateProducts } from '../update-products'
 import { useTranslation } from 'react-i18next'
 import Grid from '@mui/material/Grid2';
 import { FlexBox, FlexRowAlign } from "../flexbox"
 import IconWrapper from '../icon-wrapper'
-import { H4, H6 } from "../typography"
+import { H6 } from "../typography"
 import TokenIcon from '@mui/icons-material/Token';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -51,7 +47,6 @@ export default function Tickets() {
   const [ticketsData, setTicketsData] = useState([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState<number>(0);
-    const [rowsPerPage, setRowsPerPage] = useState<number>(5);
 
   const handleChangeFilter = (key: string, value: string) => {
     setTicketsFilter((state) => ({ ...state, [key]: value }))
@@ -59,11 +54,11 @@ export default function Tickets() {
 
   useEffect(() =>{
     getTickets();
-  }, [ , ticketsFilter, page, rowsPerPage])
+  }, [ , ticketsFilter, page])
 
   const getTickets = async() => {
     try{
-      const tickets = await ApiService.fetchTickets(ticketsFilter.status, ticketsFilter.search, page, rowsPerPage);
+      const tickets = await ApiService.fetchTickets(ticketsFilter.status, ticketsFilter.search, page);
       setTicketsData(tickets.data)
       setTotal(tickets.total)
     }catch(e){

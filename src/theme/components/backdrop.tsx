@@ -1,6 +1,7 @@
 import { alpha } from '@mui/system/colorManipulator';
+import { Theme } from '@mui/material/styles';
 
-const Backdrop = theme => {
+const Backdrop = (theme: Theme) => {
   const low = alpha(theme.palette.grey[600], 0.8);
   const high = alpha(theme.palette.grey[700], 0.4);
   return {

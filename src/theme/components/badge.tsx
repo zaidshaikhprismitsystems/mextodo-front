@@ -1,4 +1,6 @@
-const Badge = theme => {
+import { Theme } from '@mui/material/styles';
+
+const Badge = (theme: Theme) => {
   const {
     common,
     grey
