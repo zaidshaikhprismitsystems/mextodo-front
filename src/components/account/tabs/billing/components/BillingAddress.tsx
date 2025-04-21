@@ -9,7 +9,6 @@ import Info from '@mui/icons-material/Info'; // CUSTOM COMPONENTS
 
 import { Paragraph } from '../../../../../components/typography';
 import FlexBetween from '../../../../../components/flexbox/FlexBetween';
-import { primary } from '../../../../../theme/colors';
 export default function BillingAddress() {
   return <Box padding={3}>
       <Alert severity="info" color='info' variant="outlined" icon={<Info />} action={<Button color='info'>Add Payment Method</Button>}>

@@ -8,15 +8,6 @@ import DropZone from "../dropzone";
 
 export default function AddTicket() {
 
-  const MySelectComponent = () => {
-    const [status, setStatus] = useState('');
-
-    const handleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-      setStatus(event.target.value);
-    };
-
-  };
-
   const [imagePreview, setImagePreview] = useState<any>(null);
   const handleDropFile = (event: any) => {
     const file = event[0];
@@ -32,7 +23,6 @@ export default function AddTicket() {
         if (!base64String) return;
 
         const mimetype = file.type;
-        const imageData = { image: base64String, mimetype };
 
         setImagePreview(reader.result.toString());
     };
@@ -58,22 +48,22 @@ export default function AddTicket() {
             <form style={{ width: '100%' }}>
               <Grid container spacing={3} size={12}>
                 <Grid size={12}>
-                  <TextBox
-                    type={"text"}
-                    fullWidth={true}
-                    placeholder={"Subject"}
-                    name={"subject"} handleBlur={undefined} handleChange={undefined} value={""} helperText={""} error={undefined}
+                  <TextField
+                    type="text"
+                    fullWidth
+                    placeholder="Subject"
+                    name="subject"
                   />
                 </Grid>
                 <Grid size={{
                   md: 4,
                   xs: 12
                 }}>
-                  <TextBox
-                    type={"text"}
-                    fullWidth={true}
-                    placeholder={"Email"}
-                    name={"email"} handleBlur={undefined} handleChange={undefined} value={""} helperText={""} error={undefined}
+                  <TextField
+                    type="text"
+                    fullWidth
+                    placeholder="Email"
+                    name="email"
                   />
                 </Grid>
 
@@ -86,9 +76,7 @@ export default function AddTicket() {
                     id="ticket-type"
                     label="Ticket Type"
                     select
-                    value={status}
                     variant="outlined"
-                    onChange={handleChange}
                     name="ticket-Type"
                     fullWidth
                   >
@@ -110,9 +98,7 @@ export default function AddTicket() {
                     id="priority-status"
                     label="Priority Status"
                     select
-                    value={status}
                     variant="outlined"
-                    onChange={handleChange}
                     name="priority-Status"
                     fullWidth
                   >
@@ -126,14 +112,13 @@ export default function AddTicket() {
                 </Grid>
 
                 <Grid size={12}>
-                  <TextBox
-                    type={"text"}
-                    fullWidth={true}
-                    placeholder='Issue description'
-                    name={"descriptionSp"}
+                  <TextField
+                    type="text"
+                    fullWidth
+                    placeholder="Issue description"
+                    name="descriptionSp"
                     rows={4}
-                    multiline={true}
-                    handleChange={handleChange} handleBlur={undefined} value={""} helperText={""} error={undefined}
+                    multiline
                   />
                 </Grid>
 

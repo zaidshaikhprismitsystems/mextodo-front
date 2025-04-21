@@ -13,7 +13,6 @@ import { PromotionAndDiscountFormOwner } from "../promotion-discount-form-owner"
 export default function AddPromotionDiscountOwner() {
   const navigate = useNavigate();
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const [products, setOwnerProducts] = useState<any[]>([]);
@@ -72,7 +71,6 @@ export default function AddPromotionDiscountOwner() {
     enableReinitialize: true,
     onSubmit: async (values: any) => {
       try {
-        setIsSubmitting(true);
         const couponData = {
           ...values,
         };
@@ -81,8 +79,6 @@ export default function AddPromotionDiscountOwner() {
         navigate('/dashboard/promotion-discount');
       } catch (error: any) {
         Toast.showErrorMessage(error?.response?.data?.message || "Failed to add coupon.");
-      } finally {
-        setIsSubmitting(false);
       }
     }
   });

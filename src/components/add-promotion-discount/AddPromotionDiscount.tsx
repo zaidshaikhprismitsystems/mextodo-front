@@ -1,21 +1,19 @@
-import { Box, Button, Card, CardMedia, Typography } from "@mui/material"
+import { Box } from "@mui/material"
 import Grid from '@mui/material/Grid2';
 import * as Yup from 'yup';
 import { useFormik } from "formik";
-import { useTranslation } from "react-i18next";
 import Toast from "../../utils/toast";
 import { useNavigate } from "react-router-dom";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import ApiService from "../../services/apiServices/apiService";
-import { phyical_name, digital_name, vehicle_name, property_name } from "../../config/config"
+import { PromotionAndDiscountForm } from "../promotion-discount-form";
+
 // STYLED COMPONENTS
 import IconButton from '@mui/material/IconButton'
 import styled from '@mui/material/styles/styled'
-import { PromotionAndDiscountForm } from "../promotion-discount-form";
-
 
 // STYLED COMPONENTS
-export const CarouselRoot = styled('div')(({ theme }) => ({
+export const CarouselRoot = styled('div')(() => ({
   position: 'relative',
   '& .slide': { objectFit: 'cover', borderRadius: 8 },
 }))
@@ -53,45 +51,11 @@ export const StyledIconButton = styled(IconButton)(({ theme }) => ({
   right: 10,
   position: 'absolute',
   backgroundColor: theme.palette.grey[200],
-  // '&:hover': { backgroundColor: theme.palette.grey[400] },
 }))
 
 export default function AddPromotionDiscount() {
   
-  // const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-
-  const carouselRef = useRef<any>(null)
-  const [colorSelect, setColorSelect] = useState('red')
-  const [selectedSlide, setSelectedSlide] = useState(0)
-
-  // HANDLE CHANGE PRODUCT COLOR
-  const handleChangeColor = (event: ChangeEvent<HTMLInputElement>) => {
-    setColorSelect(event.target.value)
-  }
-
-  const handleChangeSlide = (index: number) => {
-    carouselRef.current!.slickGoTo(index)
-    setSelectedSlide(index)
-  }
-
-  const [selectedCategory, setSelectedCategory] = useState();
-  const [selectedCategoryName, setSelectedCategoryName] = useState();
-  const [categoryList, setcategoryList] = useState([]);
-  const [attributes, setAttributeList] = useState<any>([]);
-
-  const [displayImages, setDisplayImages] = useState<any>([]);
-  const [featuredImage, setFeatured] = useState<any>();
-  const [video, setVideo] = useState<any>();
-  const [digital, setDigital] = useState<any>();
-
-  const [country, setCountry] = useState<any>();
-  const [states, setStates] = useState<any>([]);
-  const [cities, setCities] = useState<any>([]);
-  
-  const [ mainImages, setMainImages ] = useState<any>([]);
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validationSchema = Yup.object({
     code: Yup.string().required('Coupon Code is required!'),
@@ -134,7 +98,6 @@ export default function AddPromotionDiscount() {
     enableReinitialize: true,
     onSubmit: async (values: any) => {
       try {
-        setIsSubmitting(true);
         const couponData = {
           code: values.code,
           description: values.description,
@@ -147,14 +110,11 @@ export default function AddPromotionDiscount() {
           usageLimit: values.usageLimit,
         };
 
-        let addCoupon = await ApiService.addPromotion(couponData);
+        await ApiService.addPromotion(couponData);
         Toast.showSuccessMessage('Coupon Added Successfully');
         navigate('/admindashboard/promotion-discounts');
       } catch (error: any) {
         Toast.showErrorMessage(error.response.data.message);
-        setIsSubmitting(false);
-      }finally{
-        setIsSubmitting(false);
       }
     }
   });
@@ -166,14 +126,9 @@ export default function AddPromotionDiscount() {
   const getStates = async () => {
     try{
       let data = await ApiService.getStates();
-      setCountry({id: data.data.id, name: data.data.name});
       setFieldValue("country", data.data.id)
-      setStates(data.data.states);
     }catch(e){
       console.log(e);
-    }
-    finally{
-      // setIsLoading(false);
     }
   }
 
@@ -187,7 +142,6 @@ export default function AddPromotionDiscount() {
     try{
       let data = await ApiService.getCities(id);
       setFieldValue("state", id)
-      setCities(data.data);
     }catch(e){
       console.log(e);
     }
@@ -200,72 +154,10 @@ export default function AddPromotionDiscount() {
     const getCategories = async () => {
       try {
         let categories = await ApiService.getCategories();
-        setcategoryList(categories.data);
       } catch (error: any) {
         Toast.showErrorMessage(error.response.data.message);
       }
     }
-
-    const handleChangeUnit = async (e: any) => {
-      setFieldValue("unit", e.target.innerText);
-      if(e.target.innerText === "KG/CM"){
-        setFieldValue("weight_type", "KG")
-        setFieldValue("dimensions_type", "CM")
-      }else{
-        setFieldValue("weight_type", "LB")
-        setFieldValue("dimensions_type", "IN")
-      }
-    }
-
-    useEffect(() => {
-      if(selectedCategory && selectedCategory !== null && selectedCategory !== undefined){
-        fetchCategoryAttributes();
-      }
-    }, [selectedCategory])
-
-    const fetchCategoryAttributes = async () => {
-      try {
-        let categoryAttributes = await ApiService.fetchCategoryAttributes(selectedCategory);
-        setAttributeList(categoryAttributes.data);
-        console.log('categoryAttributes.data: ', categoryAttributes.data);
-      } catch (error: any) {
-        Toast.showErrorMessage(error.response.data.message);
-      }
-    }
-
-  const handleDropFile = (event: any) => {
-    const files = event;
-    
-    const showImages: string[] = [];
-
-    const promises = files.map((file: any) => {
-      return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.readAsDataURL(file);
-          
-          reader.onloadend = () => {
-              if (!reader.result) return reject("Failed to read file");
-
-              showImages.push(reader.result.toString());
-
-              const base64String = reader.result.toString().split(",")[1];
-              if (!base64String) return reject("Invalid base64 string");
-
-              const mimetype = file.type;
-              resolve({ image: base64String, mimetype });
-          };
-          reader.onerror = () => reject(reader.error);
-      });
-  });
-
-  Promise.all(promises)
-      .then((images) => {
-          setDisplayImages((prevImages: any) => [...prevImages, ...showImages]);
-          setFieldValue("images", [...values.images, ...images]);
-
-      })
-      .catch((error) => console.error("Error processing files:", error));
-  };
 
   return (
     <Box sx={{py: 5, marginTop: "0", display: "flex", justifyContent: "start", alignItems: "start"}}>

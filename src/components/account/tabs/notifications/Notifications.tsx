@@ -1,23 +1,14 @@
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
-import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';
-import TableRow from '@mui/material/TableRow';
-import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
-import TableHead from '@mui/material/TableHead';
-import TableBody from '@mui/material/TableBody'; // MUI ICON COMPONENT
-
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown'; // CUSTOM COMPONENTS
 
 // import Link from '../../../components/link';
 // import Scrollbar from '../components/scrollbar';
 import { H6, Paragraph, Small } from '../../../../components/typography';
 
-import { BodyTableCell, BodyTableRow, HeadTableCell } from '../styles'; // CUSTOM DATA
-
-import { NOTIFICATION_SETTINGS } from './data';
 import { Link } from '@mui/material';
 export default function Notifications() {
   return <Card>

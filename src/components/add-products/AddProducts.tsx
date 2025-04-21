@@ -5,7 +5,7 @@ import Toast from "../../utils/toast";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ApiService from "../../services/apiServices/apiService";
-import { category_url, phyical_name, digital_name, vehicle_name, property_name } from "../../config/config";
+import { category_url } from "../../config/config";
 import { ProductPreview } from "../product-preview";
 import { ProductForm } from "../product-form";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -18,55 +18,10 @@ export default function AddProducts() {
   const navigate = useNavigate();
 
   const [selectedCategory, setSelectedCategory] = useState<any>();
-  const [selectedCategoryName, setSelectedCategoryName] = useState<any>();
   const [categoryList, setcategoryList] = useState([]);
-  const [attributes, setAttributeList] = useState<any>([]);
   const [displayImages, setDisplayImages] = useState<any>([]);
   const [featuredImage, setFeatured] = useState<any>();
   const [video, setVideo] = useState<any>();
-  const [digital, setDigital] = useState<any>();
-  const [states, setStates] = useState<any>([]);
-  const [cities, setCities] = useState<any>([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const getInitialValues = () => {
-    let initialValues: any = {
-      titleEn: '',
-      titleSp: '',
-      descriptionEn: '',
-      descriptionSp: '',
-      images: [],
-      price: 0,
-      stock: 0,
-      discountPrice: 0,
-      featuredImage: '',
-      digitalProduct: '',
-      digitalProductType: 'image',
-      video: '',
-      weight_type: 'KG',
-      dimensions_type: 'CM',
-      unit: 'KG/CM',
-      length: '',
-      width: '',
-      height: '',
-      weight: '',
-      country: null,
-      state: null,
-      city: null,
-      rentOrSale: '',
-      packType: '',
-      content: '',
-      whatsappNumber: '',
-      boxQuantity: 0,
-      vendorId: ''
-    };
-
-    attributes.forEach((attr: any) => {
-      initialValues[attr.attribute.nameEn] = '';
-    });
-
-    return initialValues;
-  };
 
   const handleDropFile = (event: any) => {
     const files = event;
@@ -82,18 +37,14 @@ export default function AddProducts() {
 
           showImages.push(reader.result.toString());
 
-          const base64String = reader.result.toString().split(",")[1];
-          if (!base64String) return reject("Invalid base64 string");
-
-          const mimetype = file.type;
-          resolve({ image: base64String, mimetype });
+          resolve({ image: reader.result.toString().split(",")[1], mimetype: file.type });
         };
         reader.onerror = () => reject(reader.error);
       });
     });
 
     Promise.all(promises)
-      .then((images) => {
+      .then(() => {
         setDisplayImages((prevImages: any) => [...prevImages, ...showImages]);
       })
       .catch((error) => console.error("Error processing files:", error));
@@ -108,9 +59,6 @@ export default function AddProducts() {
 
     reader.onloadend = () => {
       if (reader.result) {
-        const base64String = reader.result.toString().split(",")[1];
-        const mimetype = file.type;
-
         setFeatured(reader.result.toString());
       }
     };
@@ -133,9 +81,6 @@ export default function AddProducts() {
 
     reader.onloadend = () => {
       if (reader.result) {
-        const base64String = reader.result.toString().split(",")[1];
-        const mimetype = file.type;
-
         setVideo(reader.result.toString());
       }
     };
@@ -151,10 +96,6 @@ export default function AddProducts() {
 
   const removeImage = (index: number) => {
     setDisplayImages((prevImages: any) => prevImages.filter((_: any, i: number) => i !== index));
-  };
-
-  const handleRentOrSale = (value: string) => {
-    // Logic for handling rent or sale
   };
 
   useEffect(() => {
@@ -195,13 +136,10 @@ export default function AddProducts() {
                 removeVideo={removeVideo}
                 video={video}
                 displayImages={displayImages}
-                categoryName={selectedCategoryName}
-                handleRentOrSale={handleRentOrSale}
               />
             </Grid>
             <Grid size={{ xs: 12, md: 8 }}>
               <ProductPreview
-                categoryName={selectedCategoryName}
                 featuredImage={featuredImage}
                 images={displayImages}
                 video={video}
