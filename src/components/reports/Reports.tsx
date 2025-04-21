@@ -102,7 +102,7 @@ export default function Reports() {
     <Box  sx={{pt: 2, pb: 4}}>
       <Card sx={{p: 2}}>
           <Grid container spacing={3} alignItems="start">
-            <Grid size={12}>
+            <Grid size={{sx: 12}}>
               <FlexBox gap={0.5} alignItems="center">
                 <IconWrapper>
                   <DeviceHubIcon color="primary" />
