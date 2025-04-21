@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
-import SidebarAccordion from "./SidebarAccordion";
+// import SidebarAccordion from "./SidebarAccordion";
 import { ExternalLink, ListLabel, NavItemButton } from "../mainLayout/styles";
 // import { navigations } from "../layout-parts/navigation";
 // import {
