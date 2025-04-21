@@ -1,25 +1,19 @@
-import { Autocomplete, Box, Button, ListItem, MenuItem, Select, Switch, TextField } from '@mui/material'
+import { Box, Button, MenuItem, TextField } from '@mui/material'
 import { Fragment, useState } from 'react'
 import Grid from '@mui/material/Grid2';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Card from '@mui/material/Card'
 import { useTranslation } from "react-i18next";
-import { CoverPicWrapper } from './styles'
 import * as Yup from 'yup'
-
-import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 
 import { TextBox } from "../textbox";
 
-import UserInfo from './UserInfo'
-import { FlexBetween, FlexBox } from '../flexbox';
-import { Paragraph, Small } from '../typography';
+import { FlexBox } from '../flexbox';
 import { useFormik } from 'formik';
 import ApiService from '../../services/apiServices/apiService';
 import Toast from '../../utils/toast';
 import DropZone from '../dropzone';
 import { category_url } from '../../config/config';
-import Car from '../../icons/Car';
 
 export default function CategoryForm(
   {

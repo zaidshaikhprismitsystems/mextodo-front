@@ -1,5 +1,5 @@
 import { MouseEvent, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { format } from 'date-fns'
 // MUI
 import Chip from '@mui/material/Chip'
@@ -16,10 +16,12 @@ import FlexBox from '../flexbox/FlexBox'
 import { Paragraph } from '../typography'
 import { TableMoreMenuItem, TableMoreMenu } from '../table'
 import { category_url } from "../../config/config"
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ConfirmToast } from '../confirm-toast'
 
 interface RowProps {
   categories: any
-  index: number
   isSelected: boolean
   handleDeleteCategories: (id: number) => void
   handleSelectRow: (_: MouseEvent, id: number) => void
@@ -27,14 +29,8 @@ interface RowProps {
   hanleEditOpen: (categories: any) => void
 }
 
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useTranslation } from 'react-i18next'
-import { ConfirmToast } from '../confirm-toast'
-
 export default function CategoriesTableRow({
   categories,
-  index,
   isSelected,
   handleSelectRow,
   handleDeleteCategories,
@@ -42,11 +38,8 @@ export default function CategoriesTableRow({
   hanleEditOpen
 }: RowProps) {
   
-  const navigate = useNavigate()
   const { t, i18n } = useTranslation();
   const [openMenuEl, setOpenMenuEl] = useState<null | HTMLElement>(null)
-
-  const [deleteCategories, setDeleteCategories] = useState<number>(0);
 
   const handleOpenMenu = (event: MouseEvent<HTMLButtonElement>) => {
     setOpenMenuEl(event.currentTarget)
@@ -157,7 +150,6 @@ export default function CategoriesTableRow({
             title={t("delete")}
             handleClick={() => {
               handleCloseOpenMenu()
-              setDeleteCategories(categories.id)
               showConfirmation(t("are_you_sure"), categories.id); 
             }}
           />

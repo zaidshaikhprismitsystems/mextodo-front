@@ -11,6 +11,9 @@ import Scrollbar from '../../components/scrollbar';
 import FlexBetween from '../../components/flexbox/FlexBetween';
 import { H6, Paragraph } from '../../components/typography';
 import { BodyTableCell, HeadTableCell } from './styles';
+import Stack from '@mui/material/Stack';
+import { Span } from '../../components/typography';
+import { currency } from '../../utils/currency';
 
 export default function OrderDetails() {
   return (

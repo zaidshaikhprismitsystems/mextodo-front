@@ -10,11 +10,10 @@ import TableBody from '@mui/material/TableBody';
 import TableHead from '@mui/material/TableHead';
 import Scrollbar from '../../components/scrollbar';
 import FlexBetween from '../../components/flexbox/FlexBetween';
-import { H6, Paragraph } from '../../components/typography';
+import { H6 } from '../../components/typography';
 import { BodyTableCell, HeadTableCell } from './styles';
 import ApiService from '../../services/apiServices/apiService';
 import { useSearchParams } from 'react-router-dom';
-import Toast from '../../utils/toast';
 
 export default function OrderDetails() {
   

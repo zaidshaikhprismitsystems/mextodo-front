@@ -131,14 +131,14 @@ export default function CategoriesListPageView() {
   }
 
   const handleDeleteCategory = async (id: number) => {
-    let deleteCategory = await ApiService.deleteCategories(id);
+    await ApiService.deleteCategories(id);
       Toast.showSuccessMessage('Category deleted Successfully');
       await getCategories();
   }
 
   const handleAllCategoryDelete = async () => {
     try{
-      let deleteCategory = await ApiService.deleteCategories(selected);
+      await ApiService.deleteCategories(selected);
       Toast.showSuccessMessage('Categories deleted Successfully');
       setSelected([]);
       await getCategories();
@@ -164,8 +164,6 @@ export default function CategoriesListPageView() {
     setDisplayCategory(null);
     await getCategories();
   }
-
-  const { t } = useTranslation();
 
   return (
     <>
