@@ -1,3 +1,17 @@
+// {
+//   "files": [],
+//   "references": [
+//     { "path": "./tsconfig.app.json" },
+//     { "path": "./tsconfig.node.json" }
+//   ],
+//   "compilerOptions": {
+//     "allowSyntheticDefaultImports": true,
+//     "esModuleInterop": true,
+//     "noImplicitAny": false,
+//     "strict": false,
+//     "skipLibCheck": true
+//   }
+// }
 {
   "files": [],
   "references": [
