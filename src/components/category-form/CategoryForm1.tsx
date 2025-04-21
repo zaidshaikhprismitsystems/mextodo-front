@@ -1,4 +1,4 @@
-import { Autocomplete, Box, Button, ListItem, MenuItem, Select, Switch, TextField } from '@mui/material'
+import { Box, Button, TextField } from "@mui/material";
 import { Fragment, useState } from 'react'
 import Grid from '@mui/material/Grid2';
 import LoadingButton from '@mui/lab/LoadingButton';
@@ -28,7 +28,7 @@ export default function CategoryForm(
     onSuccess
   }: any) {
     
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
     
   const [ isSubmitting, setIsSubmitting ] = useState(false);
   const [ imagePreview, setImagePreview ] = useState<any>(`${category_url}/${category.image}`);

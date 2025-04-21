@@ -22,7 +22,7 @@ import CloseIcon from '@mui/icons-material/Close';
 export default function Pickup() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [ carriers ,setCarriers ] = useState([]);
+  const [carriers] = useState([]);
   
   const validationSchema = Yup.object({
     timeFrom: Yup.string().required('From Time is Required!'),

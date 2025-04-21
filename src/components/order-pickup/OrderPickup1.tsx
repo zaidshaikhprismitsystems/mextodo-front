@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 // MUI
 import Box from '@mui/material/Box'
@@ -22,7 +22,7 @@ import CloseIcon from '@mui/icons-material/Close';
 export default function Pickup() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [ carriers ,setCarriers ] = useState([]);
+  const [carriers] = useState([]);
   
   const validationSchema = Yup.object({
     timeFrom: Yup.string().required('From Time is Required!'),
@@ -45,16 +45,6 @@ export default function Pickup() {
     totalPackages: "",
     totalWeight: ""
   };
-
-  // useEffect(() => {
-  //   // fetch carrier services
-  //   getCarriers();
-  // }, [])
-
-  // const getCarriers = async () => {
-  //   let carriers = await ApiService.getCarriers();
-  //   setCarriers(carriers.data);
-  // }
 
   const { t } = useTranslation();
   
@@ -148,7 +138,7 @@ export default function Pickup() {
                                         
                                       },
 
-                                      '&:has(.Mui-checked)':{
+                                      '&:has(.Mui-checked)":{
                                         color:"white.main",
                                         backgroundColor:'primary.main',
                                         borderColor:'primary.main',

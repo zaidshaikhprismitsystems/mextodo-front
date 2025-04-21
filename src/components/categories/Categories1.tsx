@@ -19,8 +19,6 @@ import CategoryTableActions from './CategoriesTableActions'
 import ApiService from '../../services/apiServices/apiService'
 import Toast from '../../utils/toast'
 import React from 'react'
-// import { category_url } from '../../config/config'
-import { useTranslation } from 'react-i18next'
 import Grid from '@mui/material/Grid2';
 import { FlexBox } from "../flexbox"
 import IconWrapper from '../icon-wrapper'
@@ -72,8 +70,6 @@ export default function CategoriesListPageView() {
   const [editOpen, setEditOpen] = React.useState(false);
 
   const [isEdit, setIsEdit] = useState(false);
-  
-  const handleOpen = () => setOpen(true);
 
   const handleClose = () => {
     setOpen(false);
@@ -109,7 +105,7 @@ export default function CategoriesListPageView() {
     return selected.includes(id);
   }
 
-  const handleSelectRow = (event: any, id: number) => {
+  const handleSelectRow = (id: number) => {
     setSelected((prevSelected: any) => 
       prevSelected.includes(id) ? prevSelected.filter((item: number) => item !== id )
     : [...prevSelected, id]
@@ -241,11 +237,10 @@ export default function CategoriesListPageView() {
                         />
                         <TableBody>
                           {categoriesData
-                            .map((Category: any, index: number) => (
+                            .map((Category: any) => (
                               <CategoryTableRow
                                 key={Category.id}
                                 categories={Category}
-                                index={index+1}
                                 handleSelectRow={handleSelectRow}
                                 hanleViewOpen={hanleViewOpen}
                                 hanleEditOpen={hanleEditOpen}

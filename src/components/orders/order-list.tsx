@@ -1,48 +1,16 @@
-import { ChangeEvent, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
-import Card from '@mui/material/Card';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { Box, Card, Grid } from '@mui/material';
 import Table from '@mui/material/Table';
-import Button from '@mui/material/Button';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
-import styled from '@mui/material/styles/styled';
 import Scrollbar from '../../components/scrollbar';
 import { TableDataNotFound, TableToolbar } from '../../components/table';
 import OrdersTableActions from './ordersTableActions';
 import OrdersTableHead from './ordersTableHead';
 import OrdersTableRow from './ordersTableRow';
 
-const ListWrapper = styled('div')(({ theme }) => ({
-  gap: 16,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  [theme.breakpoints.down(440)]: {
-    flexDirection: 'column',
-    '.MuiButton-root': { width: '100%' },
-  },
-}));
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 700,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 3,
-  overflow: 'auto',
-  height: '600px',
-};
-
 export default function OrderListPageView() {
-  const navigate = useNavigate();
-
   const [ordersData, setOrdersData] = useState([]);
 
   const [page, setPage] = useState<number>(0);
@@ -51,17 +19,6 @@ export default function OrderListPageView() {
   const [selected, setSelected] = useState<any>([]);
   const [rowsPerPage, setRowsPerPage] = useState<number>(10);
   const [total, setTotal] = useState(0);
-
-  const [displayProduct, setDisplayProduct] = useState<any>(null);
-
-  const [open, setOpen] = React.useState(false);
-  const [editOpen, setEditOpen] = React.useState(false);
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => {
-    setOpen(false);
-    setEditOpen(false);
-  };
 
   const [orderFilter, setOrderFilter] = useState({
     search: '',
@@ -196,8 +153,6 @@ export default function OrderListPageView() {
                         key={order.id}
                         order={order}
                         handleSelectRow={handleSelectRow}
-                        // hanleViewOpen={hanleViewOpen}
-                        // hanleEditOpen={hanleEditOpen}
                         isSelected={isSelected(order.id)}
                         handleDeleteInvoice={handleDeleteProduct}
                       />

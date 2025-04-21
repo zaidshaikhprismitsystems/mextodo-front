@@ -23,7 +23,7 @@ export default function CategoryForm(
     onSuccess
   }: any) {
     
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
     
   const [ isSubmitting, setIsSubmitting ] = useState(false);
   const [ imagePreview, setImagePreview ] = useState<any>(`${category_url}/${category.image}`);
@@ -75,7 +75,7 @@ export default function CategoryForm(
             status: values.status
           };
           
-          let updateCategory = await ApiService.updateCategory(categoryDataForm);
+          await ApiService.updateCategory(categoryDataForm);
           Toast.showSuccessMessage('Category Updated Successfully');
           handleClose(true);
           onSuccess();
