@@ -6,6 +6,9 @@
   ],
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "strict": false,
+    "skipLibCheck": true
   }
 }
