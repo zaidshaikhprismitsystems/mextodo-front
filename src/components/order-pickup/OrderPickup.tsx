@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 // MUI
 import Box from '@mui/material/Box'
@@ -22,7 +22,6 @@ import CloseIcon from '@mui/icons-material/Close';
 export default function Pickup() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [carriers] = useState([]);
   
   const validationSchema = Yup.object({
     timeFrom: Yup.string().required('From Time is Required!'),
@@ -45,16 +44,6 @@ export default function Pickup() {
     totalPackages: "",
     totalWeight: ""
   };
-
-  // useEffect(() => {
-  //   // fetch carrier services
-  //   getCarriers();
-  // }, [])
-
-  // const getCarriers = async () => {
-  //   let carriers = await ApiService.getCarriers();
-  //   setCarriers(carriers.data);
-  // }
 
   const { t } = useTranslation();
   
@@ -179,11 +168,6 @@ export default function Pickup() {
                                 helperText={touched.carrier && typeof errors.carrier === "string" ? errors.carrier : ""} 
                                 error={Boolean(touched.carrier && errors.carrier)}
                               >
-                                {/* {
-                                  carriers && carriers.length > 0 && carriers.map((data: any) => 
-                                    <MenuItem value={data.name}>{data.description}</MenuItem>
-                                  )
-                                } */}
                                   <MenuItem value={"fedex"}>{"FedEx"}</MenuItem>
                                   <MenuItem value={"dhl"}>{"DHL"}</MenuItem>
                                   <MenuItem value={"redpack"}>{"redpack"}</MenuItem>

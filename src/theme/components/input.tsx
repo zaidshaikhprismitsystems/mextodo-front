@@ -1,7 +1,8 @@
 import { alpha } from '@mui/system/colorManipulator';
 // CUSTOM UTILS METHOD
 import { isDark } from '../../utils/constants';
-export const Input = theme => ({
+
+export const Input = (theme: any) => ({
   styleOverrides: {
     root: {
       ':before': {
@@ -10,7 +11,8 @@ export const Input = theme => ({
     }
   }
 });
-export const OutlinedInput = theme => ({
+
+export const OutlinedInput = (theme: any) => ({
   styleOverrides: {
     input: {
       color: theme.palette.text.primary
@@ -34,7 +36,8 @@ export const OutlinedInput = theme => ({
     }
   }
 });
-export const FilledInput = theme => ({
+
+export const FilledInput = (theme: any) => ({
   defaultProps: {
     disableUnderline: true
   },
@@ -44,7 +47,7 @@ export const FilledInput = theme => ({
         color,
         error
       }
-    }) => ({
+    }: { color: string; error: boolean }) => ({
       borderRadius: 8,
       border: '1px solid transparent',
       backgroundColor: error ? theme.palette.error[50] : theme.palette.grey[100],
@@ -77,11 +80,13 @@ export const FilledInput = theme => ({
       fontWeight: 400
     }
   }
-}); // ==============================================================
+});
+
+// ==============================================================
 //  MUI INPUT LABEL
 // ==============================================================
 
-export const InputLabel = theme => ({
+export const InputLabel = (theme: any) => ({
   styleOverrides: {
     sizeSmall: {
       fontSize: 14,

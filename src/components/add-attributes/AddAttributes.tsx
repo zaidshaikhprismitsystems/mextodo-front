@@ -1,7 +1,6 @@
-import { Box, Button, Card, Container, TextField } from "@mui/material"
+import { Box, Button, Card } from "@mui/material"
 import Grid from '@mui/material/Grid2';
 import { FlexBox } from "../flexbox"
-import ShoppingBasket from '../../icons/ShoppingBasket'
 import IconWrapper from '../icon-wrapper'
 import { H6 } from "../typography"
 import * as Yup from 'yup';
@@ -10,17 +9,13 @@ import { TextBox } from "../textbox";
 import { useTranslation } from "react-i18next";
 import Toast from "../../utils/toast";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import HubIcon from '@mui/icons-material/Hub';
-import ApiService from "../../services/apiServices/apiService";
 import DeviceHubIcon from '@mui/icons-material/DeviceHub';
+import ApiService from "../../services/apiServices/apiService";
 
 export default function AddAttributes() {
   
   const { t } = useTranslation();
   const navigate = useNavigate();
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validationSchema = Yup.object({
     nameEn: Yup.string().required('Name in English is Required!'),
@@ -38,23 +33,18 @@ export default function AddAttributes() {
     touched,
     handleBlur,
     handleChange,
-    handleSubmit,
-    resetForm
+    handleSubmit
   } = useFormik({
     initialValues,
     validationSchema,
     onSubmit: async (values: any) => {
       try {
-        setIsSubmitting(true);
         let addAttribute = await ApiService.addAttribute({nameEn: values.nameEn, nameSp: values.nameSp});
         Toast.showSuccessMessage('Attribute Added Successfully');
         navigate("/admindashboard/attributes");
       } catch (error: any) {
         console.log('error: ', error);
         Toast.showErrorMessage(error.response.data.message);
-        setIsSubmitting(false);
-      }finally{
-        setIsSubmitting(false);
       }
     }
   });

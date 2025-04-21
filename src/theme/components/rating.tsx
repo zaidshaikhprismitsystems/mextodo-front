@@ -3,7 +3,7 @@ import Star from '../../icons/Star';
 import StarOutlined from '../../icons/StarOutlined'; // ==============================================================
 
 // ==============================================================
-const Rating = theme => ({
+const RatingStyles = (theme: any) => ({
   styleOverrides: {
     root: {
       color: theme.palette.warning.main
@@ -18,4 +18,4 @@ const Rating = theme => ({
   }
 });
 
-export default Rating;
+export default RatingStyles;

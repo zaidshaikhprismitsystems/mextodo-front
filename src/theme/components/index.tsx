@@ -26,7 +26,7 @@ import { DatePicker, TimePicker, DateTimePicker, MobileDatePicker, StaticDatePic
 // import { isDark } from '../../utils/constants';
 
 const componentsOverride = (theme: Theme) => {
-  const { primary, grey, text } = theme.palette;
+  const { primary } = theme.palette;
   return {
     MuiCssBaseline: {
       styleOverrides: {

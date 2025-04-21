@@ -20,7 +20,7 @@ export default function AttributeForm(
     onSuccess
   }: any) {
     
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
     
   const [ isSubmitting, setIsSubmitting ] = useState(false);
 

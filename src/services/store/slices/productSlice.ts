@@ -3,11 +3,18 @@ import { createSlice } from "@reduxjs/toolkit";
 interface IInitialState {
   isProductAddSelected: boolean;
   productType: any;
+  userDetails: any; // Added userDetails
+  isLoading: boolean; // Added isLoading
 }
 
 const initialState: IInitialState = {
   userDetails: null,
   isLoading: true,
+};
+
+const fetchUserDetails = async () => {
+  // Define fetchUserDetails function
+  // ...implementation...
 };
 
 export const userSlice = createSlice({
@@ -28,12 +35,10 @@ export const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchUserDetails.fulfilled, (state, action) => {
-        console.log('action.payload.data.userData: ', action.payload.data.userData);
-        state.userDetails = action.payload.data.userData;
+        state.userDetails = action.payload;
         state.isLoading = false;
       })
       .addCase(fetchUserDetails.rejected, (state) => {
-        state.userDetails = null;
         state.isLoading = false;
       });
   },

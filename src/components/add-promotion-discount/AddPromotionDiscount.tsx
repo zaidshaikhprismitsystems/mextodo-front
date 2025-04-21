@@ -140,7 +140,7 @@ export default function AddPromotionDiscount() {
 
   const getCities = async (id: number) => {
     try{
-      let data = await ApiService.getCities(id);
+      await ApiService.getCities(id);
       setFieldValue("state", id)
     }catch(e){
       console.log(e);
@@ -153,7 +153,7 @@ export default function AddPromotionDiscount() {
 
     const getCategories = async () => {
       try {
-        let categories = await ApiService.getCategories();
+        await ApiService.getCategories();
       } catch (error: any) {
         Toast.showErrorMessage(error.response.data.message);
       }

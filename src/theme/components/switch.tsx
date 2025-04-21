@@ -1,38 +1,19 @@
-const Switch = theme => {
-  return {
-    styleOverrides: {
-      track: {
-        borderRadius: 16,
-        backgroundColor: theme.palette.grey[500]
-      },
-      switchBase: ({
-        ownerState: {
-          size
-        }
-      }) => ({
-        padding: size === 'small' ? '6px !important' : 11
-      }),
-      root: ({
-        ownerState: {
-          size
-        }
-      }) => ({
-        padding: size === 'small' ? 3 : 8
-      }),
-      thumb: ({
-        ownerState: {
-          size
-        }
-      }) => ({
-        width: 16,
-        height: 16,
-        ...(size === 'small' && {
-          width: '12px !important',
-          height: '12px !important'
-        })
-      })
-    }
-  };
-};
+const SwitchStyles = (theme: any) => ({
+  styleOverrides: {
+    track: {
+      borderRadius: 16,
+      backgroundColor: theme.palette.grey[500]
+    },
+    switchBase: getSwitchSize,
+    root: getSwitchSize,
+    thumb: getSwitchSize
+  }
+});
 
-export default Switch;
+const getSwitchSize = ({ size }: { size: string }) => ({
+  padding: size === 'small' ? '6px !important' : 11,
+  width: size === 'small' ? '12px !important' : 16,
+  height: size === 'small' ? '12px !important' : 16
+});
+
+export default SwitchStyles;

@@ -8,17 +8,14 @@ import Divider from '@mui/material/Divider';
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField'; // MUI ICON COMPONENT
 
-import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown'; // CUSTOM COMPONENTS
-
-import FlexBetween from '@/components/flexbox/FlexBetween';
-import { H6, Paragraph, Small } from '@/components/typography'; // CUSTOM DUMMY DATA SET
+import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown'; // CUSTOM DUMMY DATA SET
 
 import { PREFERENCES } from './data';
 export default function Preferences() {
   return <Card>
-      <H6 fontSize={14} padding={3}>
+      <h6 style={{ fontSize: 14, padding: 3 }}>
         General Preferences
-      </H6>
+      </h6>
 
       <Divider />
 
@@ -51,23 +48,23 @@ export default function Preferences() {
           sm: 6,
           xs: 12
         }}>
-            <FlexBetween>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <div>
-                <Paragraph fontWeight={500}>Early release</Paragraph>
-                <Small color="text.secondary">Get included on new features.</Small>
+                <p style={{ fontWeight: 500 }}>Early release</p>
+                <small style={{ color: 'text.secondary' }}>Get included on new features.</small>
               </div>
 
               <Switch defaultChecked />
-            </FlexBetween>
+            </div>
 
-            <FlexBetween mt={2}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 16 }}>
               <div>
-                <Paragraph fontWeight={500}>See info about people who view my profile</Paragraph>
-                <Small color="text.secondary">More about viewer info.</Small>
+                <p style={{ fontWeight: 500 }}>See info about people who view my profile</p>
+                <small style={{ color: 'text.secondary' }}>More about viewer info.</small>
               </div>
 
               <Switch defaultChecked />
-            </FlexBetween>
+            </div>
           </Grid>
         </Grid>
       </Box>
@@ -75,9 +72,9 @@ export default function Preferences() {
       {
       /* EMAIL PREFERENCES SECTION */
     }
-      <H6 fontSize={14} p={3} pt={0}>
+      <h6 style={{ fontSize: 14, padding: 3, paddingTop: 0 }}>
         Email Preferences
-      </H6>
+      </h6>
 
       <Divider />
 
@@ -91,11 +88,11 @@ export default function Preferences() {
             <Checkbox checked={checked} />
 
             <div>
-              <Paragraph fontWeight={500} lineHeight={1}>
+              <p style={{ fontWeight: 500, lineHeight: 1 }}>
                 {title}
-              </Paragraph>
+              </p>
 
-              <Small color="text.secondary">{subtitle}</Small>
+              <small style={{ color: 'text.secondary' }}>{subtitle}</small>
             </div>
           </Stack>)}
       </Stack>

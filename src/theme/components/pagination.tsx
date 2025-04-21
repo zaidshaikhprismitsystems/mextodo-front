@@ -1,6 +1,6 @@
 // CUSTOM UTILS METHOD
 import { isDark } from '../../utils/constants';
-export const TablePagination = theme => {
+export const TablePagination = (theme: any) => {
   return {
     styleOverrides: {
       select: {
@@ -25,30 +25,27 @@ export const Pagination = () => ({
     size: 'medium'
   }
 });
-export const PaginationItem = theme => {
+export const PaginationItem = (theme: any) => {
   const {
     primary,
     grey
   } = theme.palette;
+  const getPaginationColor = ({ color }: { color: string }) => ({ ...(color === 'primary' && {
+      color: primary.main
+    }),
+    ...(color === 'secondary' && {
+      color: grey[700]
+    }),
+    ...(color === 'standard' && {
+      color: grey[600]
+    })
+  });
   return {
     styleOverrides: {
       rounded: {
         borderRadius: 8
       },
-      icon: ({
-        ownerState: {
-          color
-        }
-      }) => ({ ...(color === 'primary' && {
-          color: primary.main
-        }),
-        ...(color === 'secondary' && {
-          color: grey[700]
-        }),
-        ...(color === 'standard' && {
-          color: grey[600]
-        })
-      }),
+      icon: getPaginationColor,
       ellipsis: {
         border: 0
       },
@@ -56,7 +53,7 @@ export const PaginationItem = theme => {
         ownerState: {
           color
         }
-      }) => ({
+      }: { ownerState: { color: string } }) => ({
         color: grey[400],
         border: `1px solid ${grey[isDark(theme) ? 700 : 200]}`,
         '&.Mui-selected': {
@@ -83,7 +80,7 @@ export const PaginationItem = theme => {
         ownerState: {
           color
         }
-      }) => ({
+      }: { ownerState: { color: string } }) => ({
         color: grey[400],
         border: `1px solid ${grey[isDark(theme) ? 700 : 200]}`,
         ...(color === 'standard' && {

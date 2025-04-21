@@ -11,7 +11,6 @@ import {FlexBox} from '../../../../components/flexbox';
 import { H6, Paragraph, Small } from '../../../../components/typography'; // STYLED COMPONENT
 
 import { FormWrapper, Dot } from './styles';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Toast from '../../../../utils/toast';
 import ApiService from '../../../../services/apiServices/apiService';
@@ -21,7 +20,6 @@ import { RootState } from '../../../../services/store/store';
 export default function Password() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const navigate = useNavigate();
   const userData: any = useAppSelector((state: RootState) => state.user);
   
   const initialValues = {
@@ -49,7 +47,7 @@ export default function Password() {
     onSubmit: async (values) => {
       try {
         setIsSubmitting(true);
-        let changePass = await ApiService.changePassword({currentPassword: values.currentPassword, newPassword: values.newPassword, email: userData.userDetails.email });
+        await ApiService.changePassword({currentPassword: values.currentPassword, newPassword: values.newPassword, email: userData.userDetails.email });
       } catch (error: any) {
         console.log('error: ', error);
         Toast.showErrorMessage(error.response.data.message);

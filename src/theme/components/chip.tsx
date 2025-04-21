@@ -1,7 +1,7 @@
 // CUSTOM UTILS METHOD
 import { isDark } from '../../utils/constants';
 
-const Chip = theme => {
+const ChipStyles = (theme: any) => {
   const {
     common,
     grey
@@ -19,7 +19,7 @@ const Chip = theme => {
         ownerState: {
           color
         }
-      }) => ({
+      }: { ownerState: { color: string } }) => ({
         color: common.white,
         ...(color === 'default' && {
           backgroundColor: grey[500]
@@ -29,7 +29,7 @@ const Chip = theme => {
         ownerState: {
           color
         }
-      }) => ({ ...(color === 'default' && {
+      }: { ownerState: { color: string } }) => ({ ...(color === 'default' && {
           color: grey[400]
         })
       }),
@@ -52,7 +52,7 @@ const Chip = theme => {
           color,
           size
         }
-      }) => ({
+      }: { ownerState: { variant: string; color: string; size: string } }) => ({
         opacity: 0.8,
         fontSize: 18,
         ':hover': {
@@ -73,7 +73,7 @@ const Chip = theme => {
         ownerState: {
           color
         }
-      }) => ({ ...(color === 'default' && {
+      }: { ownerState: { color: string } }) => ({ ...(color === 'default' && {
           ':hover': {
             backgroundColor: grey[700]
           }
@@ -86,4 +86,16 @@ const Chip = theme => {
   };
 };
 
-export default Chip;
+const getChipColor = ({ color }: { color: string }) => ({
+  // ...existing code...
+});
+
+const getChipVariant = ({ variant, color }: { variant: string; color: string }) => ({
+  // ...existing code...
+});
+
+const getChipSize = ({ size }: { size: string }) => ({
+  // ...existing code...
+});
+
+export default ChipStyles;

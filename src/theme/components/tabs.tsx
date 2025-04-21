@@ -1,6 +1,6 @@
 // CUSTOM UTILS METHOD
 import { isDark } from '../../utils/constants';
-export const Tab = theme => ({
+export const Tab = (theme: any) => ({
   defaultProps: {
     disableRipple: true
   },
@@ -15,15 +15,7 @@ export const Tab = theme => ({
         fontWeight: 600
       }
     },
-    labelIcon: ({
-      ownerState: {
-        iconPosition
-      }
-    }) => ({ // marginBottom: 0,
-      ...((iconPosition === 'top' || iconPosition === 'bottom') && {
-        marginBottom: 8
-      })
-    }),
+    labelIcon: getTabOwnerState,
     textColorSecondary: {
       '&.Mui-selected': {
         color: theme.palette.text.primary
@@ -35,7 +27,8 @@ export const Tab = theme => ({
     }
   }
 });
-export const Tabs = theme => ({
+export const Tabs = TabsStyles;
+const TabsStyles = (theme: any) => ({
   styleOverrides: {
     flexContainer: {
       gap: '2rem'
@@ -49,13 +42,13 @@ export const Tabs = theme => ({
       minHeight: 45,
       borderBottom: `1px solid ${theme.palette.grey[isDark(theme) ? 700 : 100]}`
     },
-    indicator: ({
-      ownerState
-    }) => ({ ...(ownerState?.indicatorColor === 'secondary' ? {
-        backgroundColor: theme.palette.text.primary
-      } : {})
-    })
+    indicator: getTabOwnerState
   }
+});
+const getTabOwnerState = ({ ownerState }: { ownerState: any }) => ({
+  ...(ownerState?.indicatorColor === 'secondary' ? {
+    backgroundColor: theme.palette.text.primary
+  } : {})
 });
 export const TabList = () => ({
   styleOverrides: {

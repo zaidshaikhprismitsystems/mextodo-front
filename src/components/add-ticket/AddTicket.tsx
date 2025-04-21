@@ -22,8 +22,6 @@ export default function AddTicket() {
         const base64String = reader.result.toString().split(",")[1];
         if (!base64String) return;
 
-        const mimetype = file.type;
-
         setImagePreview(reader.result.toString());
     };
   };
@@ -72,7 +70,6 @@ export default function AddTicket() {
                     xs: 12
                   }}>
                   <TextField 
-                    labelId="ticket-type-label"
                     id="ticket-type"
                     label="Ticket Type"
                     select
@@ -94,7 +91,6 @@ export default function AddTicket() {
                     xs: 12
                   }}>
                   <TextField
-                    labelId="priority-status-label"
                     id="priority-status"
                     label="Priority Status"
                     select

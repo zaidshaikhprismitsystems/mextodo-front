@@ -14,6 +14,11 @@ import { BodyTableCell, HeadTableCell } from './styles';
 import Stack from '@mui/material/Stack';
 import { Span } from '../../components/typography';
 import { currency } from '../../utils/currency';
+import DownloadTo from '...'; // Add correct import path
+import StyledBox from '...'; // Add correct import path
+import Chip from '...'; // Add correct import path
+import Link from '...'; // Add correct import path
+import { ReactNode } from 'react';
 
 export default function OrderDetails() {
   return (

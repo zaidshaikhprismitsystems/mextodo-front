@@ -1,4 +1,16 @@
-const Fab = theme => {
+const getFabColor = ({ color }: { color: string }) => ({
+  ...((color === 'success' || color === 'warning') && {
+    color: 'white'
+  })
+});
+
+const getFabVariant = ({ variant }: { variant: string }) => ({
+  ...(variant === 'extended' && {
+    paddingInline: '1rem'
+  })
+});
+
+const Fab = () => {
   return {
     styleOverrides: {
       extended: ({
@@ -9,9 +21,7 @@ const Fab = theme => {
         gap: 4,
         lineHeight: 1,
         textTransform: 'none',
-        ...((color === 'success' || color === 'warning') && {
-          color: 'white'
-        })
+        ...getFabColor({ color })
       }),
       circular: ({
         ownerState: {
@@ -19,9 +29,7 @@ const Fab = theme => {
         }
       }) => ({
         lineHeight: 1,
-        ...((color === 'success' || color === 'warning') && {
-          color: 'white'
-        })
+        ...getFabColor({ color })
       }),
       sizeSmall: ({
         ownerState: {
@@ -32,9 +40,7 @@ const Fab = theme => {
         svg: {
           fontSize: 20
         },
-        ...(variant === 'extended' && {
-          paddingInline: '1rem'
-        })
+        ...getFabVariant({ variant })
       })
     }
   };

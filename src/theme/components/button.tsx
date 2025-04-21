@@ -8,8 +8,7 @@ export const Button = (theme: any) => {
     text,
     success,
     warning,
-    info,
-    grey
+    info
   } = theme.palette;
   return {
     defaultProps: {
@@ -27,7 +26,7 @@ export const Button = (theme: any) => {
         textTransform: 'none',
         textOverflow: 'ellipsis',
         '&.Mui-disabled': {
-          color: grey[400]
+          color: theme.palette.grey[400]
         }
       },
       // contained variants
@@ -37,7 +36,7 @@ export const Button = (theme: any) => {
           boxShadow: 'none'
         },
         '&.Mui-disabled': {
-          backgroundColor: grey[isDark(theme) ? 600 : 200]
+          backgroundColor: theme.palette.grey[isDark(theme) ? 600 : 200]
         }
       },
       containedError: {
@@ -64,12 +63,12 @@ export const Button = (theme: any) => {
         transition: 'none',
         color: text.primary,
         ':hover': {
-          backgroundColor: grey[200]
+          backgroundColor: theme.palette.grey[200]
         },
         ...(isDark(theme) && {
-          backgroundColor: grey[700],
+          backgroundColor: theme.palette.grey[700],
           ':hover': {
-            backgroundColor: grey[600]
+            backgroundColor: theme.palette.grey[600]
           }
         })
       },
@@ -97,9 +96,9 @@ export const Button = (theme: any) => {
       },
       outlinedSecondary: {
         transition: 'none',
-        borderColor: grey[200],
+        borderColor: theme.palette.grey[200],
         ...(isDark(theme) && {
-          borderColor: grey[700]
+          borderColor: theme.palette.grey[700]
         })
       },
       // text variants
@@ -107,7 +106,7 @@ export const Button = (theme: any) => {
         color: primary.main
       },
       textSecondary: {
-        color: grey[600]
+        color: theme.palette.grey[600]
       },
       textSuccess: {
         color: success.main
@@ -152,8 +151,7 @@ export const ButtonGroup = (theme: any ) => {
     error,
     warning,
     secondary,
-    info,
-    grey
+    info
   } = theme.palette;
   return {
     styleOverrides: {

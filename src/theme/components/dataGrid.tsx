@@ -1,4 +1,4 @@
-const DataGrid = theme => {
+const DataGrid = (theme: any) => {
   const {
     grey
   } = theme.palette;

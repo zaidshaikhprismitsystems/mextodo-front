@@ -12,7 +12,7 @@ import ApiService from "../../services/apiServices/apiService"
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Visibility from '@mui/icons-material/Visibility';
 import { TextBox } from '../textbox';
-import { H5, H6, Paragraph } from '../typography';
+import { H5, Paragraph } from '../typography';
 import Checkbox from '@mui/material/Checkbox';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from "../../services/store/hooks/hooks";

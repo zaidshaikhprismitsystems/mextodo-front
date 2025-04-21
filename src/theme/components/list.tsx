@@ -8,7 +8,7 @@ export const ListItemText = () => ({
     }
   }
 });
-export const ListItemIcon = theme => ({
+export const ListItemIcon = (theme: any) => ({
   styleOverrides: {
     root: {
       marginRight: 12,

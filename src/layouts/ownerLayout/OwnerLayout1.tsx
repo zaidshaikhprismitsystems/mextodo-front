@@ -15,15 +15,10 @@ import Footer from '../components/Footer'
 import { IconButton, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import { Drawer } from '@mui/material';
-
 import OwnerDrower from './OwnerDrower';
 
-import { Span } from '../../components/typography';
-
 // import Sidebar from './components/Sidebar'
-import { Box, Container, useMediaQuery } from '@mui/material';
-import { useState } from 'react';
+import { Box, Container } from '@mui/material';
 
 export default function OwnerLayout({children}: any) {
  

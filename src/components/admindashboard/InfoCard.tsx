@@ -2,32 +2,16 @@ import Card from '@mui/material/Card'
 import styled from '@mui/material/styles/styled'
 import { alpha } from '@mui/system/colorManipulator'
 import { useTranslation } from 'react-i18next'
-// MUI ICON COMPONENTS
-import ArrowUpward from '@mui/icons-material/ArrowUpward'
-import ArrowDownward from '@mui/icons-material/ArrowDownward'
 // CUSTOM COMPONENTS
 import { H6, Paragraph } from '../typography'
 
 import Icon from '@mui/material/Icon';
-import { FlexBetween, FlexBox } from '../flexbox'
+import { FlexBetween } from '../flexbox'
 import {Link} from 'react-router-dom'
 // STYLED COMPONENTS
 const StyledRoot = styled(Card)(() => ({
   padding: '1rem 1.5rem',
   '& .analytics': { gap: 4, display: 'flex', alignItems: 'center' },
-}))
-
-const IconWrapper = styled('div', {
-  shouldForwardProp: (prop) => prop !== 'isDown',
-})<{ isDown: boolean }>(({ theme, isDown }) => ({
-  width: 20,
-  height: 20,
-  display: 'flex',
-  borderRadius: '50%',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: alpha(theme.palette.success.main, 0.1),
-  ...(isDown && { backgroundColor: alpha(theme.palette.error.main, 0.1) }),
 }))
 
 const LisItemIcon = styled('div', {

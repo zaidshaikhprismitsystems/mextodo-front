@@ -2,7 +2,6 @@ import { Box, Button, Card, CardMedia, Typography } from "@mui/material";
 import Grid from '@mui/material/Grid2';
 import { useTranslation } from "react-i18next";
 import Toast from "../../utils/toast";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ApiService from "../../services/apiServices/apiService";
 import { category_url } from "../../config/config";
@@ -13,9 +12,7 @@ import { useAppSelector } from "../../services/store/hooks/hooks";
 import { RootState } from "../../services/store/store";
 
 export default function AddProducts() {
-  const userData = useAppSelector((state: RootState) => state.user);
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
 
   const [selectedCategory, setSelectedCategory] = useState<any>();
   const [categoryList, setcategoryList] = useState([]);

@@ -10,9 +10,9 @@ export const DatePicker = () => ({
   defaultProps: {
     slots: {
       openPickerIcon: CalendarMonthOutlined,
-      switchViewIcon: props => <KeyboardArrowDown {...props} fontSize="small" />,
-      leftArrowIcon: props => <KeyboardArrowLeft {...props} fontSize="small" />,
-      rightArrowIcon: props => <KeyboardArrowRight {...props} fontSize="small" />
+      switchViewIcon: (props: any) => <KeyboardArrowDown {...props} fontSize="small" />,
+      leftArrowIcon: (props: any) => <KeyboardArrowLeft {...props} fontSize="small" />,
+      rightArrowIcon: (props: any) => <KeyboardArrowRight {...props} fontSize="small" />
     }
   }
 });
@@ -41,8 +41,8 @@ export const StaticDatePicker = () => ({
 export const TimePicker = () => ({
   defaultProps: {
     slots: {
-      leftArrowIcon: props => <KeyboardArrowLeft {...props} fontSize="small" />,
-      rightArrowIcon: props => <KeyboardArrowRight {...props} fontSize="small" />
+      leftArrowIcon: (props: any) => <KeyboardArrowLeft {...props} fontSize="small" />,
+      rightArrowIcon: (props: any) => <KeyboardArrowRight {...props} fontSize="small" />
     },
     slotProps: {
       mobilePaper: {
@@ -82,9 +82,9 @@ export const DateTimePicker = () => ({
     },
     slots: {
       openPickerIcon: CalendarMonthOutlined,
-      switchViewIcon: props => <KeyboardArrowDown {...props} fontSize="small" />,
-      leftArrowIcon: props => <KeyboardArrowLeft {...props} fontSize="small" />,
-      rightArrowIcon: props => <KeyboardArrowRight {...props} fontSize="small" />
+      switchViewIcon: (props: any) => <KeyboardArrowDown {...props} fontSize="small" />,
+      leftArrowIcon: (props: any) => <KeyboardArrowLeft {...props} fontSize="small" />,
+      rightArrowIcon: (props: any) => <KeyboardArrowRight {...props} fontSize="small" />
     }
   }
 });
@@ -100,9 +100,9 @@ export const DesktopDateTimePicker = () => ({
     },
     slots: {
       openPickerIcon: CalendarMonthOutlined,
-      switchViewIcon: props => <KeyboardArrowDown {...props} fontSize="small" />,
-      leftArrowIcon: props => <KeyboardArrowLeft {...props} fontSize="small" />,
-      rightArrowIcon: props => <KeyboardArrowRight {...props} fontSize="small" />
+      switchViewIcon: (props: any) => <KeyboardArrowDown {...props} fontSize="small" />,
+      leftArrowIcon: (props: any) => <KeyboardArrowLeft {...props} fontSize="small" />,
+      rightArrowIcon: (props: any) => <KeyboardArrowRight {...props} fontSize="small" />
     }
   }
 });

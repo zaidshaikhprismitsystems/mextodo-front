@@ -11,13 +11,13 @@ import { isDark } from '../../utils/constants';
 
 const standardStyle = (color: PaletteColor) => ({
   color: color.main,
-  backgroundColor: color.light || color[50], // Use `light` or fallback to `50`
+  backgroundColor: color.light || color.main, // Fixed indexing
 });
 
 const outlinedStyle = (color: PaletteColor) => ({
   color: color.main,
   borderColor: color.main,
-  backgroundColor: color.light || color[50],
+  backgroundColor: color.light || color.main, // Fixed indexing
 });
 
 const actionBtnStyle = (info: string, secondary: string) => ({
