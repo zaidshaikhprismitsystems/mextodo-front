@@ -6,7 +6,12 @@ import Button from '@mui/material/Button';
 import Switch from '@mui/material/Switch';
 import Divider from '@mui/material/Divider';
 import Checkbox from '@mui/material/Checkbox';
-import TextField from '@mui/material/TextField'; // MUI ICON COMPONENT
+import TextField from '@mui/material/TextField';
+import * as Yup from 'yup';
+import { useFormik } from 'formik';
+import { TextBox } from '../../../textbox';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown'; // CUSTOM COMPONENTS
 
@@ -15,30 +20,25 @@ import { H6, Paragraph, Small } from '../../../typography'; // CUSTOM DUMMY DATA
 
 import { PREFERENCES } from './data';
 import { FlexBox } from '../../../flexbox';
-import IconWrapper from '../../../icon-wrapper'
-import * as Yup from 'yup';
-import { useFormik } from "formik";
-import { TextBox } from "../../../textbox";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import IconWrapper from '../../../icon-wrapper';
+import { useState } from 'react';
 import CategoryIcon from '@mui/icons-material/Category';
-import ApiService from "../../../../services/apiServices/apiService";
-import DropZone from "../../../dropzone";
+import ApiService from '../../../../services/apiServices/apiService';
+import DropZone from '../../../dropzone';
 import DoDisturbOnIcon from '@mui/icons-material/DoDisturbOn';
 import Toast from '../../../../utils/toast';
 import { setting_url } from '../../../../config/config';
 
-export default function Preferences({settings}: any) {
+export default function Preferences({ settings }: any) {
   console.log('settings: ', settings);
 
   const [imagePreview, setImagePreview] = useState<any>(settings.siteLogo ? `${setting_url}/${settings.siteLogo}` : '');
   const [faviconPreview, setFaviconPreview] = useState<any>(settings.siteFavicon ? `${setting_url}/${settings.siteFavicon}` : '');
 
   const navigate = useNavigate();
-  
+
   const [isSubmitting, setIsSubmitting] = useState<any>(false);
-  
+
   const { t } = useTranslation();
 
   const validationSchema = Yup.object({
@@ -100,7 +100,7 @@ export default function Preferences({settings}: any) {
       } catch (error: any) {
         Toast.showErrorMessage(error.response.data.message);
         setIsSubmitting(false);
-      }finally{
+      } finally {
         setIsSubmitting(false);
       }
     }
@@ -114,34 +114,32 @@ export default function Preferences({settings}: any) {
     reader.readAsDataURL(file);
 
     reader.onloadend = async () => {
-        if (!reader.result) return;
+      if (!reader.result) return;
 
-        const base64String = reader.result.toString().split(",")[1];
-        if (!base64String) return;
+      const base64String = reader.result.toString().split(",")[1];
+      if (!base64String) return;
 
-        const mimetype = file.type;
-        const imageData = { image: base64String, mimetype };
-        if(name === "siteLogo"){
-          setImagePreview(reader.result.toString());
-        }else{
-          setFaviconPreview(reader.result.toString());
-        }
-        setFieldValue(name, imageData);
+      const mimetype = file.type;
+      const imageData = { image: base64String, mimetype };
+      if (name === "siteLogo") {
+        setImagePreview(reader.result.toString());
+      } else {
+        setFaviconPreview(reader.result.toString());
+      }
+      setFieldValue(name, imageData);
     };
   };
 
   const removeImage = (name: string) => {
-    if(name === "siteLogo"){
+    if (name === "siteLogo") {
       setImagePreview(null);
-    }else{
+    } else {
       setFaviconPreview(null);
     }
     setFieldValue(name, null);
   }
 
-
   console.log(errors);
-  
 
   return <Card>
     <H6 fontSize={14} px={1} m={2}>
@@ -155,9 +153,9 @@ export default function Preferences({settings}: any) {
           <Grid size={{
             xs: 12
           }}>
-            <TextBox type={"text"} fullWidth name="globalName" placeholder={t("global_name")} 
-              handleBlur={handleBlur} handleChange={handleChange} 
-              value={values.globalName} helperText={touched.globalName && errors.globalName ? String(errors.globalName) : ""} 
+            <TextBox type={"text"} fullWidth name="globalName" placeholder={t("global_name")}
+              handleBlur={handleBlur} handleChange={handleChange}
+              value={values.globalName} helperText={touched.globalName && errors.globalName ? String(errors.globalName) : ""}
               error={Boolean(touched.globalName && errors.globalName)}
             />
           </Grid>
@@ -168,7 +166,7 @@ export default function Preferences({settings}: any) {
             xs: 12
           }}>
             <fieldset aria-hidden="true" style={{
-              padding: '8px', border: '1px solid #e5e7eb', borderRadius: '8px', height:'100%'
+              padding: '8px', border: '1px solid #e5e7eb', borderRadius: '8px', height: '100%'
 
             }} >
               <legend style={{ color: '#0009 ', fontWeight: 400, fontSize: '1rem', lineHeight: ' 1.4375em', transform: 'scale(0.75)' }} ><span>Site logo</span></legend>
@@ -187,7 +185,7 @@ export default function Preferences({settings}: any) {
                     onDrop={(e: any) => { handleDropFile(e, "siteLogo") }}
                     maxFiles={1}
                     minFiles={1}
-                    curFile={values?.siteLogo ? values.siteLogo.length : 0} 
+                    curFile={values?.siteLogo ? values.siteLogo.length : 0}
                     accept={['.png', '.gif', '.jpeg', '.jpg']}
                     formError={errors.siteLogo}
                     placeholder={'Drop files here or click to upload.'}
@@ -196,14 +194,14 @@ export default function Preferences({settings}: any) {
               }
             </fieldset>
           </Grid>
-          
+
           {/* Site Favicon */}
           <Grid size={{
             sm: 4,
             xs: 12
           }}>
             <fieldset aria-hidden="true" style={{
-              padding: '8px', border: '1px solid #e5e7eb', borderRadius: '8px', height:'100%'
+              padding: '8px', border: '1px solid #e5e7eb', borderRadius: '8px', height: '100%'
 
             }} >
               <legend style={{ color: '#0009 ', fontWeight: 400, fontSize: '1rem', lineHeight: ' 1.4375em', transform: 'scale(0.75)' }} ><span>Site favicon</span></legend>
@@ -222,7 +220,7 @@ export default function Preferences({settings}: any) {
                     onDrop={(e: any) => { handleDropFile(e, "siteFavicon") }}
                     maxFiles={1}
                     minFiles={1}
-                    curFile={values?.siteFavicon ? values.siteFavicon.length : 0} 
+                    curFile={values?.siteFavicon ? values.siteFavicon.length : 0}
                     accept={['.png', '.gif', '.jpeg', '.jpg', '.ico']}
                     formError={errors.siteFavicon}
                     placeholder={'Drop files here or click to upload.'}
@@ -255,7 +253,7 @@ export default function Preferences({settings}: any) {
           </Grid>
         </Grid>
       </Box>
-      
+
       <Stack direction="row" spacing={3} padding={3}>
         <Button type='submit' variant="contained">Save Changes</Button>
         <Button variant="outlined">Cancel</Button>

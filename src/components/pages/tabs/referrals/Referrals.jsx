@@ -11,24 +11,18 @@ import TableRow from '@mui/material/TableRow';
 import TableBody from '@mui/material/TableBody';
 import TableHead from '@mui/material/TableHead';
 import AlertTitle from '@mui/material/AlertTitle';
-import IconButton from '@mui/material/IconButton'; // GLOBAL CUSTOM HOOK
-
-import useCopyToClipboard from '@/hooks/useCopyToClipboard'; // MUI ICON COMPONENTS
-
+import IconButton from '@mui/material/IconButton';
+import useCopyToClipboard from '@/hooks/useCopyToClipboard';
 import Info from '@mui/icons-material/Info';
-import ContentCopy from '@mui/icons-material/ContentCopy'; // CUSTOM COMPONENTS
-
+import ContentCopy from '@mui/icons-material/ContentCopy';
 import Scrollbar from '@/components/scrollbar';
 import FlexBetween from '@/components/flexbox/FlexBetween';
-import { H5, H6, Paragraph } from '@/components/typography'; // COMMON STYLED COMPONENTS
-
-import { BodyTableCellV2, BodyTableRow, HeadTableCell } from '../styles'; // CUSTOM UTILS METHOD
-
-import { currency } from '@/utils/currency'; // CUSTOM DUMMY DATA SET
-
-import { REFER_LIST, EARNING_LIST } from './data'; // STYLED COMPONENT
-
+import { H5, H6, Paragraph } from '@/components/typography';
+import { BodyTableCellV2, BodyTableRow, HeadTableCell } from '../styles';
+import { currency } from '@/utils/currency';
+import { REFER_LIST, EARNING_LIST } from './data';
 import { EarningBox, StyledInputBase } from './styles';
+
 export default function Referrals() {
   const referLink = 'https://Example.com/reffer/?refid=345re66787k8';
   const {

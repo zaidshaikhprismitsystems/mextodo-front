@@ -4,11 +4,8 @@ import Grid from '@mui/material/Grid2';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
-import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import * as Yup from 'yup';
-import { useFormik } from 'formik'; // CUSTOM COMPONENTS
-
-import { H6, Paragraph } from '../../../../typography';
+import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -19,8 +16,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import Toast from '../../../../../utils/toast';
 import { FlexBox } from '../../../../flexbox';
 import { TextBox } from '../../../../textbox';
-import Checkbox from '@mui/material/Checkbox';
-import { Typography } from '@mui/material';
+
 export default function InfoForm({settings}: any) {
   
   const navigate = useNavigate();

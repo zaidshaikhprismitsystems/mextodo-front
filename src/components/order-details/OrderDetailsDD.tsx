@@ -1,27 +1,16 @@
-import { ReactNode } from 'react'
-// MUI
-import Box from '@mui/material/Box'
-import Chip from '@mui/material/Chip'
-import Card from '@mui/material/Card'
-import Grid from '@mui/material/Grid2'
-import Stack from '@mui/material/Stack'
-import Button from '@mui/material/Button'
-import Divider from '@mui/material/Divider'
-import Table from '@mui/material/Table'
-import TableRow from '@mui/material/TableRow'
-import TableBody from '@mui/material/TableBody'
-import TableHead from '@mui/material/TableHead'
-// CUSTOM COMPONENTS
-import Link from '../../components/link'
-import Scrollbar from '../../components/scrollbar'
-import FlexBetween from '../../components/flexbox/FlexBetween'
-import { H6, Paragraph, Span } from '../../components/typography'
-// CUSTOM ICON COMPONENT
-import DownloadTo from '../../icons/DownloadTo'
-// CUSTOM UTILS METHODS
-import { currency } from '../../utils/currency'
-// STYLED COMPONENTS
-import { BodyTableCell, HeadTableCell, StyledBox } from './styles'
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Grid from '@mui/material/Grid2';
+import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
+import Table from '@mui/material/Table';
+import TableRow from '@mui/material/TableRow';
+import TableBody from '@mui/material/TableBody';
+import TableHead from '@mui/material/TableHead';
+import Scrollbar from '../../components/scrollbar';
+import FlexBetween from '../../components/flexbox/FlexBetween';
+import { H6, Paragraph } from '../../components/typography';
+import { BodyTableCell, HeadTableCell } from './styles';
 
 export default function OrderDetails() {
   return (

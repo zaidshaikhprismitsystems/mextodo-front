@@ -1,32 +1,10 @@
-import { ChangeEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 // MUI
-import Tab from '@mui/material/Tab'
-import Tabs from '@mui/material/Tabs'
 import Card from '@mui/material/Card'
-import Table from '@mui/material/Table'
 import Button from '@mui/material/Button'
-import TableBody from '@mui/material/TableBody'
-import TableContainer from '@mui/material/TableContainer'
-import TablePagination from '@mui/material/TablePagination'
-import styled from '@mui/material/styles/styled'
-// CUSTOM ICON COMPONENT
-import Add from '../../icons/Add'
-// CUSTOM COMPONENTS
-import Scrollbar from '../scrollbar'
-import { TableDataNotFound, TableToolbar } from '../table'
-import ProductTableRow from './TicketsTableRow'
-import ProductTableHead from './TicketsTableHead'
-import TicketTableActions from './TicketsTableActions'
-import ApiService from '../../services/apiServices/apiService'
-import Toast from '../../utils/toast'
-import { ProductPreview } from '../product-preview'
-import Modal from '@mui/material/Modal';
 import React from 'react'
 import { Box, Chip, ListItemButton, Pagination, Stack, Typography } from '@mui/material'
-import { product_url } from '../../config/config'
-import { UpdateProducts } from '../update-products'
-import { useTranslation } from 'react-i18next'
 import Grid from '@mui/material/Grid2';
 import { FlexBox, FlexRowAlign } from "../flexbox"
 import IconWrapper from '../icon-wrapper'
@@ -36,9 +14,10 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
 import { LoaderWithLogo } from '../loader'
+import TicketTableActions from './TicketsTableActions'
+import ApiService from '../../services/apiServices/apiService'
+import { useTranslation } from 'react-i18next'
 
 export default function TicketsOwner() {
 
