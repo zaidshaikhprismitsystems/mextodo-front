@@ -1,6 +1,5 @@
 import { ChangeEvent, MouseEvent } from 'react'
 // MUI
-import Checkbox from '@mui/material/Checkbox'
 import TableRow from '@mui/material/TableRow'
 import TableCell from '@mui/material/TableCell'
 import TableHead from '@mui/material/TableHead'
@@ -17,9 +16,6 @@ interface AttributesTableHeadProps {
   entity: string
   order: 'asc' | 'desc'
   orderBy: string
-  rowCount: number
-  numSelected: number
-  onSelectAllRows: (event: ChangeEvent<HTMLInputElement>) => void
   onRequestSort: (e: MouseEvent<unknown>, property: string) => void
 }
 // ==============================================================
@@ -27,7 +23,7 @@ interface AttributesTableHeadProps {
 export default function AttributesTableHead(props: AttributesTableHeadProps) {
 
   const { t } = useTranslation();
-  const { entity, onSelectAllRows, order, orderBy, numSelected, rowCount, onRequestSort } = props
+  const { entity, order, orderBy, onRequestSort } = props
 
   const createSortHandler = (property: string) => (event: MouseEvent<unknown>) => {
     onRequestSort(event, property)

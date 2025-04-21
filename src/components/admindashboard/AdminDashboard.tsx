@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Card, CardContent, CardMedia, Button, Rating, styled } from "@mui/material"
+import { Container } from "@mui/material"
 import Grid from '@mui/material/Grid2';
 import InfoCard from "../admindashboard/InfoCard";
 import Transactions from "../admindashboard/Transactions";
@@ -11,17 +11,13 @@ import BallotIcon from '@mui/icons-material/Ballot';
 import PaidIcon from '@mui/icons-material/Paid';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import ApiService from "../../services/apiServices/apiService";
 import { LoaderWithLogo } from "../loader";
-// CUSTOM COMPONENTS
-// import InfoCard from './InfoCard'
 
 export default function AdminDashboard() {
   
   const [ statistics, setStatistics ] = useState<any>({});
   const [ loading, setLoading ] = useState(true);
-  const { t } = useTranslation();
 
   useEffect(() => {
     getAdminStat();

@@ -7,10 +7,7 @@ import styled from '@mui/material/styles/styled'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FlexBetween } from '../flexbox'
-import { Button } from '@mui/material'
 import Grid from '@mui/material/Grid2';
-import AddIcon from '@mui/icons-material/Add';
-import { TextBox } from '../textbox'
 
 //  STYLED COMPONENTS
 const Wrapper = styled('div')(({ theme }) => ({
@@ -35,7 +32,6 @@ interface TableActionsProps {
 // ==============================================================
 
 export default function ReportsActions({ filter, handleChangeFilter }: TableActionsProps) {
-  const navigate = useNavigate()
   const { t } = useTranslation();
 
   const FILTER_VALUES = [
@@ -45,17 +41,15 @@ export default function ReportsActions({ filter, handleChangeFilter }: TableActi
       { id: 4, name: t("owners"), value: 'owners' }
   ]
   
-  const [debouncedSearch, setDebouncedSearch] = useState('');
-
   useEffect(() => {
     const timer = setTimeout(() => {
-      handleChangeFilter('search', debouncedSearch)
+      handleChangeFilter('search', '')
     }, 1000);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [debouncedSearch]);
+  }, []);
 
   return (
     <FlexBetween gap='1rem' flexWrap='wrap' fleDirection='{xs:column, sm:row}'>

@@ -5,17 +5,11 @@ import { format } from 'date-fns'
 import Chip from '@mui/material/Chip'
 import Avatar from '@mui/material/Avatar'
 import TableRow from '@mui/material/TableRow'
-import Checkbox from '@mui/material/Checkbox'
 import TableCell from '@mui/material/TableCell'
-// MUI ICON COMPONENTS
-import Edit from '@mui/icons-material/Edit'
-import RemoveRedEye from '@mui/icons-material/RemoveRedEye'
-import DeleteOutline from '@mui/icons-material/DeleteOutline'
 // CUSTOM COMPONENTS
 import FlexBox from '../flexbox/FlexBox'
 import { Paragraph } from '../typography'
 import { TableMoreMenuItem, TableMoreMenu } from '../table'
-// import { Attribute_url } from "../../config/config"
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from 'react-i18next'

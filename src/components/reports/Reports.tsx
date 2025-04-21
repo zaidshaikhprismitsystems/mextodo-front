@@ -54,13 +54,6 @@ export default function Reports() {
     setEditOpen(false);
   }
 
-  const onSuccess = async () => {
-    setEditOpen(false)
-    setIsEdit(false);
-    setDisplayAttribute(null);
-    await getReports();
-  }
-
   const [reportFilter, setReportFilter] = useState({
     entity: 'users',
     fromDate: dayjs().subtract(30, 'day').format("YYYY-MM-DD"),
@@ -92,7 +85,7 @@ export default function Reports() {
     return selected.includes(id);
   }
 
-  const handleSelectRow = (event: any, id: number) => {
+  const handleSelectRow = (_: any, id: number) => {
     setSelected((prevSelected: any) => 
       prevSelected.includes(id) ? prevSelected.filter((item: number) => item !== id )
     : [...prevSelected, id]
@@ -114,14 +107,14 @@ export default function Reports() {
   }
 
   const handleDeleteAttribute = async (id: number) => {
-    let deleteAttribute = await ApiService.deleteAttributes(id);
+    await ApiService.deleteAttributes(id);
       Toast.showSuccessMessage('Reports deleted Successfully');
       await getReports();
   }
 
   const handleAllAttributeDelete = async () => {
     try{
-      let deleteAttribute = await ApiService.deleteAttributes(selected);
+      await ApiService.deleteAttributes(selected);
       Toast.showSuccessMessage('Attributes deleted Successfully');
       setSelected([]);
       await getReports();

@@ -15,17 +15,11 @@ import ApiService from "../../services/apiServices/apiService";
 import AdminEcommerce from "../../icons/duotone/AdminEcommerce";
 import Carousel from '../carousel'
 import CardContent from '@mui/material/CardContent';
-import CardActionArea from '@mui/material/CardActionArea';
-import DropZone from "../dropzone";
-import Stack from '@mui/material/Stack'
-import DoDisturbOnIcon from '@mui/icons-material/DoDisturbOn';
-import { ProductPreview } from "../product-preview";
-// STYLED COMPONENTS
 import IconButton from '@mui/material/IconButton'
 import styled from '@mui/material/styles/styled'
 import { ProductForm } from "../product-form";
 
-import { category_url, phyical_name, product_url, digital_name, vehicle_name, property_name } from "../../config/config"
+import { phyical_name, product_url, digital_name, vehicle_name, property_name } from "../../config/config"
 
 // STYLED COMPONENTS
 export const CarouselRoot = styled('div')(({ theme }) => ({
@@ -76,9 +70,6 @@ export default function UpdateProduct({product, handleClose, attributes, onSucce
 
   const [productData, setProductData] = useState<any>(product);
 
-  const [selectedCategory, setSelectedCategory] = useState();
-  const [categoryList, setcategoryList] = useState([]);
-  // const [attributes, setAttributeList] = useState<any>([]);
   const [selectedCategoryName, setSelectedCategoryName] = useState(product.category.nameEn);
   
   const [country, setCountry] = useState<any>();
@@ -213,7 +204,7 @@ export default function UpdateProduct({product, handleClose, attributes, onSucce
           images: values.images,
           stock: values.stock,
           attributes: attributesData,
-          categoryId: selectedCategory,
+          categoryId: selectedCategoryName,
           featuredImage: values.featuredImage,
           video: values.video,
           rentOrSale: values.rentOrSale,

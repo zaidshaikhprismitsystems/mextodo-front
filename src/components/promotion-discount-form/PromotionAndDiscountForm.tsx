@@ -1,14 +1,12 @@
 import { Box, Button, Card, FormControlLabel, MenuItem, Radio, RadioGroup, TextField } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import { Fragment } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useTranslation } from "react-i18next";
 
 import { TextBox } from '../textbox';
 import { FlexBox } from '.././flexbox';
 import { H6 } from '../typography';
-import DatasetIcon from '@mui/icons-material/Dataset';
-import IconWrapper from '../icon-wrapper'
+import IconWrapper from '../icon-wrapper';
 import DiscountIcon from '@mui/icons-material/Discount';
 
 export default function CouponForm({
@@ -19,7 +17,6 @@ export default function CouponForm({
   values,
   touched,
   errors,
-  isUpdate,
   isSubmitting,
   handleClose,
   setFieldValue
@@ -72,7 +69,6 @@ export default function CouponForm({
                   value={values.description}
                   error={Boolean(touched.description && errors.description)}
                   helperText={touched.description && typeof errors.description === "string" ? errors.description : ""}
-                  
                 />
               </Grid>
 
@@ -84,7 +80,6 @@ export default function CouponForm({
                   name="discountType"
                   value={values.discountType}
                   onChange={(e) => setFieldValue("discountType", e.target.value)}
-                  
                   error={Boolean(touched.discountType && errors.discountType)}
                   helperText={touched.discountType && typeof errors.discountType === "string" ? errors.discountType : ""}
                 >
@@ -104,7 +99,6 @@ export default function CouponForm({
                   value={values.discountValue}
                   error={Boolean(touched.discountValue && errors.discountValue)}
                   helperText={touched.discountValue && typeof errors.discountValue === "string" ? errors.discountValue : ""}
-                  
                 />
               </Grid>
 
@@ -119,7 +113,6 @@ export default function CouponForm({
                   value={values.minOrderAmount}
                   error={Boolean(touched.minOrderAmount && errors.minOrderAmount)}
                   helperText={touched.minOrderAmount && typeof errors.minOrderAmount === "string" ? errors.minOrderAmount : ""}
-                  
                 />
               </Grid>
 
@@ -134,7 +127,6 @@ export default function CouponForm({
                   value={values.maxDiscount}
                   error={Boolean(touched.maxDiscount && errors.maxDiscount)}
                   helperText={touched.maxDiscount && typeof errors.maxDiscount === "string" ? errors.maxDiscount : ""}
-                  
                 />
               </Grid>
 
@@ -149,7 +141,6 @@ export default function CouponForm({
                   value={values.startDate}
                   error={Boolean(touched.startDate && errors.startDate)}
                   helperText={touched.startDate && typeof errors.startDate === "string" ? errors.startDate : ""}
-                  
                 />
               </Grid>
 
@@ -164,7 +155,6 @@ export default function CouponForm({
                   value={values.endDate}
                   error={Boolean(touched.endDate && errors.endDate)}
                   helperText={touched.endDate && typeof errors.endDate === "string" ? errors.endDate : ""}
-                  
                 />
               </Grid>
 

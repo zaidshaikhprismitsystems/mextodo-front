@@ -1,48 +1,20 @@
 import { useState } from 'react';
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton'; // LAYOUT BASED HOOK
-
-// import useLayout from '@/layouts/layout-1/context/useLayout'; // CUSTOM COMPONENTS
-
-import MultiLevelMenu from './MultiLevelMenu';
-import Link from '../../components/link';
 import Scrollbar from '../../components/scrollbar';
-import FlexBetween from '../../components/flexbox/FlexBetween';
-// import UserAccount from '@/layouts/layout-parts/UserAccount'; // CUSTOM ICON COMPONENT
-
-import ArrowLeftToLine from '../../icons/duotone/ArrowLeftToLine';
-
-// import { SidebarWrapper } from '@/layouts/layout-1/styles';
-import { Button, styled, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import DisplaySettingsIcon from '@mui/icons-material/DisplaySettings';
-import CategoryIcon from '@mui/icons-material/Category';
-import HubIcon from '@mui/icons-material/Hub';
-import AdminEcommerce from '../../icons/duotone/AdminEcommerce'
-import LayerGroup from '../../icons/duotone/LayerGroup'
 import { NestedListItem } from '../../components/nested-listitem';
 import React from 'react';
-
-import ListSubheader from '@mui/material/ListSubheader';
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Collapse from '@mui/material/Collapse';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
+import { useNavigate } from 'react-router-dom';
+import { Typography } from '@mui/material';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Folder from '../../icons/duotone/Folder';
+import AdminEcommerce from '../../icons/duotone/AdminEcommerce';
 
 const TOP_HEADER_AREA = 50;
 
 export default function OwnerDashboardSidebar() {
   
   const navigate = useNavigate();
-
-  const handleSidebarCompactToggle =() => {
-  }
 
   const productRoutes = [
     {
@@ -78,12 +50,6 @@ export default function OwnerDashboardSidebar() {
     }
   ];
 
-  const [onHover, setOnHover] = useState(false);
-
-  const [open, setOpen] = React.useState(false);
-  const [openAttributes, setOpenAttributes] = React.useState(false);
-  const [openCategories, setOpenCategories] = React.useState(false);
-  const [openCategoryAttributes, setOpenCategoryAttributes] = React.useState(false);
   const [openProducts, setOpenProducts] = React.useState(false);
   const [openOrders, setOpenOrders] = React.useState(false);
   

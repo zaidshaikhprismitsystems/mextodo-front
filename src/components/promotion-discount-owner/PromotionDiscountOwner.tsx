@@ -3,15 +3,9 @@ import { useNavigate } from 'react-router-dom'
 
 // MUI
 import {
-  Box, Button, Card, Container, IconButton, Modal, TextField,
-  Typography, Table, TableBody, TableContainer, TablePagination
+  Box, Card, Grid, Modal, Typography, Table, TableBody, TableContainer, TablePagination
 } from '@mui/material'
-import Tab from '@mui/material/Tab'
-import Tabs from '@mui/material/Tabs'
-import styled from '@mui/material/styles/styled'
-import Grid from '@mui/material/Grid'
-import { CloseOutlined } from '@mui/icons-material'
-import CloseIcon from '@mui/icons-material/Close'
+import { CloseIcon } from '@mui/icons-material'
 import DiscountIcon from '@mui/icons-material/Discount'
 
 // CUSTOM COMPONENTS
@@ -26,8 +20,6 @@ import { useTranslation } from 'react-i18next'
 import { FlexBox } from '../flexbox'
 import IconWrapper from '../icon-wrapper'
 import { H6 } from '../typography'
-import { PromotionAndDiscountForm } from '../promotion-discount-form'
-import { PromotionDiscountUpdate } from '../promotion-discount-update'
 import PromotionDiscountUpdateOwner from '../promotion-discount-update-owner/PromotionDiscountUpdateOwner'
 
 const style = {
@@ -46,7 +38,6 @@ const style = {
 };
 
 export default function PromotionDiscountOwner() {
-  const navigate = useNavigate();
   const { t } = useTranslation();
 
   const [promotions, setPromotions] = useState<any[]>([]);
