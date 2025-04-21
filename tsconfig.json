@@ -12,6 +12,7 @@
 //     "skipLibCheck": true
 //   }
 // }
+
 {
   "files": [],
   "references": [
@@ -21,8 +22,11 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "noImplicitAny": false,
-    "strict": false,
-    "skipLibCheck": true
+    "noImplicitAny": false, // Suppresses 'any' type errors
+    "strict": false, // Disables all strict type-checking options
+    "skipLibCheck": true, // Skips type-checking of declaration files
+    "noUnusedLocals": false, // Suppresses unused local variable errors
+    "noUnusedParameters": false, // Suppresses unused parameter errors
+    "resolveJsonModule": true // Optional: If you use JSON imports
   }
 }
