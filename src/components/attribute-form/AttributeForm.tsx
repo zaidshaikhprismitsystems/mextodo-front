@@ -64,7 +64,7 @@ export default function AttributeForm(
             status: values.status
           };
           
-          let updateAttribute = await ApiService.updateAttribute(attributeDataForm);
+          await ApiService.updateAttribute(attributeDataForm);
           Toast.showSuccessMessage('Attribute Updated Successfully');
           handleClose(true);
           onSuccess();

@@ -3,20 +3,18 @@ import { useNavigate } from 'react-router-dom'
 import { format } from 'date-fns'
 // MUI
 import Chip from '@mui/material/Chip'
-import Avatar from '@mui/material/Avatar'
-import TableRow from '@mui/material/TableRow'
 import Checkbox from '@mui/material/Checkbox'
+import TableRow from '@mui/material/TableRow'
 import TableCell from '@mui/material/TableCell'
 // MUI ICON COMPONENTS
 import Edit from '@mui/icons-material/Edit'
 import RemoveRedEye from '@mui/icons-material/RemoveRedEye'
 import DeleteOutline from '@mui/icons-material/DeleteOutline'
 // CUSTOM COMPONENTS
-import FlexBox from '../flexbox/FlexBox'
 import { Paragraph } from '../typography'
 import { TableMoreMenuItem, TableMoreMenu } from '../table'
 // import { Attribute_url } from "../../config/config"
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from 'react-i18next'
 import { ConfirmToast } from '../confirm-toast'
@@ -39,11 +37,8 @@ export default function AttributesTableRow({
   hanleEditOpen
 }: RowProps) {
 
-  const navigate = useNavigate()
   const { t, i18n } = useTranslation();
   const [openMenuEl, setOpenMenuEl] = useState<null | HTMLElement>(null)
-
-  const [deleteAttributes, setDeleteAttributes] = useState<number>(0);
 
   const handleOpenMenu = (event: MouseEvent<HTMLButtonElement>) => {
     setOpenMenuEl(event.currentTarget)
@@ -140,7 +135,6 @@ export default function AttributesTableRow({
             title={t("delete")}
             handleClick={() => {
               handleCloseOpenMenu()
-              setDeleteAttributes(attribute.id)
               showConfirmation(t("are_you_sure"), attribute.id); 
             }}
           />

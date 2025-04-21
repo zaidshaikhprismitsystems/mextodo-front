@@ -6,10 +6,10 @@ import { H6 } from "../typography"
 import { useTranslation } from "react-i18next";
 import Toast from "../../utils/toast";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import HubIcon from '@mui/icons-material/Hub';
 import ApiService from "../../services/apiServices/apiService";
 import React from "react";
+import { SelectChangeEvent } from "@mui/material";
 
 const names = [
   'Oliver Hansen',
@@ -41,19 +41,17 @@ export default function AddCategoryAtributes() {
 
   const [personName, setPersonName] = React.useState<string[]>([]);
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChange = (event: SelectChangeEvent<string[]>) => {
     const {
       target: { value },
     } = event;
-    setPersonName(
-      typeof value === 'string' ? value.split(',') : value,
-    );
+    setPersonName(typeof value === 'string' ? value.split(',') : value);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      let addAttribute = await ApiService.addAttribute({ nameEn: '', nameSp: '' });
+      await ApiService.addAttribute({ nameEn: '', nameSp: '' });
       Toast.showSuccessMessage('Attribute Added Successfully');
       navigate("/admindashboard/attributes");
     } catch (error: any) {

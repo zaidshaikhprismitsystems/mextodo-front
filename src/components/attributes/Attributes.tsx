@@ -1,15 +1,10 @@
 import { ChangeEvent, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 // MUI
-import Tab from '@mui/material/Tab'
-import Tabs from '@mui/material/Tabs'
-import { Box, Button, Card, Container, IconButton, Modal, TextField, Typography } from "@mui/material"
+import { Box, Card, Modal, Typography } from "@mui/material"
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
-import styled from '@mui/material/styles/styled'
-// CUSTOM ICON COMPONENT
 // CUSTOM COMPONENTS
 import Scrollbar from '../scrollbar'
 import { TableDataNotFound, TableToolbar } from '../table'
@@ -19,16 +14,13 @@ import AttributeTableActions from './AttributesTableActions'
 import ApiService from '../../services/apiServices/apiService'
 import Toast from '../../utils/toast'
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import Grid from '@mui/material/Grid2';
 import { FlexBox } from "../flexbox"
 import IconWrapper from '../icon-wrapper'
 import { H6 } from "../typography"
-import DatasetIcon from '@mui/icons-material/Dataset';
-import { CloseOutlined } from '@mui/icons-material'
-import { AttributeForm } from '../attribute-form'
 import CloseIcon from '@mui/icons-material/Close';
 import DeviceHubIcon from '@mui/icons-material/DeviceHub';
+import { AttributeForm } from '../attribute-form'
 
 const style = {
   position: 'absolute',
@@ -39,7 +31,6 @@ const style = {
   maxWidth:'95%',
   bgcolor: 'background.paper',
   borderRadius:'10px',
-  // boxShadow: 24,
   pt: 0,
   overflow: 'hidden',
   height: "90dvh",
@@ -47,8 +38,6 @@ const style = {
 };
 
 export default function AttributesListPageView() {
-  const navigate = useNavigate()
-
   const [attributesData, setAttributesData] = useState([])
   
   const [page, setPage] = useState<number>(0);
@@ -64,8 +53,6 @@ export default function AttributesListPageView() {
   const [editOpen, setEditOpen] = React.useState(false);
 
   const [isEdit, setIsEdit] = useState(false);
-  
-  const handleOpen = () => setOpen(true);
 
   const handleClose = () => {
     setOpen(false);
@@ -128,14 +115,14 @@ export default function AttributesListPageView() {
   }
 
   const handleDeleteAttribute = async (id: number) => {
-    let deleteAttribute = await ApiService.deleteAttributes(id);
-      Toast.showSuccessMessage('Attribute deleted Successfully');
-      await getAttributes();
+    await ApiService.deleteAttributes(id);
+    Toast.showSuccessMessage('Attribute deleted Successfully');
+    await getAttributes();
   }
 
   const handleAllAttributeDelete = async () => {
     try{
-      let deleteAttribute = await ApiService.deleteAttributes(selected);
+      await ApiService.deleteAttributes(selected);
       Toast.showSuccessMessage('Attributes deleted Successfully');
       setSelected([]);
       await getAttributes();
@@ -154,8 +141,6 @@ export default function AttributesListPageView() {
     setIsEdit(true);
     setEditOpen(true)
   }
-
-  const { t } = useTranslation();
 
   return (
     <>

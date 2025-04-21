@@ -39,7 +39,7 @@ export default function AddAttributes() {
     validationSchema,
     onSubmit: async (values: any) => {
       try {
-        let addAttribute = await ApiService.addAttribute({nameEn: values.nameEn, nameSp: values.nameSp});
+        await ApiService.addAttribute({ nameEn: values.nameEn, nameSp: values.nameSp });
         Toast.showSuccessMessage('Attribute Added Successfully');
         navigate("/admindashboard/attributes");
       } catch (error: any) {
