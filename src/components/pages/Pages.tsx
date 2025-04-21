@@ -12,12 +12,10 @@ import { H3 } from '../typography';
 import ApiService from '../../services/apiServices/apiService';
 import EditComponent from '../edit-component/EditComponent';
 import Toast from '../../utils/toast';
-import { TextBox } from '../textbox';
 
 const Pages = () => {
   const { t } = useTranslation();
 
-  const [loading, setLoading] = useState(true);
   const [selectedValue, setSelectedValue] = useState('privacy-policy');
   const [pageData, setPageData] = useState<any>();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,14 +34,11 @@ const Pages = () => {
   };
 
   const getPageContent = async () => {
-    setLoading(true);
     try {
       let response = await ApiService.getPageContent(selectedValue);
       setPageData(response.data);
     } catch (error) {
       console.error("Error fetching page data", error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -54,7 +49,6 @@ const Pages = () => {
   const validationSchema = Yup.object({
     name: Yup.string().required('Name is required'),
     slug: Yup.string().required('Slug is required'),
-    // title: Yup.string().required('Title is required'),
     content: Yup.string().required('Content is required'),
     contentSp: Yup.string().required('Content in spanish is required')
   });
@@ -69,10 +63,6 @@ const Pages = () => {
 
   const {
     values,
-    errors,
-    touched,
-    handleBlur,
-    handleChange,
     handleSubmit,
     setFieldValue
   } = useFormik({
@@ -83,7 +73,7 @@ const Pages = () => {
     onSubmit: async (values: any) => {
       try {
         setIsSubmitting(true);
-        const result = await ApiService.updatePageContent({
+        await ApiService.updatePageContent({
           slug: values.slug,
           title: values.title,
           content: values.content,

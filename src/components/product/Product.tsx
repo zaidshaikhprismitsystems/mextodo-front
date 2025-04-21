@@ -1,11 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Grid, Chip, Typography, Box } from '@mui/material';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import ApiService from '../../services/apiServices/apiService';
 
 const Product = () => {
-  const carouselRef = useRef<any>(null);
   const [product, setProduct] = useState<any>({});
   const [searchParams] = useSearchParams();
   const productId = searchParams.get('id');

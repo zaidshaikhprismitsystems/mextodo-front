@@ -70,7 +70,7 @@ export default function InfoForm() {
     onSubmit: async (values: any) => {
       try {
         setIsSubmitting(true);
-        let saveProfileData = await ApiService.saveProfile({id: userData.userDetails.id, firstName: values.firstName, lastName: values.lastName, currency: values.currency, language: values.language });
+        await ApiService.saveProfile({id: userData.userDetails.id, firstName: values.firstName, lastName: values.lastName, currency: values.currency, language: values.language });
         Toast.showSuccessMessage("Profile Updated Successfully");
       } catch (error: any) {
         console.log('error: ', error);

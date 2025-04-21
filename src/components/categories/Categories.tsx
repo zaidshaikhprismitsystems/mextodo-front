@@ -38,7 +38,6 @@ export default function CategoriesListPageView() {
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
   const [total, setTotal] = useState(0);
-  const [selected, setSelected] = useState<any>([]);
   const [open, setOpen] = useState(false);
 
   const handleClose = () => setOpen(false);

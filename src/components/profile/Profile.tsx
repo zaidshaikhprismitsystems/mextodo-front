@@ -1,9 +1,6 @@
-import { useNavigate } from 'react-router-dom';
 import ApiService from "../../services/apiServices/apiService";
 import { H5 } from '../../components/typography';
 import { useEffect, useState } from 'react';
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '../../services/store/hooks/hooks';
 import { RootState } from '../../services/store/store';
@@ -26,7 +23,7 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 
-import { Paragraph, Small } from '../../components/typography';
+import { Paragraph } from '../../components/typography';
 import { Typography } from '@mui/material';
 
 import Dialog from '@mui/material/Dialog';
@@ -35,7 +32,6 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import React from 'react';
-
 
 const SwitchWrapper = styled('div')({
   width: '100%',
@@ -75,9 +71,6 @@ const UploadButton = styled('div')(({ theme }) => ({
 }));
 
 const Profile = () => {
-  const navigate = useNavigate();
-  
-  const [userDetails, setUserData] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { t } = useTranslation();
 
@@ -92,7 +85,6 @@ const Profile = () => {
     try {
       let data = await ApiService.getUserData();
       console.log('data: ', data.data.data.userData);
-      setUserData(data.data.data.userData);
     } catch (e) {
       console.log(e);
     } finally {
@@ -148,7 +140,6 @@ const Profile = () => {
     },
   });
 
-
   const popupValidationSchema = Yup.object().shape({
     address: Yup.string().required('Address is Required!'),
     zipcode: Yup.string().required('Zipcode is Required!'),
@@ -179,7 +170,6 @@ const Profile = () => {
     validationSchema: popupValidationSchema,
     onSubmit: (values) => {
       console.log("Popup Form submitted:", values);
-      // setIsPopupOpen(false); // Close popup after submission
     },
   });
 
@@ -294,16 +284,10 @@ const Profile = () => {
                     <Switch disabled />
                   </SwitchWrapper>
 
-                  {/* <Small color="text.secondary">Apply disable account</Small> */}
-
                   <SwitchWrapper>
                     <Paragraph fontWeight={600}>Email Verified</Paragraph>
                     <Switch disabled defaultChecked />
                   </SwitchWrapper>
-
-                  {/* <Small color="text.secondary">
-                    Disabling this will automatically send the user a verification email
-                  </Small> */}
                 </Box>
               </StyledCard>
             </Grid>

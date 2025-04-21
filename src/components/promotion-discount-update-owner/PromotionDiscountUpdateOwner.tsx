@@ -2,17 +2,15 @@ import { Box } from "@mui/material"
 import Grid from '@mui/material/Grid2';
 import * as Yup from 'yup';
 import { useFormik } from "formik";
-import { useTranslation } from "react-i18next";
 import Toast from "../../utils/toast";
-import { useNavigate } from "react-router-dom";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ApiService from "../../services/apiServices/apiService";
-import { VendorForm } from "../vendor-form";
+import { PromotionAndDiscountFormOwner } from "../promotion-discount-form-owner";
+import dayjs from "dayjs";
+
 // STYLED COMPONENTS
 import IconButton from '@mui/material/IconButton'
 import styled from '@mui/material/styles/styled'
-import { PromotionAndDiscountFormOwner } from "../promotion-discount-form-owner";
-import dayjs from "dayjs";
 
 // STYLED COMPONENTS
 export const CarouselRoot = styled('div')(({ theme }) => ({
@@ -58,16 +56,10 @@ export const StyledIconButton = styled(IconButton)(({ theme }) => ({
 
 export default function PromotionDiscountUpdateOwner({isUpdate, enableUpdate, promotion, handleClose, onSuccess, checkVendorByPincode, addressData, isAddressDone}: any) {
 
-  // const { t, i18n } = useTranslation();
-  const navigate = useNavigate(); 
-
-  const [promotionData, setPromotionData] = useState<any>(promotion);
-
   const [country, setCountry] = useState<any>();
   const [states, setStates] = useState<any>([]);
   const [cities, setCities] = useState<any>([]);
   
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -93,8 +85,6 @@ export default function PromotionDiscountUpdateOwner({isUpdate, enableUpdate, pr
     description: Yup.string().required('Description is required!'),
     discountType: Yup.string().oneOf(['percentage', 'fixed'], 'Invalid Discount Type').required('Discount Type is required!'),
     discountValue: Yup.number().typeError('Discount Value must be a number').required('Discount Value is required!'),
-    // minOrderAmount: Yup.number().optional(),
-    // maxDiscount: Yup.number().typeError('Max Discount must be a number').required('Max Discount is required!'),
     startDate: Yup.date().typeError('Start Date is required').required('Start Date is required!'),
     endDate: Yup.date()
       .typeError('End Date is required')
@@ -105,17 +95,15 @@ export default function PromotionDiscountUpdateOwner({isUpdate, enableUpdate, pr
   });
 
   const getInitialValues = () => ({
-    code: promotionData.code,
-    product_id: promotionData.product_id,
-    description: promotionData.description,
-    discountType: promotionData.discountType,
-    discountValue: promotionData.discountValue,
-    // minOrderAmount: promotionData.minOrderAmount,
-    // maxDiscount: promotionData.maxDiscount,
-    startDate: dayjs(promotionData.startDate).format("YYYY-MM-DDTHH:mm"),
-    endDate: dayjs(promotionData.endDate).format("YYYY-MM-DDTHH:mm"),
-    usageLimit: promotionData.usageLimit,
-    isActive: promotionData.isActive
+    code: promotion.code,
+    product_id: promotion.product_id,
+    description: promotion.description,
+    discountType: promotion.discountType,
+    discountValue: promotion.discountValue,
+    startDate: dayjs(promotion.startDate).format("YYYY-MM-DDTHH:mm"),
+    endDate: dayjs(promotion.endDate).format("YYYY-MM-DDTHH:mm"),
+    usageLimit: promotion.usageLimit,
+    isActive: promotion.isActive
   });
 
   const {
@@ -134,14 +122,12 @@ export default function PromotionDiscountUpdateOwner({isUpdate, enableUpdate, pr
       try {
         setIsSubmitting(true);
         const couponData = {
-          id: promotionData.id,
+          id: promotion.id,
           product_id: values.product_id,
           code: values.code,
           description: values.description,
           discountType: values.discountType,
           discountValue: values.discountValue,
-          // minOrderAmount: values.minOrderAmount,
-          // maxDiscount: values.maxDiscount,
           startDate: values.startDate,
           endDate: values.endDate,
           usageLimit: values.usageLimit,
@@ -149,10 +135,8 @@ export default function PromotionDiscountUpdateOwner({isUpdate, enableUpdate, pr
         };
         
         let updateCoupon = await ApiService.updateVendorPromotion(couponData);
-        // console.log('updateCoupon: ', updateCoupon);
         onSuccess(updateCoupon.data);
         Toast.showSuccessMessage('Coupon Added Successfully');
-        // navigate('/admindashboard/promotion-discounts');
       } catch (error: any) {
         Toast.showErrorMessage(error.response.data.message);
         setIsSubmitting(false);

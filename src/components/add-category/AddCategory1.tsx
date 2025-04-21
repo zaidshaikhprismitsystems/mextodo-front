@@ -1,7 +1,5 @@
-import { Box, Button, Card, Container, TextField } from "@mui/material"
 import Grid from '@mui/material/Grid2';
 import { FlexBox } from "../flexbox"
-import ShoppingBasket from '../../icons/ShoppingBasket'
 import IconWrapper from '../icon-wrapper'
 import { H6 } from "../typography"
 import * as Yup from 'yup';
@@ -21,26 +19,12 @@ export default function AddCategories() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
   const validationSchema = Yup.object({
     nameEn: Yup.string().required('Name in English is Required!'),
     nameSp: Yup.string().required('Name in Spanish is Required!'),
     descriptionEn: Yup.string().required('description in English is Required!'),
     descriptionSp: Yup.string().required('description in Spanish is Required!'),
     image: Yup.mixed().required("You need to upload an image")
-    // .test("fileSize", "The file is too large", (value) => {
-    //     return value && value[0].sienter code hereze <= 2000000;
-    // })
-    // .test("type", "Only the following formats are accepted: .jpeg, .jpg, .bmp, .pdf and .doc", (value) => {
-    //     return value && (
-    //         value[0].type === "image/jpeg" ||
-    //         value[0].type === "image/bmp" ||
-    //         value[0].type === "image/png" ||
-    //         value[0].type === 'application/pdf' ||
-    //         value[0].type === "application/msword"
-    //     );
-    // }),
   });
 
   const [imagePreview, setImagePreview] = useState<any>(null);
@@ -66,18 +50,20 @@ export default function AddCategories() {
     validationSchema,
     onSubmit: async (values: any) => {
       try {
-        setIsSubmitting(true);
-        let addCategory = await ApiService.addCategory({nameEn: values.nameEn, nameSp: values.nameSp, descriptionEn: values.descriptionEn, descriptionSp: values.descriptionSp, image: values.image });
+        await ApiService.addCategory({
+          nameEn: values.nameEn,
+          nameSp: values.nameSp,
+          descriptionEn: values.descriptionEn,
+          descriptionSp: values.descriptionSp,
+          image: values.image,
+        });
         Toast.showSuccessMessage('Category Added Successfully');
         navigate('/admindashboard/categories');
       } catch (error: any) {
         console.log('error: ', error);
         Toast.showErrorMessage(error.response.data.message);
-        setIsSubmitting(false);
-      }finally{
-        setIsSubmitting(false);
       }
-    }
+    },
   });
 
   const handleDropFile = (event: any) => {
@@ -99,12 +85,12 @@ export default function AddCategories() {
         setImagePreview(reader.result.toString());
         setFieldValue("image", imageData);
     };
-};
+  };
 
-const removeImage = () => {
-  setImagePreview(null);
-  setFieldValue("image", null);
-}
+  const removeImage = () => {
+    setImagePreview(null);
+    setFieldValue("image", null);
+  }
 
   return (
     <Box sx={{padding: 0, marginTop: "0", display: "flex", justifyContent: "center", alignItems: "center"}}>
@@ -243,8 +229,6 @@ const removeImage = () => {
                   </Card>
                 </Grid>
                  
-
-                
               </Grid>
           </Grid>
 

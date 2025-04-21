@@ -1,5 +1,4 @@
 import { MouseEvent, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { format } from 'date-fns'
 // MUI
 import Chip from '@mui/material/Chip'
@@ -31,8 +30,7 @@ interface RowProps {
   loader: boolean
 }
 
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { useTranslation } from 'react-i18next'
 import { t } from 'i18next'
 import { useAppSelector } from '../../services/store/hooks/hooks'
@@ -56,7 +54,6 @@ export default function ProductTableRow({
   
   const userData: any = useAppSelector((state: RootState) => state.user)
   
-  const navigate = useNavigate()
   const { i18n } = useTranslation();
   const [openMenuEl, setOpenMenuEl] = useState<null | HTMLElement>(null)
 

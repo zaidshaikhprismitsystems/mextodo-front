@@ -2,12 +2,12 @@ import IconButton from '@mui/material/IconButton'
 import styled from '@mui/material/styles/styled'
 
 // STYLED COMPONENTS
-export const CarouselRoot = styled('div')(({ theme }) => ({
+export const CarouselRoot = styled('div')(() => ({
   position: 'relative',
   '& .slide': { objectFit: 'cover', borderRadius: 8 },
 }))
 
-export const SlideThumb = styled('div')(({ theme }) => ({
+export const SlideThumb = styled('div')(() => ({
   width: 60,
   height: 55,
   opacity: 0.6,
@@ -25,7 +25,7 @@ export const SlideThumb = styled('div')(({ theme }) => ({
     width: '100%',
     position: 'absolute',
     transition: '0.3s ease-in-out',
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: '#1976d2',
   },
   '& img': {
     width: '100%',
@@ -35,10 +35,10 @@ export const SlideThumb = styled('div')(({ theme }) => ({
   },
 }))
 
-export const StyledIconButton = styled(IconButton)(({ theme }) => ({
+export const StyledIconButton = styled(IconButton)(() => ({
   top: 10,
   right: 10,
   position: 'absolute',
-  backgroundColor: theme.palette.grey[200],
-  // '&:hover': { backgroundColor: theme.palette.grey[400] },
+  backgroundColor: '#f5f5f5',
+  // '&:hover': { backgroundColor: '#bdbdbd' },
 }))

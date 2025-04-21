@@ -1,78 +1,22 @@
-import { Box, Card, CardMedia, Typography } from "@mui/material"
 import Grid from '@mui/material/Grid2';
-import { FlexBox } from "../flexbox"
-import IconWrapper from '../icon-wrapper'
-import { H2, H6, Paragraph } from "../typography"
 import * as Yup from 'yup';
 import { useFormik } from "formik";
-import { TextBox } from "../textbox";
 import { useTranslation } from "react-i18next";
 import Toast from "../../utils/toast";
 import { useNavigate } from "react-router-dom";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
-import CategoryIcon from '@mui/icons-material/Category';
+import { useEffect, useState } from "react";
 import ApiService from "../../services/apiServices/apiService";
-import AdminEcommerce from "../../icons/duotone/AdminEcommerce";
-import Carousel from '../carousel'
-import CardContent from '@mui/material/CardContent';
-import IconButton from '@mui/material/IconButton'
-import styled from '@mui/material/styles/styled'
 import { ProductForm } from "../product-form";
 
 import { phyical_name, product_url, digital_name, vehicle_name, property_name } from "../../config/config"
 
 // STYLED COMPONENTS
-export const CarouselRoot = styled('div')(({ theme }) => ({
-  position: 'relative',
-  '& .slide': { objectFit: 'cover', borderRadius: 8 },
-}))
-
-export const SlideThumb = styled('div')(({ theme }) => ({
-  width: 60,
-  height: 55,
-  opacity: 0.6,
-  borderRadius: 4,
-  cursor: 'pointer',
-  overflow: 'hidden',
-  position: 'relative',
-  '&.active': { opacity: 1 },
-  '&.active::after': { height: 3 },
-  '&::after': {
-    left: 0,
-    height: 0,
-    bottom: 0,
-    content: '""',
-    width: '100%',
-    position: 'absolute',
-    transition: '0.3s ease-in-out',
-    backgroundColor: theme.palette.primary.main,
-  },
-  '& img': {
-    width: '100%',
-    height: '100%',
-    display: 'block',
-    objectFit: 'cover',
-  },
-}))
-
-export const StyledIconButton = styled(IconButton)(({ theme }) => ({
-  top: 10,
-  right: 10,
-  position: 'absolute',
-  backgroundColor: theme.palette.grey[200],
-  // '&:hover': { backgroundColor: theme.palette.grey[400] },
-}))
-
 export default function UpdateProduct({product, handleClose, attributes, onSuccess}: any) {
   
-  const { t, i18n } = useTranslation();
-  const navigate = useNavigate(); 
-
-  const [productData, setProductData] = useState<any>(product);
+  const { i18n } = useTranslation();
 
   const [selectedCategoryName, setSelectedCategoryName] = useState(product.category.nameEn);
   
-  const [country, setCountry] = useState<any>();
   const [states, setStates] = useState<any>([]);
   const [cities, setCities] = useState<any>([]);
   
@@ -99,7 +43,6 @@ export default function UpdateProduct({product, handleClose, attributes, onSucce
     digitalProductType: selectedCategoryName === digital_name ? Yup.mixed().required('Digital Product Type is Required!') : Yup.mixed().notRequired(),
     rentOrSale: selectedCategoryName === vehicle_name || selectedCategoryName === property_name ? Yup.string().required('Rent Or Sale is Required!') : Yup.string().notRequired(),
     featuredImage: Yup.mixed().required('Featured image is Required!'),
-    // video: Yup.mixed().required("Video is Required!"),
     video: selectedCategoryName !== digital_name ? Yup.mixed().required("Video is Required!") : Yup.mixed().notRequired(),
     discountPrice:Yup.number().required('Discount Price is Required!'),
     packType: selectedCategoryName === phyical_name ? Yup.string().required('Pack Type is Required!') : Yup.string().notRequired(),
@@ -113,33 +56,33 @@ export default function UpdateProduct({product, handleClose, attributes, onSucce
 
   const getInitialValues = () => {
     let initialValues: any = {
-      titleEn: productData?.titleEn,
-      titleSp: productData?.titleSp,
-      descriptionEn: productData?.descriptionEn,
-      descriptionSp: productData?.descriptionSp,
-      images: productData?.images,
-      price: productData?.price,
-      stock: productData?.stock,
-      discountPrice: productData?.discountPrice,
-      featuredImage: productData?.featuredImage,
-      video: productData?.video,
-      digitalProduct: productData?.digitalProduct,
-      digitalProductType: productData?.digitalProductType,
-      weight_type: productData?.attributes?.weight_type,
-      dimensions_type: productData?.attributes?.dimensions_type,
-      unit: productData?.attributes?.unit,
-      length: productData?.attributes?.length,
-      width: productData?.attributes?.width,
-      height: productData?.attributes?.height,
-      weight: productData?.attributes?.weight,
-      country: productData?.country,
-      state: productData?.stateId,
-      city: productData?.cityId,
-      rentOrSale: productData?.rentOrSale,
-      packType: productData?.packType,
-      content: productData?.content,
-      boxQuantity: productData?.boxQuantity,
-      status: productData.status
+      titleEn: product?.titleEn,
+      titleSp: product?.titleSp,
+      descriptionEn: product?.descriptionEn,
+      descriptionSp: product?.descriptionSp,
+      images: product?.images,
+      price: product?.price,
+      stock: product?.stock,
+      discountPrice: product?.discountPrice,
+      featuredImage: product?.featuredImage,
+      video: product?.video,
+      digitalProduct: product?.digitalProduct,
+      digitalProductType: product?.digitalProductType,
+      weight_type: product?.attributes?.weight_type,
+      dimensions_type: product?.attributes?.dimensions_type,
+      unit: product?.attributes?.unit,
+      length: product?.attributes?.length,
+      width: product?.attributes?.width,
+      height: product?.attributes?.height,
+      weight: product?.attributes?.weight,
+      country: product?.country,
+      state: product?.stateId,
+      city: product?.cityId,
+      rentOrSale: product?.rentOrSale,
+      packType: product?.packType,
+      content: product?.content,
+      boxQuantity: product?.boxQuantity,
+      status: product.status
     };
     attributes.map((obj: any) => {
       initialValues[obj.name] = obj.value;
@@ -194,7 +137,7 @@ export default function UpdateProduct({product, handleClose, attributes, onSucce
         }
         
         let productDataForm = {
-          product_id: productData.id,
+          product_id: product.id,
           titleEn: values.titleEn,
           titleSp: values.titleSp,
           descriptionEn: values.descriptionEn,
@@ -218,11 +161,10 @@ export default function UpdateProduct({product, handleClose, attributes, onSucce
           status: values.status
         };
         
-        let updateProduct = await ApiService.updateProduct(productDataForm);
+        await ApiService.updateProduct(productDataForm);
         Toast.showSuccessMessage('Product Updated Successfully');
         handleClose(true);
         onSuccess();
-        // navigate('/dashboard/products');
       } catch (error: any) {
         console.log('Error caught: ', error);
         // Safeguard: check if error.response exists before accessing error.response.data
@@ -247,14 +189,10 @@ export default function UpdateProduct({product, handleClose, attributes, onSucce
   const getStates = async () => {
     try{
       let data = await ApiService.getStates();
-      setCountry({id: data.data.id, name: data.data.name});
       setFieldValue("country", data.data.id)
       setStates(data.data.states);
     }catch(e){
       console.log(e);
-    }
-    finally{
-      // setIsLoading(false);
     }
   }
 

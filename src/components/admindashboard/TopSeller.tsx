@@ -4,45 +4,12 @@ import Badge from '@mui/material/Badge'
 import Avatar from '@mui/material/Avatar'
 import { nanoid } from 'nanoid'
 // CUSTOM COMPONENTS
-import MoreButton from '../../components/more-button'
 import { Paragraph, Small, Span } from '../../components/typography'
 import { FlexBetween, FlexBox } from '../../components/flexbox'
 // CUSTOM UTILS METHODS
 import { currency, format } from '../../utils/currency'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-
-// CUSTOM DUMMY DATA
-const DATA = [
-  {
-    id: nanoid(),
-    totalSold: 13440,
-    totalAmount: 350000,
-    country: '/static/flags/usa-round.png',
-    user: { name: 'Gage Paquette', image: '/static/user/user-11.png' },
-  },
-  {
-    id: nanoid(),
-    totalSold: 10240,
-    totalAmount: 148000,
-    country: '/static/flags/uk-round.png',
-    user: { name: 'Lara Harvey', image: '/static/user/user-16.png' },
-  },
-  {
-    id: nanoid(),
-    totalSold: 10240,
-    totalAmount: 148000,
-    country: '/static/flags/germany-round.png',
-    user: { name: 'Evan Scott', image: '/static/user/user-17.png' },
-  },
-  {
-    id: nanoid(),
-    totalSold: 10240,
-    totalAmount: 148000,
-    country: '/static/flags/spain-round.png',
-    user: { name: 'Benja Johnston', image: '/static/user/user-18.png' },
-  },
-]
 
 export default function TopSeller({topVendors}: any) {
 
@@ -55,7 +22,6 @@ export default function TopSeller({topVendors}: any) {
           {t("top_seller")}
         </Paragraph>
 
-        {/* <MoreButton size="small" /> */}
         <NavLink to="/admindashboard/vendors">
           <Span fontSize={14} color="primary.main">
             {t('view_all')}

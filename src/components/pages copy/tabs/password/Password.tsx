@@ -11,7 +11,6 @@ import { FlexBox } from '../../../flexbox';
 import { H6, Paragraph, Small } from '../../../typography'; // STYLED COMPONENT
 
 import { FormWrapper, Dot } from './styles';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Toast from '../../../../utils/toast';
 import ApiService from '../../../../services/apiServices/apiService';
@@ -19,11 +18,10 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { useAppSelector } from '../../../../services/store/hooks/hooks';
 import { RootState } from '../../../../services/store/store';
 import { t } from 'i18next';
+
 export default function Password() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const navigate = useNavigate();
-  const userData: any = useAppSelector((state: RootState) => state.user);
 
   const initialValues = {
     newPassword: '',
@@ -52,7 +50,7 @@ export default function Password() {
     onSubmit: async (values) => {
       try {
         setIsSubmitting(true);
-        let changePass = await ApiService.changeAdminPassword({ currentPassword: values.currentPassword, newPassword: values.newPassword });
+        await ApiService.changePassword({ currentPassword: values.currentPassword, newPassword: values.newPassword });
         Toast.showSuccessMessage("Password Changed");
         resetForm({});
       } catch (error: any) {

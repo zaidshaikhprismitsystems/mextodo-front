@@ -8,8 +8,6 @@ import { category_url } from "../../config/config";
 import { ProductPreview } from "../product-preview";
 import { ProductForm } from "../product-form";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { useAppSelector } from "../../services/store/hooks/hooks";
-import { RootState } from "../../services/store/store";
 
 export default function AddProducts() {
   const { t, i18n } = useTranslation();

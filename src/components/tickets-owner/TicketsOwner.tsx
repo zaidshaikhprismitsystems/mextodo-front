@@ -8,7 +8,7 @@ import { Box, Chip, ListItemButton, Pagination, Stack, Typography } from '@mui/m
 import Grid from '@mui/material/Grid2';
 import { FlexBox, FlexRowAlign } from "../flexbox"
 import IconWrapper from '../icon-wrapper'
-import { H4, H6 } from "../typography"
+import { H6 } from "../typography"
 import TokenIcon from '@mui/icons-material/Token';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -29,7 +29,6 @@ export default function TicketsOwner() {
   const [ticketsData, setTicketsData] = useState([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState<number>(0);
-    const [rowsPerPage, setRowsPerPage] = useState<number>(5);
 
   const handleChangeFilter = (key: string, value: string) => {
     setTicketsFilter((state) => ({ ...state, [key]: value }))
@@ -37,11 +36,11 @@ export default function TicketsOwner() {
 
   useEffect(() =>{
     getTickets();
-  }, [ , ticketsFilter, page, rowsPerPage])
+  }, [ , ticketsFilter, page])
 
   const getTickets = async() => {
     try{
-      const tickets = await ApiService.getVendorTickets(ticketsFilter.search, page, rowsPerPage);
+      const tickets = await ApiService.getVendorTickets(ticketsFilter.search, page, 5);
       setTicketsData(tickets.data)
       setTotal(tickets.total)
     }catch(e){
@@ -93,7 +92,7 @@ export default function TicketsOwner() {
   }
   
 
-  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handlePageChange = (value: number) => {
     setPage(value-1);
   };
 
@@ -178,7 +177,7 @@ export default function TicketsOwner() {
                   ticketsData && ticketsData.length === 0 ? '' :
                   <Stack direction='row' gap={2} justifyContent='center' alignItems='center' sx={{my:2}}>
                     <Pagination count={Math.ceil(total/10)} color="primary" variant='text' shape='rounded' showFirstButton showLastButton hidePrevButton hideNextButton 
-                      onChange={handlePageChange} />
+                      onChange={(event, value) => handlePageChange(value)} />
                   </Stack>
                 }
               </Grid>

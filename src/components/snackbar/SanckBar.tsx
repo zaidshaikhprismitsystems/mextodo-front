@@ -1,13 +1,11 @@
-import { IconButton } from '@mui/material';
 import Snackbar, { SnackbarCloseReason } from '@mui/material/Snackbar';
-import CloseIcon from '@mui/icons-material/Close';
 import React from 'react';
 
 export default function SanckBarComponent({open, message}: any) {
     const [sopen, setsOpen] = React.useState(open);
   
     const handleClose = (
-      event: React.SyntheticEvent | Event,
+      _: React.SyntheticEvent | Event, // Removed unused 'event'
       reason?: SnackbarCloseReason,
     ) => {
       if (reason === 'clickaway') {
@@ -15,6 +13,8 @@ export default function SanckBarComponent({open, message}: any) {
       }
       setsOpen(false);
     };
+
+    const action = null; // Replace with the actual implementation if needed
 
     return (
       <div>

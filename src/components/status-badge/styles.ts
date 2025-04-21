@@ -1,10 +1,10 @@
-import styled from '@mui/material/styles/styled'
-// CUSTOM COMPONENTS
-import { Paragraph } from '@/components/typography'
-// CUSTOM UTILS METHOD
-import { isDark } from '@/utils/constants'
+import styled from '@mui/material/styles/styled';
+// Replace '@/components/typography' with the correct path
+import { Paragraph } from '../../typography';
+// Replace '@/utils/constants' with the correct path
+import { isDark } from '../../utils/constants';
 // CUSTOM DATA TYPE
-import { Type } from './StatusBadge'
+import { Type } from './StatusBadge';
 
 // STYLED COMPONENT
 export const Status = styled(Paragraph, {
@@ -33,4 +33,4 @@ export const Status = styled(Paragraph, {
   ...(isDark(theme) && {
     backgroundColor: `${theme.palette.grey[700]} !important`,
   }),
-}))
+}));

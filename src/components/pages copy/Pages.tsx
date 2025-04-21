@@ -1,7 +1,7 @@
+import React, { useState } from 'react'; // Add useState import
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid2';
-import useMediaQuery from '@mui/material/useMediaQuery';
 // CUSTOM COMPONENTS
 import { H3 } from '../typography';
 import FlexBox from '../flexbox/FlexBox'; 
@@ -12,7 +12,7 @@ const Pages = () => {
 
   const [termsAndCondition, setTermsAndCondition] = useState("");
 
-  function handleChangeFilter(arg0: string, value: string): void {
+  function handleChangeFilter() {
     throw new Error('Function not implemented.');
   }
 
@@ -33,7 +33,7 @@ const Pages = () => {
                 label={'Select'}
                 className="select"
                 value={'home'}
-                onChange={(e) => handleChangeFilter('status', e.target.value)}
+                onChange={(e) => handleChangeFilter()}
               >
                 <MenuItem key={0} value={'home'}>
                   {'Home'}
@@ -66,7 +66,7 @@ const Pages = () => {
                 <Grid size={{ xs: 12, }}>
                 <EditComponent
                   description={termsAndCondition}
-                  setDescription={(desc) => { setTermsAndCondition(desc) }}
+                  setDescription={(desc: string) => { setTermsAndCondition(desc) }}
                 />
                 </Grid>
                 <Grid size={{ xs: 12, }}>

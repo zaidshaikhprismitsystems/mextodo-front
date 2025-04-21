@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import {
   Box, Card, Grid, Modal, Typography, Table, TableBody, TableContainer, TablePagination
 } from '@mui/material'
-import { CloseIcon } from '@mui/icons-material'
+import CloseIcon from '@mui/icons-material/Close'
 import DiscountIcon from '@mui/icons-material/Discount'
 
 // CUSTOM COMPONENTS
@@ -38,8 +38,6 @@ const style = {
 };
 
 export default function PromotionDiscountOwner() {
-  const { t } = useTranslation();
-
   const [promotions, setPromotions] = useState<any[]>([]);
   const [selected, setSelected] = useState<number[]>([]);
   const [page, setPage] = useState<number>(0);

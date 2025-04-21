@@ -27,7 +27,7 @@ import { Box, IconButton, TextField } from '@mui/material'
 import { product_url } from '../../config/config'
 import { UpdateProducts } from '../update-products'
 import { useTranslation } from 'react-i18next'
-import { CloseOutlined, Height } from "@mui/icons-material"
+import { CloseOutlined } from "@mui/icons-material"
 import LoadingButton from '@mui/lab/LoadingButton'
 //  STYLED COMPONENTS
 const ListWrapper = styled('div')(({ theme }) => ({
@@ -96,8 +96,6 @@ export default function ProductListPageView() {
   const [ modelOpen, setModelOpen ] = useState(false);
   const [reason, setReason ] = useState("");
   
-  const handleOpen = () => setOpen(true);
-
   const handleClose = () => {
     setOpen(false);
     setEditOpen(false);

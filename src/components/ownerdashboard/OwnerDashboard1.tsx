@@ -1,117 +1,90 @@
-import Grid from '@mui/material/Grid2'
+import Grid from '@mui/material/Grid2';
 import Box from '@mui/material/Box';
 // CUSTOM COMPONENTS
-import InfoCard from './InfoCard'
-import RecentOrders from './RecentOrders'
-import EarningReport from './EarningReport'
-import CustomerReview from './CustomerReview'
-import CustomerList from './CustomerList'
-import Sales from './Sales'
-import PopularProducts from './PopularProducts'
+import InfoCard from './InfoCard';
+import RecentOrders from './RecentOrders';
+import EarningReport from './EarningReport';
+import CustomerReview from './CustomerReview';
+import CustomerList from './CustomerList';
+import Sales from './Sales';
+import PopularProducts from './PopularProducts';
 import { useEffect, useState } from 'react';
 import ApiService from '../../services/apiServices/apiService';
 import { useTranslation } from 'react-i18next';
 
 // CUSTOM DATA
 export const CARD_LIST = [
-  { trend: 'up', title: 'Revenue', amount: 'MX$ 35,800', showCurrency: true, percentage: 10.23 },
-  { trend: 'up', amount: 'MX$12,900', percentage: 20.4, title: 'Repeat Purchase', showCurrency: false },
-  { trend: 'down', amount: 'MX$1,000', percentage: 10.23, title: 'Average Order value', showCurrency: true },
-  { amount: 143, trend: 'down', percentage: 10.23, title: 'New Customers', showCurrency: false },
-]
-
-// Ensure 'Props' includes 'color' and 'icon' properties
-interface Props {
-  title: string;
-  amount: string | number;
-  showCurrency: boolean;
-  color: string; // Add missing property
-  icon: React.ReactNode; // Add missing property
-}
+  { trend: 'up', title: 'Revenue', amount: 'MX$ 35,800', showCurrency: true, percentage: 10.23, color: 'primary', icon: <SomeIcon /> },
+  { trend: 'up', amount: 'MX$12,900', percentage: 20.4, title: 'Repeat Purchase', showCurrency: false, color: 'primary', icon: <SomeIcon /> },
+  { trend: 'down', amount: 'MX$1,000', percentage: 10.23, title: 'Average Order value', showCurrency: true, color: 'primary', icon: <SomeIcon /> },
+  { amount: 143, trend: 'down', percentage: 10.23, title: 'New Customers', showCurrency: false, color: 'primary', icon: <SomeIcon /> },
+];
 
 export default function OwnerDashboard() {
-
-  const [ statistics, setStatistics ] = useState<any>({});
-  const [ loading, setLoading ] = useState(true);
+  const [statistics, setStatistics] = useState<any>({});
+  const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
 
   useEffect(() => {
     getOwnerStat();
-  }, [])
+  }, []);
 
   const getOwnerStat = async () => {
-    try{
+    try {
       let stats = await ApiService.getOwnerStat();
       setStatistics(stats.data);
-    }catch(error){
+    } catch (error) {
       setLoading(false);
-    }finally{
+    } finally {
       setLoading(false);
     }
-  }
-  
+  };
+
   const getTitle = (title: string) => {
     switch (title) {
-      case "Revenue":
-        return t("revenue")
-        break;
-      case "Total Products":
-        return t("total_products")
-        break;
-      case "Average Order Value":
-        return t("average_order_value")
-        break;
-      case "New Customers":
-        return t("new_customers")
-        break;
+      case 'Revenue':
+        return t('revenue');
+      case 'Total Products':
+        return t('total_products');
+      case 'Average Order Value':
+        return t('average_order_value');
+      case 'New Customers':
+        return t('new_customers');
       default:
-        break;
+        return title;
     }
-  }
+  };
 
-  let trendsData = !loading && Object.entries(statistics).length > 0 && statistics.trends.length > 0 && statistics.trends.map((data: any) => {
-    return{
+  const trendsData =
+    !loading &&
+    Object.entries(statistics).length > 0 &&
+    statistics.trends.length > 0 &&
+    statistics.trends.map((data: any) => ({
       amount: data.amount,
-      // percentage: 0,
       title: getTitle(data.title),
-      showCurrency: data.showCurrency
-      // trend: "down"
-    }
-  })
+      showCurrency: data.showCurrency,
+      color: 'secondary',
+      icon: <AnotherIcon />,
+    }));
 
   return (
-
-    <Box sx={{pt:3, pb:4}}>
+    <Box sx={{ pt: 3, pb: 4 }}>
       <Grid container spacing={3}>
         {/* DIFFERENT ANALYTICS DATA */}
-        
         <Grid container spacing={3} size={{ lg: 6, xs: 12 }}>
-          {
-            loading && Object.entries(statistics).length < 0 ? 
-            CARD_LIST.map((item, index) => (
-              <Grid key={index} size={{  xs: 6 }}>
-                <InfoCard
-                  // trend={item.trend}
-                  title={item.title}
-                  amount={item.amount}
-                  showCurrency={item.showCurrency}
-                  // percentage={item.percentage}
-                />
-              </Grid>
-            ))
-             :
-             !loading && Object.entries(statistics).length > 0 && trendsData.map((item: any, index: number) => (
-              <Grid key={index} size={{  xs: 6 }}>
-                <InfoCard
-                  // trend={item.trend}
-                  title={item.title}
-                  amount={item.amount}
-                  showCurrency={item.showCurrency}
-                  // percentage={item.percentage}
-                />
-              </Grid>
-            ))
-          }
+          {loading && Object.entries(statistics).length < 0
+            ? CARD_LIST.map((item, index) => (
+                <Grid key={index} size={{ xs: 6 }}>
+                  <InfoCard {...item} />
+                </Grid>
+              ))
+            : !loading &&
+              Object.entries(statistics).length > 0 &&
+              trendsData.map((item: any, index: number) => (
+                <Grid key={index} size={{ xs: 6 }}>
+                  <InfoCard {...item} />
+                </Grid>
+              ))}
         </Grid>
 
         {/* EARNING REPORT DATA VISUAL CHART */}
@@ -120,18 +93,21 @@ export default function OwnerDashboard() {
         </Grid>
 
         {/* SALES CARD */}
-        <Grid size={{lg: 8,  md: 7, xs: 12 }}>
-          <Sales earningsByDay={statistics.earningsByDay}/>
+        <Grid size={{ lg: 8, md: 7, xs: 12 }}>
+          <Sales earningsByDay={statistics.earningsByDay} />
         </Grid>
 
         {/* TOTAL CUSTOMER REVIEW CARD */}
-        <Grid size={{lg: 4,  md: 5, xs: 12 }}>
-          {
-            !loading
-            ?
-            <CustomerReview avgRatting={statistics.averageRating} ratingCounts={statistics.ratingCounts} totalRattings={statistics.totalRattings} />
-            : ''
-          }
+        <Grid size={{ lg: 4, md: 5, xs: 12 }}>
+          {!loading ? (
+            <CustomerReview
+              avgRatting={statistics.averageRating}
+              ratingCounts={statistics.ratingCounts}
+              totalRattings={statistics.totalRattings}
+            />
+          ) : (
+            ''
+          )}
         </Grid>
 
         {/* POPULAR PRODUCTS DATA TABLE */}
@@ -148,8 +124,7 @@ export default function OwnerDashboard() {
         <Grid size={12}>
           <CustomerList topCustomers={statistics.topCustomers} />
         </Grid>
-
       </Grid>
     </Box>
-  )
+  );
 }
