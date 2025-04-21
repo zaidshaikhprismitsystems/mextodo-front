@@ -11,7 +11,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import ApiService from "../../services/apiServices/apiService";
 import Toast from "../../utils/toast";
 import { TextBox } from '../textbox';
-import { H5, H6, Paragraph } from '../../components/typography';
+import { H5, Paragraph } from '../../components/typography';
 import Checkbox from '@mui/material/Checkbox';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';

@@ -3,9 +3,10 @@ import Chip from '@mui/material/Chip';
 import Badge from '@mui/material/Badge';
 import Button from '@mui/material/Button'; // CUSTOM COMPONENTS
 
-import { Paragraph } from '@/components/typography';
+import { Typography, Paragraph } from '@/components/typography';
 import AvatarLoading from '@/components/avatar-loading';
 import FlexRowAlign from '@/components/flexbox/FlexRowAlign';
+
 export default function UserAccount() {
   return <FlexRowAlign flexDirection="column" py={5}>
       <Badge badgeContent="Free" color="primary">

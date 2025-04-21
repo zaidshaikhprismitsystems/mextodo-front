@@ -1,5 +1,4 @@
 import { MouseEvent, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { format } from 'date-fns'
 // MUI
 import Chip from '@mui/material/Chip'
@@ -9,63 +8,26 @@ import TableCell from '@mui/material/TableCell'
 // CUSTOM COMPONENTS
 import FlexBox from '../flexbox/FlexBox'
 import { Paragraph } from '../typography'
-import { TableMoreMenuItem, TableMoreMenu } from '../table'
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from 'react-i18next'
-import { ConfirmToast } from '../confirm-toast'
 import { product_url, user_url } from '../../config/config'
 
 interface RowProps {
   entity: any;
   report: any
-  isSelected: boolean
   handleDeleteAttributes: (id: number) => void
-  handleSelectRow: (_: MouseEvent, id: number) => void
-  hanleViewOpen: (Attributes: any) => void
-  hanleEditOpen: (Attributes: any) => void
 }
 
 export default function ReportsTableRow({
   entity,
   report,
-  isSelected,
-  handleSelectRow,
-  handleDeleteAttributes,
-  hanleViewOpen,
-  hanleEditOpen
+  handleDeleteAttributes
 }: RowProps) {
 
-  const navigate = useNavigate()
   const { t, i18n } = useTranslation();
-  const [openMenuEl, setOpenMenuEl] = useState<null | HTMLElement>(null)
-
-  const [deleteAttributes, setDeleteAttributes] = useState<number>(0);
-
-  const handleOpenMenu = (event: MouseEvent<HTMLButtonElement>) => {
-    setOpenMenuEl(event.currentTarget)
-  }
 
   const handleConfirm = (id: number) => {
     handleDeleteAttributes(id);
   }
-
-  const showConfirmation = (message: string, id: number) => {
-    toast(
-      <ConfirmToast 
-        message={message} 
-        onConfirm={() => handleConfirm(id)} 
-        onCancel={handleCancel} 
-      />, 
-      { autoClose: false, closeOnClick: false }
-    );
-  };
-
-  const handleCancel = () => {
-    alert("Cancelled!");
-  }
-
-  const handleCloseOpenMenu = () => setOpenMenuEl(null)
 
   const getColor = (status: string) => {
     switch (status) {
@@ -111,15 +73,6 @@ export default function ReportsTableRow({
 
   return (
     <TableRow hover>
-      {/* <TableCell padding="checkbox">
-        <Checkbox
-          size="small"
-          color="primary"
-          checked={isSelected}
-          onClick={(event) => handleSelectRow(event, report.id)}
-        />
-      </TableCell> */}
-
     <TableCell padding="normal">
       <FlexBox alignItems="center" gap={2}>
         <Avatar
@@ -204,41 +157,6 @@ export default function ReportsTableRow({
     <TableCell padding="normal">
       {report?.createdAt ? format(new Date(report.createdAt), 'dd MMM yyyy') : 'N/A'}
     </TableCell>
-
-
-      {/* <TableCell padding="normal" align="right">
-        <TableMoreMenu
-          open={openMenuEl}
-          handleOpen={handleOpenMenu}
-          handleClose={handleCloseOpenMenu}
-        >
-          <TableMoreMenuItem
-            Icon={RemoveRedEye}
-            title={t("view")}
-            handleClick={() => {
-              handleCloseOpenMenu()
-              hanleViewOpen(report);
-            }}
-          />
-          <TableMoreMenuItem
-            Icon={Edit}
-            title={t("edit")}
-            handleClick={() => {
-              handleCloseOpenMenu();
-              hanleEditOpen(report);
-            }}
-          />
-          <TableMoreMenuItem
-            Icon={DeleteOutline}
-            title={t("delete")}
-            handleClick={() => {
-              handleCloseOpenMenu()
-              setDeleteAttributes(attribute.id)
-              showConfirmation(t("are_you_sure"), attribute.id); 
-            }}
-          />
-        </TableMoreMenu>
-      </TableCell> */}
     </TableRow>
   )
 }

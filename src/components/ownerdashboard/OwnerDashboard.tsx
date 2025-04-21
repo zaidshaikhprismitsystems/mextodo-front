@@ -12,7 +12,6 @@ import { useEffect, useState } from 'react';
 import ApiService from '../../services/apiServices/apiService';
 import { useTranslation } from 'react-i18next';
 import PersonIcon from '@mui/icons-material/Person';
-import { Icon } from '@mui/material';
 
 // CUSTOM DATA
 export const CARD_LIST = [

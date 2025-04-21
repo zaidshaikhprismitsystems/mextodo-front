@@ -1,7 +1,6 @@
 import Card from '@mui/material/Card'
 import styled from '@mui/material/styles/styled'
 import { useTranslation } from 'react-i18next'
-import { alpha } from '@mui/system/colorManipulator'
 // CUSTOM COMPONENTS
 import { H6, Paragraph } from '../typography'
 import Icon from '@mui/material/Icon'

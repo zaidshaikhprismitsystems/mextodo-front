@@ -4,7 +4,6 @@ import IconButton from '@mui/material/IconButton'
 import LinearProgress from '@mui/material/LinearProgress'
 // MUI ICON COMPONENTS
 import CameraAlt from '@mui/icons-material/CameraAlt'
-import MoreHoriz from '@mui/icons-material/MoreHoriz'
 // CUSTOM ICON COMPONENTS
 import DateRange from '../../icons/DateRange'
 import Bratislava from '../../icons/Bratislava'
@@ -17,7 +16,6 @@ import { FlexBetween, FlexBox } from '../../components/flexbox'
 import { H6, Paragraph, Small } from '../../components/typography'
 // STYLED COMPONENTS
 import { ProgressWrapper, ContentWrapper } from './styles'
-import { grey } from '@mui/material/colors'
 import { format } from 'date-fns'
 import LoadingButton from '@mui/lab/LoadingButton';
 

@@ -17,9 +17,6 @@ export default function OwnerDrower() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const { t } = useTranslation(); 
 
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
-    React.useState<null | HTMLElement>(null);
-
   const isMenuOpen = Boolean(anchorEl);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -27,7 +24,7 @@ export default function OwnerDrower() {
   };
 
   const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
+    // Removed unused variable
   };
 
   const handleMenuClose = () => {

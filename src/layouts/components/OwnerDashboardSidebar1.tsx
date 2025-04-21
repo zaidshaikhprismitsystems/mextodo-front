@@ -1,10 +1,9 @@
-import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Scrollbar from '../../components/scrollbar';
 import { NestedListItem } from '../../components/nested-listitem';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Typography } from '@mui/material';
+import { Typography, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Folder from '../../icons/duotone/Folder';

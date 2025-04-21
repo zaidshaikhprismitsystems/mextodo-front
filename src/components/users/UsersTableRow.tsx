@@ -26,7 +26,7 @@ interface RowProps {
   hanleEditOpen: (product: any) => void
 }
 
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useTranslation } from 'react-i18next'
 import { ConfirmToast } from '../confirm-toast'
@@ -40,11 +40,8 @@ export default function TicketsTableRow({
   hanleEditOpen
 }: RowProps) {
 
-  const navigate = useNavigate()
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [openMenuEl, setOpenMenuEl] = useState<null | HTMLElement>(null)
-
-  const [deleteProduct, setDeleteProduct] = useState<number>(0);
 
   const handleOpenMenu = (event: MouseEvent<HTMLButtonElement>) => {
     setOpenMenuEl(event.currentTarget)
@@ -163,7 +160,6 @@ export default function TicketsTableRow({
             title={t("delete")}
             handleClick={() => {
               handleCloseOpenMenu()
-              setDeleteProduct(user.id)
               showConfirmation(t("are_you_sure"), user.id); 
             }}
           />

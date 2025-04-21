@@ -2,11 +2,8 @@ import { useNavigate } from 'react-router-dom'
 // MUI
 import MenuItem from '@mui/material/MenuItem'
 import TextField from '@mui/material/TextField'
-import IconButton from '@mui/material/IconButton'
 import styled from '@mui/material/styles/styled'
 // CUSTOM ICON COMPONENTS
-import Apps from '../../icons/Apps'
-import FormatBullets from '../../icons/FormatBullets'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FlexBetween } from '../flexbox'

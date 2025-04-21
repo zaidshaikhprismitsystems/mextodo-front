@@ -1,32 +1,26 @@
 import { MouseEvent, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { format } from 'date-fns'
 // MUI
 import Chip from '@mui/material/Chip'
-import Avatar from '@mui/material/Avatar'
-import TableRow from '@mui/material/TableRow'
 import Checkbox from '@mui/material/Checkbox'
+import TableRow from '@mui/material/TableRow'
 import TableCell from '@mui/material/TableCell'
 // MUI ICON COMPONENTS
 import Edit from '@mui/icons-material/Edit'
-import RemoveRedEye from '@mui/icons-material/RemoveRedEye'
 import DeleteOutline from '@mui/icons-material/DeleteOutline'
 // CUSTOM COMPONENTS
-import FlexBox from '../flexbox/FlexBox'
 import { Paragraph } from '../typography'
 import { TableMoreMenuItem, TableMoreMenu } from '../table'
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useTranslation } from 'react-i18next'
 import { ConfirmToast } from '../confirm-toast'
-import dayjs from "dayjs"
 
 interface RowProps {
   promotion: any
   isSelected: boolean
   handleDeletePromotion: (id: number) => void
   handleSelectRow: (_: MouseEvent, id: number) => void
-  handleViewOpen: (promotion: any) => void
   handleEditOpen: (promotion: any) => void
 }
 
@@ -35,12 +29,10 @@ export default function PromotionTableRow({
   isSelected,
   handleSelectRow,
   handleDeletePromotion,
-  handleViewOpen,
   handleEditOpen
 }: RowProps) {
 
-  const navigate = useNavigate()
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const [openMenuEl, setOpenMenuEl] = useState<null | HTMLElement>(null)
 
   const handleOpenMenu = (event: MouseEvent<HTMLButtonElement>) => {
@@ -137,14 +129,6 @@ export default function PromotionTableRow({
           handleOpen={handleOpenMenu}
           handleClose={handleCloseOpenMenu}
         >
-          {/* <TableMoreMenuItem
-            Icon={RemoveRedEye}
-            title={t("view")}
-            handleClick={() => {
-              handleCloseOpenMenu()
-              handleViewOpen(promotion)
-            }}
-          /> */}
           <TableMoreMenuItem
             Icon={Edit}
             title={t("edit")}

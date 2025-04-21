@@ -1,6 +1,5 @@
-import { Box, Button, capitalize, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import Container from '@mui/material/Container'; // CUSTOM COMPONENTS
-import { primary, textLight } from '../../theme/colors';
 import { grey } from '@mui/material/colors';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -17,7 +16,7 @@ export default function VendorStatus({status, checkUserVendor}: any) {
   const resetApplication = async() => {
     try{
       setloading(true);
-      let rejectVendor = await ApiService.resetVendor();
+      await ApiService.resetVendor();
       Toast.showSuccessMessage("Vendor Profile Rejected Successfully. Email with reason sent.");
       checkUserVendor();
     }catch(e: any){

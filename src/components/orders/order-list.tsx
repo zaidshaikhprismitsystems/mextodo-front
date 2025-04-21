@@ -9,6 +9,12 @@ import { TableDataNotFound, TableToolbar } from '../../components/table';
 import OrdersTableActions from './ordersTableActions';
 import OrdersTableHead from './ordersTableHead';
 import OrdersTableRow from './ordersTableRow';
+import ApiService from '../../services/ApiService';
+import Toast from '../../components/Toast';
+import FlexBox from '../../components/flexbox/FlexBox';
+import IconWrapper from '../../components/icons/IconWrapper';
+import Folder from '../../icons/duotone/Folder';
+import H6 from '../../components/typography/H6';
 
 export default function OrderListPageView() {
   const [ordersData, setOrdersData] = useState([]);
@@ -80,14 +86,14 @@ export default function OrderListPageView() {
   };
 
   const handleDeleteProduct = async (id: number) => {
-    let cancelOrder = await ApiService.cancelOrders(id);
+    await ApiService.cancelOrders(id);
     Toast.showSuccessMessage('Order cancelled Successfully');
     await getOrders();
   };
 
   const handleAllProductDelete = async () => {
     try {
-      let cancelOrder = await ApiService.cancelOrders(selected);
+      await ApiService.cancelOrders(selected);
       Toast.showSuccessMessage('Orders cancelled Successfully');
       setSelected([]);
       await getOrders();

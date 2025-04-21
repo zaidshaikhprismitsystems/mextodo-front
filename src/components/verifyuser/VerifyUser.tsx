@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ApiService from "../../services/apiServices/apiService"
 import { useSearchParams } from "react-router-dom"
 
-import { H5, H6, Paragraph } from '../../components/typography';
+import { H5 } from '../../components/typography';
 import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import { Box, Card, Typography } from "@mui/material";
@@ -19,9 +19,9 @@ const Login = () => {
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState("");
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams] = useSearchParams();
 
   const token = searchParams.get("token")
   

@@ -5,18 +5,6 @@ import Divider from "@mui/material/Divider";
 import Popover from "@mui/material/Popover";
 import { H4 } from "../../../components/typography";
 
-// Props type definition
-interface PopoverLayoutProps {
-  title?: string;
-  children: ReactNode;
-  minWidth?: number;
-  maxWidth?: number;
-  anchorRef: React.RefObject<HTMLElement>;
-  popoverOpen: boolean;
-  popoverClose: () => void;
-  hiddenViewButton?: boolean;
-}
-
 export default function PopoverLayout({
   title = "Notifications",
   children,

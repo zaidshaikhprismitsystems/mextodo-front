@@ -2,17 +2,16 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 
 import Box from '@mui/material/Box';
-import { Autocomplete, Link, MenuItem, styled, Typography } from '@mui/material';
+import { Autocomplete, Link, styled, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import TextField from '@mui/material/TextField';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Checkbox from '@mui/material/Checkbox';
-import Select from '@mui/material/Select';
 import * as Yup from 'yup';
 
 import ApiService from "../../services/apiServices/apiService"
 import { LoadingProgress } from "../loader"
-import { H5, H6, Paragraph } from '../typography';
+import { H5, Paragraph } from '../typography';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RootState } from '../../services/store/store';
@@ -20,18 +19,12 @@ import Toast from '../../utils/toast';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import { VendorStatus } from '../vendorstatus'
 import { TextBox } from '../textbox';
-import { useAppDispatch, useAppSelector } from "../../services/store/hooks/hooks";
-import { setUserDetails } from '../../services/store/slices/userSlice';
-
-const AutoCompleteTextBox = styled(TextField)<any>(({ theme }) => ({
-  color: theme.palette.text.primary,
-}));
+import { useAppSelector } from "../../services/store/hooks/hooks";
 
 const Register = () => {
   const navigate = useNavigate();
 
   const [alreadyApplied, setAlreadyApplied] = useState(false);
-  const [stripeConnect, setStripeConnect] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   
   const [country, setCountry] = useState<any>();
@@ -135,7 +128,6 @@ const Register = () => {
     curp: Yup.string().min(18).max(18).required(t("curp_required")),
     whatsapp_number: Yup.number().required(t("whatsapp_number_required")),
     district: Yup.string().required(t("colonia_required")),
-    // address: Yup.string().required(t("address_required")),
     postal_code: Yup.number()
     .required(t("postal_code_required"))
     .test('len', 'Postal code must be exactly 5 digits', (value: any) => {
@@ -185,9 +177,7 @@ const Register = () => {
           if(sellerRegister){
             Toast.showSuccessMessage('Applied for vendor successfully.');
             checkUserVendor();
-            // setAlreadyApplied(true);
           }
-        // navigate('/');
       } catch (error: any) {
         setIsSubmitting(false);
         Toast.showErrorMessage('Registration Failed For Vendor.');

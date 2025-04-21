@@ -2,7 +2,7 @@ import TableCell from '@mui/material/TableCell'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import styled from '@mui/material/styles/styled'
 // CUSTOM UTILS METHOD
-import { isDark } from '@/utils/constants'
+import { isDark } from '../../utils/constants'
 
 // STYLED COMPONENTS
 export const StyledFormControl = styled(FormControlLabel)(({ theme }) => ({

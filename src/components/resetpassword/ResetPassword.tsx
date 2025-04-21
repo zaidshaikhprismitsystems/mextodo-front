@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ApiService from "../../services/apiServices/apiService"
 import { useSearchParams } from "react-router-dom"
 
-import { H5, H6 } from '../../components/typography';
+import { H5 } from '../../components/typography';
 import { useEffect, useState } from 'react';
 import { Box } from "@mui/material";
 import { useTranslation } from 'react-i18next';
@@ -12,7 +12,6 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import Grid from '@mui/material/Grid2';
-import TextField from '@mui/material/TextField'; // CUSTOM DEFINED HOOK
 import LoadingButton from '@mui/lab/LoadingButton';
 
 import Toast from '../../utils/toast';
@@ -22,11 +21,11 @@ import { TextBox } from '../textbox';
 const ResetPassword = () => {
   const navigate = useNavigate();
  
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams] = useSearchParams();
 
   const token = searchParams.get("token");
   
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const userData = useAppSelector((state: any) => state.userData)
     useEffect(() => {
@@ -62,7 +61,7 @@ const ResetPassword = () => {
     onSubmit: async (values: any) => {
       try {
         setIsSubmitting(true);
-        let resetPassword = await ApiService.resetPassword({token, email: values.email, password: values.password});
+        await ApiService.resetPassword({token, email: values.email, password: values.password});
         Toast.showSuccessMessage('Password reset successfully');
         navigate('/login');
       } catch (error: any) {
@@ -90,11 +89,6 @@ const ResetPassword = () => {
               <form onSubmit={handleSubmit}>
                 <Grid container spacing={2}>
                   <Grid size={12}>
-                    {/* <H6 fontSize={16} mb={0.5} color={'black'} fontWeight={500} mt={0}>
-                    {t("email_id")}
-                    </H6> */}
-                    {/* @ts-ignore */}
-                    {/* <TextField fullWidth placeholder={t("enter_email")} name="email" onBlur={handleBlur} value={values.email} onChange={handleChange} helperText={touched.email && errors.email} error={Boolean(touched.email && errors.email)} /> */}
                     <TextBox
                       type={"email"}
                       fullWidth={true}
@@ -109,13 +103,7 @@ const ResetPassword = () => {
                   </Grid>
 
                   <Grid size={12}>
-                    {/* <H6 fontSize={16} mb={0.5} color={'black'} fontWeight={500} mt={0}>
-                    {t("password")}
-                    </H6> */}
-                    {/* @ts-ignore */}
-                    {/* <TextField type="password" fullWidth placeholder={t("enter_password")} name="password" onBlur={handleBlur} value={values.password} onChange={handleChange} helperText={touched.password && errors.password} error={Boolean(touched.password && errors.password)} /> */}
                     <TextBox
-                      // type={showPassword ? 'text' : 'password'} 
                       type={"password"}
                       fullWidth={true}
                       placeholder={t("enter_password")} 
@@ -125,25 +113,11 @@ const ResetPassword = () => {
                       value={values.password}
                       helperText={touched.password && typeof errors.password === "string" ? errors.password : ""}
                       error={Boolean(touched.password && errors.password)} 
-                      // slotProps={{
-                      //   input: {
-                      //     endAdornment: 
-                      //       <ButtonBase disableRipple disableTouchRipple onClick={() => setShowPassword(!showPassword)} sx={{color:'primary.main'}}>
-                      //         {showPassword ? <VisibilityOff fontSize="small" /> : <Visibility fontSize="small" />}
-                      //       </ButtonBase>
-                      //   }
-                      // }}
                     />
                   </Grid>
 
                   <Grid size={12}>
-                    {/* <H6 fontSize={16} mb={0.5} color={'black'} fontWeight={500} mt={0}>
-                    {t("repeat_password")}
-                    </H6> */}
-                    {/* @ts-ignore */}
-                    {/* <TextField type="password" fullWidth placeholder={t("enter_repeat_password")} name="cpassword" onBlur={handleBlur} value={values.cpassword} onChange={handleChange} helperText={touched.cpassword && errors.cpassword} error={Boolean(touched.cpassword && errors.cpassword)} /> */}
                     <TextBox
-                      // type={showPassword ? 'text' : 'password'} 
                       type={"password"}
                       fullWidth={true}
                       placeholder={t("enter_repeat_password")} 
@@ -153,14 +127,6 @@ const ResetPassword = () => {
                       value={values.cpassword}
                       helperText={touched.cpassword && typeof errors.cpassword === "string" ? errors.cpassword : ""}
                       error={Boolean(touched.cpassword && errors.cpassword)} 
-                      // slotProps={{
-                      //   input: {
-                      //     endAdornment: 
-                      //       <ButtonBase disableRipple disableTouchRipple onClick={() => setShowPassword(!showPassword)} sx={{color:'primary.main'}}>
-                      //         {showPassword ? <VisibilityOff fontSize="small" /> : <Visibility fontSize="small" />}
-                      //       </ButtonBase>
-                      //   }
-                      // }}
                     />
                   </Grid>
 
@@ -171,20 +137,6 @@ const ResetPassword = () => {
                   </Grid>
                 </Grid>
               </form>
-
-            {/* <Divider sx={{
-              my: 2,
-              color: 'text.secondary',
-              fontSize: 13
-            }}>
-              {t("already_have_an_account")}
-            </Divider> */}
-
-            {/* <Button fullWidth variant="text" onClick={() => navigate('/login')} sx={{
-              backgroundColor: 'primary.50'
-            }}>
-              {t("login")}
-            </Button> */}
           </Box>
         </Box>
       </Box>

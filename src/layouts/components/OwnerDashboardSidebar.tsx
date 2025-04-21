@@ -15,25 +15,11 @@ import ArrowLeftToLine from '../../icons/duotone/ArrowLeftToLine';
 // import { SidebarWrapper } from '@/layouts/layout-1/styles';
 import { Button, styled, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import DisplaySettingsIcon from '@mui/icons-material/DisplaySettings';
-import CategoryIcon from '@mui/icons-material/Category';
-import HubIcon from '@mui/icons-material/Hub';
-import AdminEcommerce from '../../icons/duotone/AdminEcommerce'
-import LayerGroup from '../../icons/duotone/LayerGroup'
+import AdminEcommerce from '../../icons/duotone/AdminEcommerce';
+import Folder from '../../icons/duotone/Folder';
 import { NestedListItem } from '../../components/nested-listitem';
 import React from 'react';
 
-import ListSubheader from '@mui/material/ListSubheader';
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Collapse from '@mui/material/Collapse';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import Folder from '../../icons/duotone/Folder';
 import { useTranslation } from 'react-i18next';
 
 const TOP_HEADER_AREA = 50;
@@ -41,22 +27,20 @@ const TOP_HEADER_AREA = 50;
 export default function OwnerDashboardSidebar() {
   
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation(); 
-  const handleSidebarCompactToggle =() => {
-  }
+  const { t } = useTranslation(); 
 
   const productRoutes = [
     {
       name: t("products"),
       onClick: () => {
-        navigate("products")
+        navigate("products");
       },
       active: location.pathname === "/dashboard/products" ? true : false
     },
     {
       name: t("create_new_products"),
       onClick: () => {
-        navigate("add-products")
+        navigate("add-products");
       },
       active: location.pathname === "/dashboard/add-products" ? true : false
     }
@@ -66,27 +50,21 @@ export default function OwnerDashboardSidebar() {
     {
       name: t("orders"),
       onClick: () => {
-        navigate("orders")
+        navigate("orders");
       },
       active: location.pathname === "/dashboard/orders" ? true : false
     },
     {
       name: t("order_details"),
       onClick: () => {
-        navigate("order-details")
+        navigate("order-details");
       },
       active: location.pathname === "/dashboard/order-details" ? true : false
     }
   ];
 
-  const [onHover, setOnHover] = useState(false);
-
-  const [open, setOpen] = React.useState(false);
-  const [openAttributes, setOpenAttributes] = React.useState(false);
-  const [openCategories, setOpenCategories] = React.useState(false);
-  const [openCategoryAttributes, setOpenCategoryAttributes] = React.useState(false);
-  const [openProducts, setOpenProducts] = React.useState(false);
-  const [openOrders, setOpenOrders] = React.useState(false);
+  const [openProducts, setOpenProducts] = useState(false);
+  const [openOrders, setOpenOrders] = useState(false);
   
   return (
       <Box position={'sticky'} top={169}>
@@ -164,5 +142,5 @@ export default function OwnerDashboardSidebar() {
           </Box>
         </Scrollbar>
       </Box>
-  )
+  );
 }

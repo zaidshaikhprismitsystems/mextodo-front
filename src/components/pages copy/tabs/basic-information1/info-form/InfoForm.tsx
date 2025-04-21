@@ -9,23 +9,17 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik'; // CUSTOM COMPONENTS
 
 import { H6 } from '../../../../typography';
-import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useAppSelector } from '../../../../../services/store/hooks/hooks';
 import { RootState } from '../../../../../services/store/store';
 import ApiService from '../../../../../services/apiServices/apiService';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Toast from '../../../../../utils/toast';
-export default function InfoForm() {
 
-  const navigate = useNavigate();
-  
+export default function InfoForm() {
   const [userDetails, setUserData] = useState<any>(false);
   const [isSubmitting, setIsSubmitting] = useState<any>(false);
   const [isLoading, setIsLoading] = useState(true);
-  
-  const { t } = useTranslation();
 
   const userData: any = useAppSelector((state: RootState) => state.user);
 
@@ -61,7 +55,7 @@ export default function InfoForm() {
     currency: userDetails.currency,
     language: userDetails.language,
   };
-  
+
   const {
     values,
     errors,

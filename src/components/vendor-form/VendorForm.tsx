@@ -1,4 +1,4 @@
-import { Autocomplete, Box, Button, ListItem, MenuItem, Select, Switch, TextField } from '@mui/material'
+import { Autocomplete, Box, Button, MenuItem, Switch, TextField } from '@mui/material'
 import { Fragment } from 'react'
 import Grid from '@mui/material/Grid2';
 import LoadingButton from '@mui/lab/LoadingButton';
@@ -26,7 +26,6 @@ export default function VendorForm(
     setFieldValue,
     country,
     states,
-    cities,
     createdAt,
     isSubmitting,
     handleClose,
@@ -37,7 +36,7 @@ export default function VendorForm(
     isGetAddrLoading
   }: any) {
     
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     
     let stateName = states?.find((s: any) => {
       if(s.id == values.state){
@@ -47,12 +46,6 @@ export default function VendorForm(
     } );
 
     console.log('values.cities: ', values);
-    let cityName = cities?.find((s: any) => {
-      if(s.id == values.city){
-        return s.name;
-      }
-      return;
-    } );
 
     console.log('addressData: ', addressData);
 
@@ -67,14 +60,6 @@ export default function VendorForm(
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
       }}>
-      {/* {
-        !isUpdate ?
-          <Box px={{ xs: 1, md: 3 }} pb={3}>
-            <Button onClick={enableUpdate} variant='outlined'>Unable Update</Button>
-          </Box>
-          :
-          ''
-      } */}
       <Box px={{ xs: 1, md: 3 }} bgcolor={'rgba(255,255,255,0.1)'} sx={{ backdropFilter: 'blur(10px)', }}>
         <Fragment>
           <Card sx={{ padding: 3, position: 'relative', boxShadow:0, border:'1px solid rgb(223, 223, 223)', borderRadius:3}}>
@@ -197,7 +182,6 @@ export default function VendorForm(
                     helperText={touched.postal_code && typeof errors.postal_code === "string" ? errors.postal_code : ""}
                     error={Boolean(touched.postal_code && errors.postal_code)}
                     disabled={!isUpdate}
-                    // color={touched.email && !errors.email ? "success" : "primary"}
                     sx={{
                       '& .MuiOutlinedInput-root': {
                         '& fieldset': {

@@ -1,5 +1,4 @@
 import { ChangeEvent, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 // MUI
 import {
@@ -22,11 +21,9 @@ import PromotionTableHead from './PromotionTableHead'
 import PromotionTableActions from './PromotionTableActions'
 import ApiService from '../../services/apiServices/apiService'
 import Toast from '../../utils/toast'
-import { useTranslation } from 'react-i18next'
 import { FlexBox } from '../flexbox'
 import IconWrapper from '../icon-wrapper'
 import { H6 } from '../typography'
-import { PromotionAndDiscountForm } from '../promotion-discount-form'
 import { PromotionDiscountUpdate } from '../promotion-discount-update'
 
 const style = {
@@ -45,9 +42,6 @@ const style = {
 };
 
 export default function PromotionDiscount() {
-  const navigate = useNavigate();
-  const { t } = useTranslation();
-
   const [promotions, setPromotions] = useState<any[]>([]);
   const [selected, setSelected] = useState<number[]>([]);
   const [page, setPage] = useState<number>(0);
@@ -62,8 +56,6 @@ export default function PromotionDiscount() {
   const [currentPromotion, setCurrentPromotion] = useState<any>(null);
 
   const [filter, setFilter] = useState({ search: '', status: '' });
-
-  const handleOpen = () => setOpen(true);
 
   const handleClose = () => {
     setOpen(false);

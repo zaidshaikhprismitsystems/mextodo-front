@@ -10,7 +10,6 @@ import PopoverLayout from "./PopoverLayout";
 import FlexBox from "../../../components/flexbox/FlexBox";
 import AvatarLoading from "../../../components/avatar-loading";
 import { H6, Paragraph, Small } from "../../../components/typography";
-import useAuth from "../../../hooks/useAuth"; // Ensure this path is correct
 import { useAppDispatch } from "../../../services/store/hooks/hooks";
 import { setUserDetails } from "../../../services/store/slices/userSlice";
 
@@ -38,7 +37,6 @@ export default function ProfilePopover() {
   const anchorRef = useRef<any>(null);
   const [open, setOpen] = useState<boolean>(false);
   const navigate = useNavigate();
-  // const { logout } = useAuth(); // Using authentication hook
 
   const handleMenuItem = (path: string) => (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
@@ -55,7 +53,6 @@ export default function ProfilePopover() {
           alt="user"
           percentage={60}
           src="/public/user.png"
-          // sx={{ width: 35, height: 35 }}
         />
       </StyledButtonBase>
 

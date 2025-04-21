@@ -1,4 +1,3 @@
-import MoreHoriz from '@mui/icons-material/MoreHoriz'
 // MUI
 import Card from '@mui/material/Card'
 import Table from '@mui/material/Table'
@@ -7,7 +6,6 @@ import TableRow from '@mui/material/TableRow'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import TableHead from '@mui/material/TableHead'
-import IconButton from '@mui/material/IconButton'
 import styled from '@mui/material/styles/styled'
 import { alpha } from '@mui/system/colorManipulator'
 // CUSTOM COMPONENTS

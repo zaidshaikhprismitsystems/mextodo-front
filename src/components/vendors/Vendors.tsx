@@ -1,37 +1,27 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 // MUI
-import Tab from '@mui/material/Tab'
-import Tabs from '@mui/material/Tabs'
 import Card from '@mui/material/Card'
 import Table from '@mui/material/Table'
 import Button from '@mui/material/Button'
 import TableBody from '@mui/material/TableBody'
 import TableContainer from '@mui/material/TableContainer'
 import TablePagination from '@mui/material/TablePagination'
-import styled from '@mui/material/styles/styled'
-// CUSTOM ICON COMPONENT
-import Add from '../../icons/Add'
-// CUSTOM COMPONENTS
+import Modal from '@mui/material/Modal';
+import React from 'react'
+import { Box, TextField, Typography } from '@mui/material'
+import ApiService from '../../services/apiServices/apiService'
+import Toast from '../../utils/toast'
+import { UpdateVendors } from '../update-vendors'
+import { useTranslation } from 'react-i18next'
+import LoadingButton from '@mui/lab/LoadingButton';
+import CloseIcon from '@mui/icons-material/Close';
+import { FlexBox } from '../flexbox'
 import Scrollbar from '../scrollbar'
 import { TableDataNotFound, TableToolbar } from '../table'
 import VendorsTableRow from './VendorsTableRow'
 import VendorsTableHead from './VendorsTableHead'
 import VendorsTableActions from './VendorsTableActions'
-import ApiService from '../../services/apiServices/apiService'
-import Toast from '../../utils/toast'
-import { ProductPreview } from '../product-preview'
-import Modal from '@mui/material/Modal';
-import React from 'react'
-import { Box, IconButton, TextField, Typography } from '@mui/material'
-import { product_url } from '../../config/config'
-import { UpdateVendors } from '../update-vendors'
-import { useTranslation } from 'react-i18next'
-import LoadingButton from '@mui/lab/LoadingButton';
-import CloseIcon from '@mui/icons-material/Close';
-import Grid from '@mui/material/Grid2';
-import { CloseOutlined } from '@mui/icons-material'
-import { FlexBox } from '../flexbox'
 
 const style = {
   position: 'absolute',
@@ -42,46 +32,12 @@ const style = {
   maxWidth:'95%',
   bgcolor: 'background.paper',
   borderRadius:'10px',
-  // boxShadow: 24,
   pt: 0,
   overflow: 'auto',
   maxHeight: "90dvh"
 };
 
-// const styleRejectModel = {
-//   position: 'absolute',
-//   top: '50%',
-//   left: '50%',
-//   transform: 'translate(-50%, -50%)',
-//   width: "50%",
-//   minWidth: 300,
-//   height: 400,
-//   bgcolor: 'background.paper',
-//   border: '2px solid #000',
-//   boxShadow: 24,
-//   p: 3,
-//   overflow: 'auto'
-// };
- 
-const styleRejectModel = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 700,
-  maxWidth:'95%',
-  bgcolor: 'background.paper',
-  borderRadius:'10px',
-  // boxShadow: 24,
-  pt: 0,
-  overflow: 'hidden',
-  height: "90dvh",
-  maxHeight:600
-};
-
 export default function Vendors() {
-  const navigate = useNavigate()
-
   const [vendorData, setVendorData] = useState([])
   const [addressData, setAddressData] = useState([]);
 
@@ -108,8 +64,6 @@ export default function Vendors() {
 
   const [vendorUpdate, setIsVendorUpdate] = useState(false);
   
-  const handleOpen = () => setOpen(true);
-
   const handleClose = () => {
     setOpen(false);
     setEditOpen(false);
@@ -212,8 +166,6 @@ export default function Vendors() {
     setIsVendorUpdate(true);
   }
 
-  const { t } = useTranslation();
-
   const handleReject = async (id: any) => {
     console.log(id);
     setDeleteId(id);
@@ -263,18 +215,6 @@ export default function Vendors() {
         aria-describedby="modal-modal-description-model"
       >
         <Box sx={style}>
-        {/* <IconButton
-            aria-label="close"
-            onClick={handleCloseModel}
-            sx={{
-              position: "absolute",
-              top: 2,
-              right: 10,
-              color: "gray",
-            }}
-          >
-            <CloseOutlined />
-          </IconButton> */}
           <Scrollbar>
               <Box p={{xs:1, md:3}} onClick={handleClose} sx={{ display:'flex',alignItems:'center', justifyContent:'space-between', position:'sticky', top:0, width:'100%', zIndex:2, backgroundColor:'#fff'}} >
                 <Typography  variant='h6' fontWeight={600}>Reject Reason </Typography>

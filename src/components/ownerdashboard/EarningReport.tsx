@@ -55,7 +55,6 @@ export default function EarningReport({reports, orderYears}: any) {
       maxValue = data;
     }
   })
-  const theme = useTheme()
   const [seriesData, setSeriesData] = useState(2025)
 
   // REACT CHART DATA
@@ -79,19 +78,19 @@ const chartData = [
   const chartSeries = chartData.find((item) => parseInt(item.title) === seriesData)?.data
 
   // REACT CHART OPTIONS
-  const chartOptions = merge(baseChartOptions(theme), {
+  const chartOptions = merge(baseChartOptions(useTheme()), {
     stroke: { show: false },
-    colors: [theme.palette.primary.main],
+    colors: [useTheme().palette.primary.main],
     grid: {
       show: true,
       strokeDashArray: 3,
-      borderColor: theme.palette.divider,
+      borderColor: useTheme().palette.divider,
     },
     xaxis: {
       categories: chartCategories,
       labels: {
         show: true,
-        style: { fontWeight: 500, colors: theme.palette.text.secondary },
+        style: { fontWeight: 500, colors: useTheme().palette.text.secondary },
       },
     },
     yaxis: {
@@ -101,7 +100,7 @@ const chartData = [
       tickAmount: 4,
       labels: {
         formatter: (value) => formatK(value),
-        style: { colors: theme.palette.text.secondary, fontWeight: 500 },
+        style: { colors: useTheme().palette.text.secondary, fontWeight: 500 },
       },
     },
     tooltip: {
@@ -140,12 +139,12 @@ const chartData = [
             labels: {
               show: true,
               formatter: (value: number) => formatK(Math.floor(value)),
-              style: { colors: theme.palette.text.secondary, fontWeight: 500 },
+              style: { colors: useTheme().palette.text.secondary, fontWeight: 500 },
             },
           },
           yaxis: {
             show: true,
-            labels: { style: { colors: theme.palette.text.secondary, fontWeight: 500 } },
+            labels: { style: { colors: useTheme().palette.text.secondary, fontWeight: 500 } },
           },
         },
       },

@@ -20,6 +20,15 @@ export const CARD_LIST = [
   { amount: 143, trend: 'down', percentage: 10.23, title: 'New Customers', showCurrency: false },
 ]
 
+// Ensure 'Props' includes 'color' and 'icon' properties
+interface Props {
+  title: string;
+  amount: string | number;
+  showCurrency: boolean;
+  color: string; // Add missing property
+  icon: React.ReactNode; // Add missing property
+}
+
 export default function OwnerDashboard() {
 
   const [ statistics, setStatistics ] = useState<any>({});

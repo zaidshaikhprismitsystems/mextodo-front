@@ -1,11 +1,10 @@
-import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 // MUI
 import MenuItem from '@mui/material/MenuItem'
 import TextField from '@mui/material/TextField'
 import styled from '@mui/material/styles/styled'
 // CUSTOM ICON COMPONENTS
-import { useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useEffect } from 'react'
 import { FlexBetween } from '../flexbox'
 import Grid from '@mui/material/Grid2';
 

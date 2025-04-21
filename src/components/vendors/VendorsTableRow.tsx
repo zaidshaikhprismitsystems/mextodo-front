@@ -1,5 +1,4 @@
 import { MouseEvent, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { format } from 'date-fns'
 // MUI
 import Chip from '@mui/material/Chip'
@@ -15,12 +14,11 @@ import DeleteOutline from '@mui/icons-material/DeleteOutline'
 import FlexBox from '../flexbox/FlexBox'
 import { Paragraph } from '../typography'
 import { TableMoreMenuItem, TableMoreMenu } from '../table'
-import { product_url } from "../../config/config"
 import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
 import { ConfirmToast } from '../confirm-toast'
 import { useTranslation } from 'react-i18next'
-import { Box, Button, CircularProgress, IconButton, Stack } from '@mui/material'
+import { Button, CircularProgress, Stack } from '@mui/material'
 import Toast from '../../utils/toast'
 
 interface RowProps {
@@ -47,12 +45,8 @@ export default function TicketsTableRow({
   loader
 }: RowProps) {
 
-  const navigate = useNavigate()
   const { t } = useTranslation();
   const [openMenuEl, setOpenMenuEl] = useState<null | HTMLElement>(null)
-  const [message, setMessage] = useState("");
-
-  // const [deleteVendor, setDeleteVendor] = useState<number>(0);
 
   const handleOpenMenu = (event: MouseEvent<HTMLButtonElement>) => {
     setOpenMenuEl(event.currentTarget)
@@ -103,7 +97,6 @@ export default function TicketsTableRow({
           <Avatar
             variant="rounded"
             alt={vendor.vendorFullName}
-            // src={`${product_url}/${product.featuredImage}`}
             sx={{ width: 50, height: 50 }}
           />
 
