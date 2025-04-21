@@ -125,7 +125,7 @@ export default function Users() {
   };
 
   return (
-    <>
+    <Box>
       <Modal open={open || editOpen} onClose={handleClose}>
         <Box sx={style}>
           <Scrollbar>
@@ -194,6 +194,6 @@ export default function Users() {
           </Grid>
         </Card>
       </Box>
-    </>
+    </Box>
   );
 }
