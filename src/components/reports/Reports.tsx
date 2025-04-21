@@ -194,6 +194,7 @@ export default function Reports() {
               </Grid>
 
         </Grid>
+        </Grid>
       </Card>
     </Box>
     </>
